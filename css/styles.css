@@ -87,28 +87,98 @@ ul {
   align-items: center;
 }
 
-/* ── Presentation mode toggle ────────────────────────────────── */
-.present-toggle {
+/* ── Header action group (QR + fullscreen + present) ─────────── */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin-left: auto;
-  padding: 6px 14px;
-  border-radius: 20px;
+}
+
+.header-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
   border: 1.5px solid #c0c4d8;
   background: transparent;
   color: #5a6180;
-  font-family: inherit;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
   cursor: pointer;
   flex-shrink: 0;
+  padding: 0;
   transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
 
-.present-toggle:hover {
+.header-icon-btn:hover {
   border-color: #001eff;
   color: #001eff;
 }
 
+/* ── QR code modal ────────────────────────────────────────────── */
+.qr-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.qr-modal[hidden] { display: none; }
+
+.qr-modal-inner {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 32px 24px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 40px rgba(0,0,48,0.22);
+  max-width: 440px;
+  width: 90%;
+}
+
+.qr-img {
+  display: block;
+  margin: 0 auto 12px;
+  width: 360px;
+  height: 360px;
+}
+
+.qr-modal-label {
+  font-size: 0.8rem;
+  color: #5a6180;
+  margin: 0 0 12px;
+  font-weight: 500;
+}
+
+.qr-modal-url {
+  font-size: 0.72rem;
+  color: #003087;
+  font-weight: 600;
+  margin: 0;
+  word-break: break-all;
+}
+
+.qr-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #9095b0;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.qr-close:hover { color: #001eff; }
+
+/* ── Presentation mode toggle active state ───────────────────── */
 body.presentation-mode .present-toggle {
   background: #001eff;
   border-color: #001eff;

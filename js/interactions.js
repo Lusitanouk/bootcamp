@@ -57,7 +57,6 @@ var Interactions = (function () {
     if (!btn) return;
     btn.addEventListener('click', function () {
       var isOn = document.body.classList.toggle('presentation-mode');
-      btn.textContent = isOn ? 'Presenting' : 'Present';
       btn.setAttribute('aria-pressed', isOn ? 'true' : 'false');
     });
   }
@@ -210,6 +209,60 @@ var Interactions = (function () {
     update();
   }
 
+  /* ── Fullscreen toggle ───────────────────────────────────── */
+  function bindFullscreenToggle() {
+    var btn   = document.getElementById('fullscreen-toggle');
+    var enter = btn && btn.querySelector('.fs-enter');
+    var exit  = btn && btn.querySelector('.fs-exit');
+    if (!btn) return;
+
+    function updateIcon() {
+      var isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      if (enter) enter.style.display = isFs ? 'none'  : '';
+      if (exit)  exit.style.display  = isFs ? ''      : 'none';
+    }
+
+    btn.addEventListener('click', function () {
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      } else {
+        var el = document.documentElement;
+        (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
+      }
+    });
+
+    document.addEventListener('fullscreenchange',       updateIcon);
+    document.addEventListener('webkitfullscreenchange', updateIcon);
+  }
+
+  /* ── QR code modal ───────────────────────────────────────── */
+  function bindQrToggle() {
+    var btn   = document.getElementById('qr-toggle');
+    var modal = document.getElementById('qr-modal');
+    var close = document.getElementById('qr-close');
+    if (!btn || !modal) return;
+
+    btn.addEventListener('click', function () {
+      modal.hidden = false;
+      if (close) close.focus();
+    });
+
+    if (close) {
+      close.addEventListener('click', function () {
+        modal.hidden = true;
+        btn.focus();
+      });
+    }
+
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) { modal.hidden = true; }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) { modal.hidden = true; btn.focus(); }
+    });
+  }
+
   /* ── Public API ──────────────────────────────────────────── */
   return {
     init: function () {
@@ -217,6 +270,8 @@ var Interactions = (function () {
       bindNavLinks();
       bindNavCards();
       bindPresentationToggle();
+      bindFullscreenToggle();
+      bindQrToggle();
     },
     navigateTo: navigateTo,
     bindNavCards: bindNavCards,
