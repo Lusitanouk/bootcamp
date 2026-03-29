@@ -93,12 +93,12 @@
           ]
         },
         'false-positive': {
-          summary: 'Aims to reduce false positives through secondary matching, configurable settings and relevance filtering backed by analyst workflow.',
+          summary: 'Aims to reduce false positives through secondary matching, configurable settings and relevance filtering aligned to the client’s risk appetite and operating model.',
           keyPoints: [
             'Secondary identifiers reduce ambiguous name-only matches',
-            'Configurable matching and filtering technology trims noise',
+            'Configurable data selection, name-matching and filtering settings help align outcomes to risk appetite and operations',
             'AI-powered relevance filtering supports adverse media review',
-            'Date-stamped remediation history improves consistency over time'
+            'Reporting, analytics and remediation history support ongoing tuning over time'
           ]
         }
       }
@@ -224,7 +224,7 @@
         'Supports embedded screening experiences for digital channels',
         'Includes admin access but no end-user portal or managed case workflow'
       ],
-      capabilities: { 'overview': { summary: 'Low-latency embedded screening API built for digital onboarding and other moments where the customer journey needs a fast risk decision.', keyPoints: [ 'Next-generation cloud-native screening API', 'Embedded low-latency checks within onboarding and transaction-adjacent customer screening flows', 'Useful at customer lifecycle checkpoints such as onboarding, account changes, beneficiary setup or payout release', 'Stateless architecture designed for privacy-sensitive use cases', 'High availability for digital platforms and neobanks' ] }, 'data-quality': { summary: 'Uses trusted, structured World-Check data and configurable matching inputs to improve precision in embedded screening scenarios.', keyPoints: [ 'Screens against rich, structured and de-duplicated World-Check data', 'Supports secondary identifiers to refine name matching', 'Coverage includes sanctions, PEPs, RCAs, adverse media, SOEs and SIEs', 'Supports screening against World-Check data and client watchlists with source provenance in the response' ] }, 'screening-matching': { summary: 'Focused on fast, configurable screening where customer systems need a rapid response at key decision points.', keyPoints: [ 'Advanced multi-layered name-matching algorithms', 'Configurable screening parameters and policy alignment options', 'Flexible auto-resolution capabilities', 'Core use cases include onboarding, KYC and transaction-triggered party screening workflows' ] }, 'workflow-review': { summary: 'Optimised for screening at the point of interaction rather than for built-in remediation case management.', keyPoints: [ 'No persistent customer data store in the product', 'No built-in case management, audit workflow or ongoing screening layer', 'Admin portal access supports configuration and administration', 'Results can be routed into customer-managed review flows', 'Can sit alongside broader workflow tooling when governed remediation is needed' ] }, 'post-processing': { summary: 'Designed to feed customer systems with fast screening outcomes that support automated routing and transaction-decision checkpoints.', keyPoints: [ 'Supports consistent screening across onboarding, account changes and transaction-triggered checkpoints', 'Results can drive customer-side triage and escalation logic', 'Low-latency responses reduce friction in customer journeys', 'Decisioning policies remain configurable and customer-aligned' ] }, 'integration': { summary: 'Built for seamless integration, global scale and strong privacy posture in modern cloud environments.', keyPoints: [ 'Cloud-native AWS infrastructure engineered for global high availability', 'Instant scalability and resilience under demand spikes', 'In-region hosting supports sovereignty and privacy requirements', 'Admin access supports setup and policy administration, while end-user portal access is not part of the model' ] }, 'false-positive': { summary: 'Positions false-positive reduction around advanced matching, configurability and rapid screening at the point where customer systems need a decision.', keyPoints: [ 'Advanced technology helps manage regional name-matching challenges', 'Secondary identifiers improve confidence in relevant matches', 'Configurable screening parameters reduce manual review noise', 'Fewer false positives support shorter resolution times at onboarding and transaction decision points' ] } }
+      capabilities: { 'overview': { summary: 'Low-latency embedded screening API built for digital onboarding and other moments where the customer journey needs a fast risk decision.', keyPoints: [ 'Next-generation cloud-native screening API', 'Embedded low-latency checks within onboarding and transaction-adjacent customer screening flows', 'Useful at customer lifecycle checkpoints such as onboarding, account changes, beneficiary setup or payout release', 'Stateless architecture designed for privacy-sensitive use cases', 'High availability for digital platforms and neobanks' ] }, 'data-quality': { summary: 'Uses trusted, structured World-Check data and configurable matching inputs to improve precision in embedded screening scenarios.', keyPoints: [ 'Screens against rich, structured and de-duplicated World-Check data', 'Supports secondary identifiers to refine name matching', 'Coverage includes sanctions, PEPs, RCAs, adverse media, SOEs and SIEs', 'Supports screening against World-Check data and client watchlists with source provenance in the response' ] }, 'screening-matching': { summary: 'Focused on fast, configurable screening where customer systems need a rapid response at key decision points.', keyPoints: [ 'Advanced multi-layered name-matching algorithms', 'Configurable screening parameters and policy alignment options', 'Flexible auto-resolution capabilities', 'Core use cases include onboarding, KYC and transaction-triggered party screening workflows' ] }, 'workflow-review': { summary: 'Optimised for screening at the point of interaction rather than for built-in remediation case management.', keyPoints: [ 'No persistent customer data store in the product', 'No built-in case management, audit workflow or ongoing screening layer', 'Admin portal access supports configuration and administration', 'Results can be routed into customer-managed review flows', 'Can sit alongside broader workflow tooling when governed remediation is needed' ] }, 'post-processing': { summary: 'Designed to feed customer systems with fast screening outcomes that support automated routing and transaction-decision checkpoints.', keyPoints: [ 'Supports consistent screening across onboarding, account changes and transaction-triggered checkpoints', 'Results can drive customer-side triage and escalation logic', 'Low-latency responses reduce friction in customer journeys', 'Decisioning policies remain configurable and customer-aligned' ] }, 'integration': { summary: 'Built for seamless integration, global scale and strong privacy posture in modern cloud environments.', keyPoints: [ 'Cloud-native AWS infrastructure engineered for global high availability', 'Instant scalability and resilience under demand spikes', 'In-region hosting supports sovereignty and privacy requirements', 'Admin access supports setup and policy administration, while end-user portal access is not part of the model' ] }, 'false-positive': { summary: 'Positions false-positive reduction around advanced matching, configurability and rapid screening that can be aligned to the client’s risk appetite and operating model.', keyPoints: [ 'Advanced technology helps manage regional name-matching challenges', 'Secondary identifiers improve confidence in relevant matches', 'Configurable data selection, name-matching and inclusion or exclusion settings help align outcomes to risk appetite and operations', 'Severity-based suppression, reporting and analytics support ongoing tuning and faster resolution' ] } }
     },
 
     {
@@ -794,22 +794,22 @@
       {
         id: 'matching-precision',
         label: 'Matching Precision',
-        description: 'False positives fall when the matching model is tuned to the use case. Sensitivity, identifiers and structured match inputs all help improve precision without removing the ability to catch true risk.',
+        description: 'False positives fall when the matching model is tuned to the use case. Sensitivity, identifiers, data selection and structured match inputs all help improve precision without removing the ability to catch true risk.',
         productMapping: [
           { productId: 'wcod',   note: 'Customer-owned engines can use structured data and identifiers from World-Check to improve downstream matching and corroboration logic.' },
-          { productId: 'verify', note: 'Sensitivity and identifier-aware screening support lower-noise responses in digital onboarding and event-driven flows.' },
-          { productId: 'wc1',    note: 'Sensitivity tuning and richer inputs help reduce poor-quality cases and improve analyst confidence in governed review.' },
+          { productId: 'verify', note: 'Sensitivity, name-matching and data-selection settings can be configured to support the client’s risk appetite and operational model in digital onboarding and event-driven flows.' },
+          { productId: 'wc1',    note: 'Sensitivity tuning, data inclusion or exclusion choices and richer inputs can be aligned to the client’s risk appetite and review operations, reducing poor-quality cases and improving analyst confidence.' },
           { productId: 'professional-services', note: 'Can help tune thresholds, matching strategy and control design where clients need a better balance between catch rate and analyst effort.' }
         ]
       },
       {
         id: 'automation-ai',
         label: 'Automation & AI Support',
-        description: 'Some clients reduce analyst burden further with automation, AI-assisted triage or decision-support layers that sit on top of screening outputs and help prioritise what really needs review.',
+        description: 'Some clients reduce analyst burden further with automation and AI layers that sit on top of screening outputs. Rich data and APIs can support traditional robotic automation, orchestration and rules-based flows, as well as newer agentic patterns for triage, prioritisation and decision support.',
         productMapping: [
-          { productId: 'wcod',   note: 'Structured outputs can feed customer-owned automation, prioritisation and AI-assisted review layers.' },
-          { productId: 'verify', note: 'Low-latency screening responses can feed customer decisioning and automation at key onboarding or transaction checkpoints.' },
-          { productId: 'wc1',    note: 'Managed workflow and structured case data create a stronger base for prioritisation, routing and selective manual review.' }
+          { productId: 'wcod',   note: 'Structured data and APIs can feed customer-owned robotic automation, orchestration and agentic review layers that sit around the screening stack.' },
+          { productId: 'verify', note: 'Low-latency screening responses can feed decisioning, robotic automation and agentic workflows at key onboarding or transaction checkpoints.' },
+          { productId: 'wc1',    note: 'Managed workflow, structured case data and reporting create a stronger base for prioritisation, routing, robotics and agentic support around selective manual review.' }
         ]
       }
     ],
@@ -817,12 +817,12 @@
     afterScreening: [
       {
         id: 'triage-suppression',
-        label: 'Triage, Suppression & Decisioning',
-        description: 'Returned attributes, provenance, routing rules and suppression logic help teams dismiss obvious non-matches faster and send only the right cases into manual review.',
+        label: 'Triage, Decisioning & Ongoing Monitoring',
+        description: 'Returned attributes, provenance, routing rules, suppression logic and monitoring decisions help teams dismiss obvious non-matches faster, send only the right cases into manual review and keep the right populations under ongoing watch.',
         productMapping: [
           { productId: 'wcod',   note: 'Rich attributes and provenance support customer-side suppression, prioritisation and route-to-review logic.' },
-          { productId: 'verify', note: 'Returned screening detail helps customer systems suppress low-risk hits and escalate only where a real review is needed.' },
-          { productId: 'wc1',    note: 'Built-in workflow, routing and case context support more consistent triage and governed decisioning.' },
+          { productId: 'verify', note: 'Returned screening detail helps customer systems suppress low-risk hits, apply severity-based handling and escalate only where a real review is needed.' },
+          { productId: 'wc1',    note: 'Built-in workflow, routing, reporting, case context and ongoing monitoring support more consistent triage, severity-based suppression and governed decisioning.' },
           { productId: 'professional-services', note: 'Can help clients design triage rules, suppression logic and escalation criteria so analysts focus on the alerts that matter.' }
         ]
       }
