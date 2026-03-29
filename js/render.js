@@ -19,6 +19,14 @@ var Render = (function () {
     return '<span class="tag tag-' + esc(type) + '">' + esc(text) + '</span>';
   }
 
+  function getProductTagType(prod) {
+    if (!prod) return 'api';
+    if (prod.id === 'professional-services') return 'service';
+    if (prod.id === 'custom-app' || prod.id === 'filter-partner') return 'client';
+    if (prod.deploymentType === 'desktop') return 'desktop';
+    return 'api';
+  }
+
   /* ── Home view ───────────────────────────────────────────── */
   function viewHome() {
     return '<section class="view-section">' +
@@ -48,7 +56,7 @@ var Render = (function () {
 
         _navCard('capability-explorer', '&#128295;',
           'Capability Explorer',
-          'Compare WC1, WCOD and Verify across workflow, integration, matching controls and deployment style.') +
+          'Compare WC1, WCOD, Professional Services and Verify across workflow, integration, matching controls and delivery style.') +
 
         _navCard('api-comparison', '&#128268;',
           'API Comparison',
@@ -88,15 +96,14 @@ var Render = (function () {
 
     var cards = scenarios.map(function (s) {
       var tags = s.tags.map(function (t) {
-        var type = t === 'api' ? 'api' : t === 'desktop' ? 'desktop' : t === 'hybrid' ? 'hybrid' : t === 'identity' ? 'identity' : 'phase';
+        var type = 'phase';
         return tagPill(t, type);
       }).join(' ');
 
       var productTags = s.recommendedProducts.map(function (pid) {
         var p = AppData.getProduct(pid);
         if (!p) return '';
-        var dt = p.deploymentType;
-        var type = dt === 'desktop' ? 'desktop' : dt === 'client' ? 'client' : 'api';
+        var type = getProductTagType(p);
         return tagPill(p.shortName, type);
       }).join(' ');
 
@@ -202,8 +209,7 @@ var Render = (function () {
     var productTags = ex.lsegProducts.map(function (pid) {
       var prod = AppData.getProduct(pid);
       var label = prod ? prod.shortName : pid;
-      var dt    = prod ? prod.deploymentType : '';
-      var type  = dt === 'desktop' ? 'desktop' : dt === 'client' ? 'client' : 'api';
+      var type  = getProductTagType(prod);
       return tagPill(label, type);
     }).join(' ');
 
@@ -228,8 +234,7 @@ var Render = (function () {
       var prodTags = (phase.products || []).map(function (pid) {
         var prod = AppData.getProduct(pid);
         var label = prod ? prod.shortName : pid;
-        var dt    = prod ? prod.deploymentType : '';
-        var type  = dt === 'desktop' ? 'desktop' : dt === 'client' ? 'client' : 'api';
+        var type  = getProductTagType(prod);
         return tagPill(label, type);
       }).join(' ');
 
@@ -262,15 +267,24 @@ var Render = (function () {
   /* ── Capability Explorer view ────────────────────────────── */
   function viewCapabilityExplorer() {
     var domains  = AppData.capabilityDomains;
-    var orderMap = { 'wcod': 0, 'wc1': 1, 'verify': 2 };
+    var orderMap = {
+      'wc1': 0,
+      'wcod': 1,
+      'verify': 2,
+      'professional-services': 3,
+      'custom-app': 4,
+      'filter-partner': 5
+    };
     var products = AppData.products.slice().sort(function (a, b) {
-      return (orderMap[a.id] || 99) - (orderMap[b.id] || 99);
+      var aOrder = Object.prototype.hasOwnProperty.call(orderMap, a.id) ? orderMap[a.id] : 99;
+      var bOrder = Object.prototype.hasOwnProperty.call(orderMap, b.id) ? orderMap[b.id] : 99;
+      return aOrder - bOrder;
     });
 
     /* Each product is a top-level collapsible.
        Inside: overview row + domain-by-domain collapsibles. */
     var productSections = products.map(function (p, pi) {
-      var badgeType = p.deploymentType;
+      var badgeType = getProductTagType(p);
       var badge = tagPill(p.badge, badgeType);
 
       /* Overview row: integration + review workflow */
@@ -349,8 +363,7 @@ var Render = (function () {
     function leverItem(item) {
       var mapRows = (item.productMapping || []).map(function (m) {
         var prod = AppData.getProduct(m.productId);
-        var dt = prod ? prod.deploymentType : '';
-        var badgeType = dt === 'desktop' ? 'desktop' : dt === 'client' ? 'client' : 'api';
+        var badgeType = getProductTagType(prod);
         return '<div class="lever-map-row">' +
           '<div class="lever-map-pill">' + tagPill(prod ? prod.shortName : m.productId, badgeType) + '</div>' +
           '<div class="lever-map-note">' + esc(m.note) + '</div>' +
@@ -386,14 +399,14 @@ var Render = (function () {
       '<div class="page-header">' +
         '<h1 class="page-title">False Positive Reduction</h1>' +
         '<p class="page-subtitle">' +
-          'Practical levers across the full screening lifecycle. Expand a stage to see each lever and which product addresses it.' +
+          'Practical levers across the screening lifecycle. Expand a stage to see how products and Professional Services help reduce review noise.' +
         '</p>' +
       '</div>' +
 
       '<div class="section-intro">' +
-        '<p>False positive reduction is not a single setting. It spans data preparation, screening ' +
-        'configuration, post-processing and operational workflow. Expand each lever to see ' +
-        'the product mapping and configuration detail.</p>' +
+        '<p>False positive reduction is not a single setting. It comes from better inputs, better screening precision, ' +
+        'better triage and a better operating model. This view shows where products and Professional Services can help, ' +
+        'with automation, AI and managed-services overlays where relevant.</p>' +
       '</div>' +
 
       stageGroup('Before Screening',  levers.beforeScreening,  false)  +
@@ -484,14 +497,32 @@ var Render = (function () {
       '</details>';
     }).join('');
 
-    /* Objections as individual collapsibles */
-    var objItems = objectionHandling.map(function (o) {
-      return '<details class="obj-item">' +
+    /* Objections grouped by theme, with flat-list fallback */
+    var objItems = objectionHandling.map(function (group, i) {
+      var items = group.items || [];
+
+      if (!items.length && group.objection) {
+        items = [group];
+      }
+
+      var groupedItems = items.map(function (o) {
+        return '<details class="obj-item">' +
+          '<summary>' +
+            '<span class="obj-quote">&#34;' + esc(o.objection) + '&#34;</span>' +
+            '<span class="obj-toggle"></span>' +
+          '</summary>' +
+          '<p class="obj-response">' + esc(o.response) + '</p>' +
+        '</details>';
+      }).join('');
+
+      var title = group.theme || 'Objections';
+      return '<details class="coll">' +
         '<summary>' +
-          '<span class="obj-quote">&#34;' + esc(o.objection) + '&#34;</span>' +
-          '<span class="obj-toggle"></span>' +
+          '<span class="coll-title">' + esc(title) + '</span>' +
+          '<span class="coll-meta">' + items.length + ' objections</span>' +
+          '<span class="coll-chevron">›</span>' +
         '</summary>' +
-        '<p class="obj-response">' + esc(o.response) + '</p>' +
+        '<div class="coll-body">' + groupedItems + '</div>' +
       '</details>';
     }).join('');
 
@@ -632,6 +663,7 @@ var Render = (function () {
       { label: 'Customer tier',      key: 'customerTier',      bool: false },
       { label: 'Authentication',     key: 'authentication',    bool: false },
       { label: 'Screening model',    key: 'screeningModel',    bool: false },
+      { label: 'Data structure & provenance', key: 'dataStructureProvenance', bool: false },
       { label: 'Case management',    key: 'caseManagement',    bool: true,  trueLabel: 'Built-in' },
       { label: 'Ongoing screening',  key: 'ongoingScreening',  bool: true },
       { label: 'Audit trail',        key: 'auditTrail',        bool: true,  trueLabel: 'Built-in' },

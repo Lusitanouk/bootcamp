@@ -55,6 +55,13 @@ body {
   flex-direction: column;
 }
 
+@media (max-width: 700px) {
+  html,
+  body {
+    min-width: 360px;
+  }
+}
+
 a {
   color: #001eff;
   text-decoration: none;
@@ -563,14 +570,15 @@ body.presentation-mode .home-hero-title     { font-size: 2.25rem; }
   text-transform: uppercase;
 }
 
-.tag-api    { background: #e8f0ff; color: #001eff; }
+.tag-api    { background: #eaf2ff; color: #2450b2; }
 .tag-desktop{ background: #e8fff3; color: #007a45; }
-.tag-hybrid { background: #fff8e8; color: #a06000; }
+.tag-hybrid { background: #f3eefc; color: #5b3ea6; }
 .tag-phase  { background: #f0f0f8; color: #6060a0; }
 
 /* ── Tag: identity variant ───────────────────────────────────── */
 .tag-identity { background: #f5eeff; color: #6a00cc; }
 .tag-client   { background: #e8faf4; color: #00734d; }
+.tag-service  { background: #fdeaf4; color: #b33476; }
 
 /* ── Two-column layout ───────────────────────────────────────── */
 .two-col {
