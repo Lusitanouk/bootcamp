@@ -644,6 +644,12 @@ body.presentation-mode .home-hero-title     { font-size: 2.25rem; }
 
 .coll > summary:hover { background: #f5f6ff; }
 
+.coll:has(> summary:hover) {
+  border-color: #001eff;
+  box-shadow: 0 4px 16px rgba(0, 30, 255, 0.1);
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+
 .coll[open] > summary {
   border-bottom: 1px solid #eee;
   background: #f8f9ff;
@@ -771,6 +777,12 @@ body.presentation-mode .home-hero-title     { font-size: 2.25rem; }
 
 .lever > summary::-webkit-details-marker { display: none; }
 .lever > summary:hover { background: #f0f2ff; }
+
+.lever:has(> summary:hover) {
+  border-color: #001eff;
+  box-shadow: 0 2px 8px rgba(0, 30, 255, 0.1);
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
 
 .lever[open] > summary {
   border-bottom: 1px solid #eef0f8;
@@ -911,6 +923,12 @@ body.presentation-mode .home-hero-title     { font-size: 2.25rem; }
   border: 1px solid #dde0ea;
   border-radius: 6px;
   overflow: hidden;
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+
+.scenario-card:has(> summary:hover) {
+  border-color: #001eff;
+  box-shadow: 0 4px 16px rgba(0, 30, 255, 0.1);
 }
 
 .scenario-card-header {
