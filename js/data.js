@@ -528,7 +528,7 @@
     {
       id: 'social-marketplace-kyc-ogs-transactions',
       title: 'Social Media Marketplace',
-      subtitle: 'Buyer and seller onboarding, money-in and money-out controls with escalation workflow',
+      subtitle: 'Buyer and seller onboarding with transaction controls and escalation workflow',
       scenarioRef: 'global-marketplace',
       interactionType: 'mixed',
       lsegProducts: ['verify', 'wc1', 'custom-app'],
@@ -579,7 +579,7 @@
     {
       id: 'eu-psp-instant-payments',
       title: 'EU PSP',
-      subtitle: 'Customer onboarding plus immediate restrictive-measures refresh after list updates for instant payments',
+      subtitle: 'Customer onboarding with fast restrictive-measures refresh for instant payments',
       scenarioRef: 'ongoing-screening',
       interactionType: 'mixed',
       lsegProducts: ['wcod', 'verify', 'wc1', 'custom-app'],
@@ -676,7 +676,7 @@
     {
       id: 'tier1-bank-wcod-kyc-payments',
       title: 'Tier 1 Bank — OnDemand for KYC and Payments',
-      subtitle: 'World-Check data delivered into custom apps and a filtering partner for customer-owned screening controls',
+      subtitle: 'Current World-Check data into customer-owned screening and payment controls',
       scenarioRef: 'kyc-onboarding',
       interactionType: 'mixed',
       lsegProducts: ['wcod', 'custom-app', 'filter-partner'],
