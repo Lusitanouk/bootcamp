@@ -761,7 +761,7 @@
       },
       {
         id: 'automation-ai',
-        label: 'Automation & AI Support',
+        label: 'Automation, AI & Orchestration',
         description: 'Some clients reduce analyst burden further with automation and AI layers that sit on top of screening outputs. Rich data and APIs can support traditional robotic automation, orchestration and rules-based flows, as well as newer agentic patterns for triage, prioritisation and decision support.',
         productMapping: [
           { productId: 'wcod',   note: 'Structured data and APIs can feed customer-owned robotic automation, orchestration and agentic review layers that sit around the screening stack.' },
@@ -774,7 +774,7 @@
     afterScreening: [
       {
         id: 'triage-suppression',
-        label: 'Triage, Decisioning & Ongoing Monitoring',
+        label: 'Triage, Decisioning & Monitoring',
         description: 'Returned attributes, provenance, routing rules, suppression logic and monitoring decisions help teams dismiss obvious non-matches faster, send only the right cases into manual review and keep the right populations under ongoing watch.',
         productMapping: [
           { productId: 'wcod',   note: 'Rich attributes and provenance support customer-side suppression, prioritisation and route-to-review logic.' },
@@ -789,12 +789,12 @@
       {
         id: 'workflow-optimisation',
         label: 'Operational Optimisation',
-        description: 'Reducing false positives is also an operating-model problem. Workflow design, analyst playbooks, tuning reviews, managed-services support and ongoing optimisation all shape how much noise reaches the team and how quickly it is cleared.',
+        description: 'Reducing false positives is also an operating-model problem. Workflow design, reporting, analytics, tuning reviews and ongoing optimisation all shape how data inputs, screening outputs and review workflows perform over time.',
         productMapping: [
           { productId: 'wcod',   note: 'Customers using OnDemand still need a strong downstream workflow, tuning process and operating model around the delivered data.' },
-          { productId: 'verify', note: 'Embedded screening works best when escalation, exception handling and review operations are deliberately designed.' },
-          { productId: 'wc1',    note: 'Managed workflow, audit and review context support stronger operating discipline and ongoing optimisation.' },
-          { productId: 'professional-services', note: 'Can help clients design workflow, uplift analyst practices, run tuning reviews and support the target operating model where internal bandwidth is limited.' }
+          { productId: 'verify', note: 'Verify works best when clients tune data inputs, screening settings, escalation rules and downstream workflows using reporting and analytics from live operations.' },
+          { productId: 'wc1',    note: 'WC1 supports stronger optimisation through managed workflow, reporting, analytics, audit context and tuning of data inputs, screening outputs and review workflows over time.' },
+          { productId: 'professional-services', note: 'Can help clients design workflow, uplift analyst practices, run tuning reviews and use reporting and analytics to optimise the target operating model over time.' }
         ]
       }
     ]

@@ -416,10 +416,10 @@ var Render = (function () {
         'with automation, AI and managed-services overlays where relevant.</p>' +
       '</div>' +
 
-      stageGroup('Before Screening',  levers.beforeScreening,  false)  +
-      stageGroup('During Screening',  levers.duringScreening,  false) +
-      stageGroup('After Screening',   levers.afterScreening,   false) +
-      stageGroup('In Operations',     levers.inOperations,     false) +
+      stageGroup('Before Screening',             levers.beforeScreening,  false) +
+      stageGroup('During Screening',             levers.duringScreening,  false) +
+      stageGroup('After Screening & Decisioning', levers.afterScreening,   false) +
+      stageGroup('Operating Model & Optimisation', levers.inOperations,     false) +
     '</section>';
   }
 
