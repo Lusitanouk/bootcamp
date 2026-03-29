@@ -1,4 +1,4 @@
-var AppData = (function () {
+﻿var AppData = (function () {
 
   /* ── Scenarios ────────────────────────────────────────────────
      Three blueprint demo scenarios plus the travel marketplace.
@@ -48,12 +48,12 @@ var AppData = (function () {
           ]
         },
         'data-quality': {
-          summary: 'Relies on structured World-Check content plus secondary identifiers to improve precision and analyst confidence.',
+          summary: 'Relies on rich, structured World-Check content plus secondary identifiers to improve precision, review confidence and downstream decision quality.',
           keyPoints: [
-            'Uses structured, aggregated and de-duplicated World-Check data',
+            'Uses rich, structured and de-duplicated World-Check data',
             'Secondary identifiers help sharpen match precision',
-            'Supports customer and third-party screening contexts',
-            'Data captured in screening feeds remediation and audit steps'
+            'Supports customer and third-party screening contexts with fuller record context',
+            'Data captured in screening feeds remediation, provenance review and audit steps'
           ]
         },
         'screening-matching': {
@@ -110,9 +110,9 @@ var AppData = (function () {
       shortName: 'OnDemand',
       badge: 'Data API',
       deploymentType: 'api',
-      tagline: 'Structured World-Check data delivery for customers that already own screening and decisioning.',
+      tagline: 'Current, structured World-Check data delivery for customers that already own screening and decisioning.',
       description:
-        'World-Check On Demand provides structured, machine-readable World-Check data for customers that want ' +
+        'World-Check On Demand provides current, structured, machine-readable World-Check data for customers that want ' +
         'to feed their own screening engine, filtering layer or partner platform. It is a data-delivery model, ' +
         'not a managed screening workflow.',
       integrationPattern: 'API-first architecture for direct integration into in-house, cloud-based or third-party screening platforms.',
@@ -132,29 +132,29 @@ var AppData = (function () {
       ],
       capabilities: {
         'overview': {
-          summary: 'Data-delivery layer for organisations that want current World-Check intelligence inside their own platforms and workflows.',
+          summary: 'Data-delivery layer for organisations that want current, rich World-Check intelligence inside their own platforms and workflows.',
           keyPoints: [
-            'API-first solution for real-time risk intelligence access',
+            'API-first solution for timely risk-intelligence access',
             'Structured, enriched, machine-readable data delivery',
             'Designed for faster onboarding, KYC and payment-control use cases',
             'Supports delta-style retrieval patterns when records change'
           ]
         },
         'data-quality': {
-          summary: 'Emphasises structured, provenance-rich data that can be absorbed into customer or third-party workflows.',
+          summary: 'Emphasises rich, structured, provenance-aware data that can be absorbed into customer or third-party workflows.',
           keyPoints: [
             'Single, consistent data model across sanctions, PEPs and adverse media',
-            'Detailed classifications, granular fields and provenance tagging',
-            'Structured, aggregated and de-duplicated World-Check data',
-            'Tailorable data model aligned to customer risk appetite'
+            'Detailed classifications, granular fields and source provenance',
+            'Rich, structured and de-duplicated World-Check data',
+            'Tailorable data model aligned to customer risk appetite and review needs'
           ]
         },
         'screening-matching': {
-          summary: 'Supports smarter screening indirectly by supplying richer data, filtering context and change visibility into customer-owned engines.',
+          summary: 'Supports smarter screening indirectly by supplying richer data, fuller context and timely change visibility into customer-owned engines.',
           keyPoints: [
-            'Built to supply current risk data into customer-owned screening and payment-control stacks',
+            'Built to supply current and timely risk data into customer-owned screening and payment-control stacks',
             'Deep filtering and enhanced categorisation reduce screening noise',
-            'Structured risk taxonomy sharpens focus on true risk indicators',
+            'Structured risk taxonomy and richer attributes sharpen focus on true risk indicators',
             'Transparent record change summaries highlight what changed'
           ]
         },
@@ -186,7 +186,7 @@ var AppData = (function () {
           ]
         },
         'false-positive': {
-          summary: 'Reduces false positives mainly by improving the quality, structure and filterability of the data sent into screening workflows.',
+          summary: 'Reduces false positives mainly by improving the quality, richness and filterability of the data sent into screening workflows.',
           keyPoints: [
             'Deep filtering and categorisation reduce overscreening',
             'Granular fields and provenance sharpen matching context',
@@ -218,13 +218,13 @@ var AppData = (function () {
         'Organisations that will manage case handling in their own environment'
       ],
       differentiators: [
-        'Pairs trusted World-Check data with fast embedded screening in a lighter operational model',
+        'Pairs trusted, structured World-Check data with fast embedded screening in a lighter operational model',
         'Supports World-Check plus client-watchlist screening in one embedded API pattern',
         'Simpler fit where case management and audit workflow are not required',
         'Supports embedded screening experiences for digital channels',
         'Includes admin access but no end-user portal or managed case workflow'
       ],
-      capabilities: { 'overview': { summary: 'Low-latency embedded screening API built for digital onboarding and other moments where the customer journey needs a fast risk decision.', keyPoints: [ 'Next-generation cloud-native screening API', 'Embedded low-latency checks within onboarding and transaction-adjacent customer screening flows', 'Useful at customer lifecycle checkpoints such as onboarding, account changes, beneficiary setup or payout release', 'Stateless architecture designed for privacy-sensitive use cases', 'High availability for digital platforms and neobanks' ] }, 'data-quality': { summary: 'Uses structured World-Check data and configurable matching inputs to improve precision in embedded screening scenarios.', keyPoints: [ 'Screens against structured, aggregated and de-duplicated World-Check data', 'Supports secondary identifiers to refine name matching', 'Coverage includes sanctions, PEPs, RCAs, adverse media, SOEs and SIEs', 'Supports screening against World-Check data and client watchlists' ] }, 'screening-matching': { summary: 'Focused on fast, configurable screening where customer systems need a rapid response at key decision points.', keyPoints: [ 'Advanced multi-layered name-matching algorithms', 'Configurable screening parameters and policy alignment options', 'Flexible auto-resolution capabilities', 'Core use cases include onboarding, KYC and transaction-triggered party screening workflows' ] }, 'workflow-review': { summary: 'Optimised for screening at the point of interaction rather than for built-in remediation case management.', keyPoints: [ 'No persistent customer data store in the product', 'No built-in case management, audit workflow or ongoing screening layer', 'Admin portal access supports configuration and administration', 'Results can be routed into customer-managed review flows', 'Can sit alongside broader workflow tooling when governed remediation is needed' ] }, 'post-processing': { summary: 'Designed to feed customer systems with fast screening outcomes that support automated routing and transaction-decision checkpoints.', keyPoints: [ 'Supports consistent screening across onboarding, account changes and transaction-triggered checkpoints', 'Results can drive customer-side triage and escalation logic', 'Low-latency responses reduce friction in customer journeys', 'Decisioning policies remain configurable and customer-aligned' ] }, 'integration': { summary: 'Built for seamless integration, global scale and strong privacy posture in modern cloud environments.', keyPoints: [ 'Cloud-native AWS infrastructure engineered for global high availability', 'Instant scalability and resilience under demand spikes', 'In-region hosting supports sovereignty and privacy requirements', 'Admin access supports setup and policy administration, while end-user portal access is not part of the model' ] }, 'false-positive': { summary: 'Positions false-positive reduction around advanced matching, configurability and rapid screening at the point where customer systems need a decision.', keyPoints: [ 'Advanced technology helps manage regional name-matching challenges', 'Secondary identifiers improve confidence in relevant matches', 'Configurable screening parameters reduce manual review noise', 'Fewer false positives support shorter resolution times at onboarding and transaction decision points' ] } }
+      capabilities: { 'overview': { summary: 'Low-latency embedded screening API built for digital onboarding and other moments where the customer journey needs a fast risk decision.', keyPoints: [ 'Next-generation cloud-native screening API', 'Embedded low-latency checks within onboarding and transaction-adjacent customer screening flows', 'Useful at customer lifecycle checkpoints such as onboarding, account changes, beneficiary setup or payout release', 'Stateless architecture designed for privacy-sensitive use cases', 'High availability for digital platforms and neobanks' ] }, 'data-quality': { summary: 'Uses trusted, structured World-Check data and configurable matching inputs to improve precision in embedded screening scenarios.', keyPoints: [ 'Screens against rich, structured and de-duplicated World-Check data', 'Supports secondary identifiers to refine name matching', 'Coverage includes sanctions, PEPs, RCAs, adverse media, SOEs and SIEs', 'Supports screening against World-Check data and client watchlists with source provenance in the response' ] }, 'screening-matching': { summary: 'Focused on fast, configurable screening where customer systems need a rapid response at key decision points.', keyPoints: [ 'Advanced multi-layered name-matching algorithms', 'Configurable screening parameters and policy alignment options', 'Flexible auto-resolution capabilities', 'Core use cases include onboarding, KYC and transaction-triggered party screening workflows' ] }, 'workflow-review': { summary: 'Optimised for screening at the point of interaction rather than for built-in remediation case management.', keyPoints: [ 'No persistent customer data store in the product', 'No built-in case management, audit workflow or ongoing screening layer', 'Admin portal access supports configuration and administration', 'Results can be routed into customer-managed review flows', 'Can sit alongside broader workflow tooling when governed remediation is needed' ] }, 'post-processing': { summary: 'Designed to feed customer systems with fast screening outcomes that support automated routing and transaction-decision checkpoints.', keyPoints: [ 'Supports consistent screening across onboarding, account changes and transaction-triggered checkpoints', 'Results can drive customer-side triage and escalation logic', 'Low-latency responses reduce friction in customer journeys', 'Decisioning policies remain configurable and customer-aligned' ] }, 'integration': { summary: 'Built for seamless integration, global scale and strong privacy posture in modern cloud environments.', keyPoints: [ 'Cloud-native AWS infrastructure engineered for global high availability', 'Instant scalability and resilience under demand spikes', 'In-region hosting supports sovereignty and privacy requirements', 'Admin access supports setup and policy administration, while end-user portal access is not part of the model' ] }, 'false-positive': { summary: 'Positions false-positive reduction around advanced matching, configurability and rapid screening at the point where customer systems need a decision.', keyPoints: [ 'Advanced technology helps manage regional name-matching challenges', 'Secondary identifiers improve confidence in relevant matches', 'Configurable screening parameters reduce manual review noise', 'Fewer false positives support shorter resolution times at onboarding and transaction decision points' ] } }
     },
 
     {
@@ -431,7 +431,7 @@ var AppData = (function () {
       primaryProduct: 'wcod',
       rationale:
         'OnDemand is the natural fit when the bank already owns matching, filtering, payment controls, alert handling and case workflow. ' +
-        'The client value is better data into an existing operating model: current World-Check content, structured attributes, provenance and filtering support that help the bank and its partner layer reduce noise without replacing core screening infrastructure. ' +
+        'The client value is better data into an existing operating model: current, rich World-Check content, structured attributes, source provenance and filtering support that help the bank and its partner layer reduce noise without replacing core screening infrastructure. ' +
         'In this pattern, ongoing monitoring remains in the bank’s own engine or partner workflow unless the client chooses to add WC1.',
       keyQuestions: [
         'Which parts of the screening stack do you already own internally: matching, filtering, alert handling, case workflow, or all of them?',
@@ -729,7 +729,7 @@ var AppData = (function () {
         'can control matching, filtering, routing, monitoring and payment decisioning inside its own operating model.',
       phases: [
         { id: 1, title: 'Client Intake',        desc: 'Bank-owned channels collect customer, account and payment party data.',                                                        products: ['custom-app'] },
-        { id: 2, title: 'Data Delivery',        desc: 'OnDemand delivers structured World-Check data into the bank’s filtering partner and custom screening stack.',               products: ['wcod', 'custom-app', 'filter-partner'] },
+        { id: 2, title: 'Data Delivery',        desc: 'OnDemand delivers current, structured World-Check data into the bank’s filtering partner and custom screening stack.',               products: ['wcod', 'custom-app', 'filter-partner'] },
         { id: 3, title: 'KYC Screening',        desc: 'The bank’s own KYC engine screens customers and related parties using OnDemand-fed data and customer-defined policies.',      products: ['wcod', 'custom-app', 'filter-partner'] },
         { id: 4, title: 'Payment Screening',    desc: 'The bank’s payment controls use the same OnDemand-fed data and partner filtering layer for pre-execution checks.',            products: ['wcod', 'custom-app', 'filter-partner'] },
         { id: 5, title: 'Triage, Routing & Monitoring', desc: 'Customer-owned rules and partner filtering suppress noise, prioritise likely matches and feed ongoing monitoring inside the bank’s own stack.', products: ['wcod', 'custom-app', 'filter-partner'] },
@@ -746,7 +746,7 @@ var AppData = (function () {
       steps: [
         { id: 1,  lane: 'customer',    label: 'Customer submits onboarding or payment instructions through bank-owned channels', type: 'user-action' },
         { id: 2,  lane: 'bank-app',    label: 'Bank custom apps structure customer, account and payment-party data', type: 'process' },
-        { id: 3,  lane: 'ondemand',    label: 'World-Check data feed makes current structured risk content available to the bank environment', type: 'process', note: 'Data only — not the screening engine' },
+        { id: 3,  lane: 'ondemand',    label: 'World-Check data feed makes current, structured risk content available to the bank environment', type: 'process', note: 'Data only — not the screening engine' },
         { id: 4,  lane: 'bank-app',    label: 'Bank custom apps pass screening payloads and policy context to the filtering partner', type: 'api-request', to: 'partner' },
         { id: 5,  lane: 'partner',     label: 'Filtering partner applies bank-defined filtering, enrichment and routing logic', type: 'process' },
         { id: 6,  lane: 'partner',     label: 'Partner forwards filtered screening request into the bank-owned screening engine with OnDemand-fed data references', type: 'api-request', to: 'bank-engine' },
@@ -997,7 +997,7 @@ var AppData = (function () {
       comparison: {
         authentication:    'OAuth 2.0',
         screeningModel:    'Customer-built',
-        dataStructureProvenance: 'Structured records + source provenance',
+        dataStructureProvenance: 'Rich structured records + source provenance',
         caseManagement:    false,
         ongoingScreening:  false,
         auditTrail:        false,
@@ -1059,7 +1059,7 @@ var AppData = (function () {
       icon: '&#9889;',
       tagline: 'The strategic WC1 API for customers that want managed cases, audit and ongoing screening.',
       valueStatement: 'WC1 v3 is the strategic World-Check One API. It fits customers that want screening, case management, audit trail and ongoing screening inside the WC1 platform, with a more modern OAuth 2.0 integration model than v2.',
-      bestFor: 'All new integrations, and the recommended migration target for any existing WC1 v2 customers.',
+      bestFor: 'New integrations that need governed screening, built-in case workflow, audit-ready remediation and ongoing screening in one strategic API model, plus any existing WC1 v2 customers planning migration.',
       migrationReasons: [
         'OAuth 2.0 replaces HMAC, aligning better with modern bank and enterprise security standards',
         'Consistent REST design is easier for delivery teams to learn, support and maintain',
@@ -1081,7 +1081,7 @@ var AppData = (function () {
       comparison: {
         authentication:    'OAuth 2.0',
         screeningModel:    'Stateful / cases',
-        dataStructureProvenance: 'Structured cases + source provenance',
+        dataStructureProvenance: 'Rich case data + source provenance',
         caseManagement:    true,
         ongoingScreening:  true,
         auditTrail:        true,
@@ -1157,6 +1157,7 @@ var AppData = (function () {
   };
 
 }());
+
 
 
 
