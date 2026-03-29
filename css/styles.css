@@ -557,6 +557,27 @@ ul {
   padding: 12px 14px 14px;
 }
 
+/* Modifier: allows horizontal scrolling inside a collapsible.
+   Removes overflow:hidden from the container and re-applies
+   border-radius via summary/body borders instead. */
+.coll--scroll {
+  overflow: visible;
+}
+.coll--scroll > summary {
+  border-radius: 6px;
+}
+.coll--scroll[open] > summary {
+  border-radius: 6px 6px 0 0;
+}
+.coll--scroll .coll-body {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid #dde0ea;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  padding: 0;
+}
+
 .capability-product > summary {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -856,8 +877,8 @@ ul {
 }
 
 @media (max-width: 900px) {
-  .brand-product { display: none; }
-  .brand-divider { display: none; }
+  .brand-product { font-size: 0.7rem; }
+  .brand-divider { margin: 0 10px; }
   .home-hero     { padding: 24px 20px; }
   .home-hero-title { font-size: 1.375rem; }
   .section-intro { padding: 14px 16px; }

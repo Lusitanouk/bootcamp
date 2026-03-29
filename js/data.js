@@ -314,6 +314,25 @@ var AppData = (function () {
       typicalBuyers: [],
       differentiators: [],
       capabilities: {}
+    },
+
+    /* ── Filter Partner ───────────────────────────────────────── */
+    {
+      id: 'filter-partner',
+      name: 'Filter Partner',
+      shortName: 'Filter Partner',
+      badge: 'Partner Layer',
+      deploymentType: 'client',
+      tagline: 'Third-party screening or filtering layer operated outside the LSEG product stack.',
+      description:
+        'Represents a customer-selected partner layer that consumes World-Check data and applies ' +
+        'partner-owned filtering, matching or orchestration before results return to the bank\'s own systems.',
+      integrationPattern: 'Partner-managed screening, filtering or orchestration layer connected to customer-owned applications and LSEG data feeds.',
+      reviewWorkflow: 'Workflow, filtering logic and operational handling are defined by the partner and the customer operating model.',
+      dataResidency: 'Hosting and data handling depend on the partner environment and customer controls.',
+      typicalBuyers: [],
+      differentiators: [],
+      capabilities: {}
     }
   ];
 
@@ -432,7 +451,7 @@ var AppData = (function () {
       industry: 'Real Estate / Property',
       description:
         'A property firm handling higher-value transactions needs to screen buyers, sellers, beneficial owners ' +
-        'and relevant intermediaries during client intake, offer progression, funds handling and completion. ' +
+        'and relevant intermediaries during client intake, offer progression, funds handling and completion, with embedded API screening at the point of submission. ' +
         'The core challenge is documenting ownership, escalating higher-risk parties and preserving a clear audit trail.',
       constraints: {
         volume: 'medium',
@@ -445,8 +464,8 @@ var AppData = (function () {
       primaryProduct: 'wc1',
       rationale:
         'WC1 is the natural centre of gravity when a property firm needs governed screening, review workflow, ' +
-        'audit trail and documented escalation around higher-value transactions. Verify complements that by handling ' +
-        'embedded upfront screening against World-Check and internal watchlists without pushing the firm toward a raw-data ' +
+        'audit trail and documented escalation around higher-value transactions. Verify complements that by handling embedded API-led ' +
+        'upfront screening against World-Check and internal watchlists without pushing the firm toward a raw-data ' +
         'operating model that is usually unnecessary at this volume. The wider compliance need is often not only name screening, ' +
         'but also documenting beneficial ownership, identifying higher-risk intermediaries and knowing when enhanced due diligence is required.',
       keyQuestions: [
@@ -458,7 +477,7 @@ var AppData = (function () {
         'Do you need source of funds or source of wealth checks alongside screening for higher-risk deals?'
       ],
       talkPoints: [
-        'Verify can handle lightweight embedded screening at intake, while WC1 manages governed review, escalation and audit.',
+        'Verify can handle lightweight embedded API screening at intake, while WC1 manages governed review, escalation and audit.',
         'The key value is not only screening coverage but operational control when a property transaction is time-sensitive and high value.',
         'In property matters, beneficial ownership, intermediaries and source-of-funds context often matter as much as the initial name-screening result.',
         'For most property firms, WC1 plus Verify is a more realistic fit than building around raw data delivery.'
@@ -474,7 +493,55 @@ var AppData = (function () {
         }
       ],
       solutionExampleRef: 'real-estate-screening',
-      tags: ['hybrid', 'property', 'audit', 'screening']
+      tags: ['hybrid', 'property', 'audit', 'screening', 'api']
+    },
+
+    {
+      id: 'tier1-bank-owned-stack',
+      title: 'Tier 1 Bank',
+      subtitle: 'Banking - Customer-Owned KYC and Payment Screening Stack',
+      industry: 'Banking / Tier 1',
+      description:
+        'A Tier 1 bank already has custom KYC and payment-screening infrastructure, plus a filtering partner. ' +
+        'The opportunity is not to replace that operating model, but to supply current World-Check data into it so the bank ' +
+        'can improve screening quality, filtering precision and payment-control responsiveness without a workflow rip-and-replace.',
+      constraints: {
+        volume: 'high',
+        reviewModel: 'customer-owned',
+        integrationPreference: 'api',
+        regulatoryContext: 'AML / Sanctions / Payments',
+        dataResidencyRequirement: true
+      },
+      recommendedProducts: ['custom-app', 'filter-partner', 'wcod'],
+      primaryProduct: 'wcod',
+      rationale:
+        'OnDemand is the natural fit when the bank already owns matching, filtering, payment controls, alert handling and case workflow. ' +
+        'The client value is better data into an existing operating model: current World-Check content, structured attributes, provenance and filtering support that help the bank and its partner layer reduce noise without replacing core screening infrastructure.',
+      keyQuestions: [
+        'Which parts of the screening stack do you already own internally: matching, filtering, alert handling, case workflow, or all of them?',
+        'Where does your filtering partner sit today: pre-screening enrichment, match suppression, routing, or all three?',
+        'Is the bigger pain point data freshness, false positives, partner orchestration, or auditability across multiple internal systems?',
+        'Do KYC and payment screening use the same data supply and filtering layer, or separate stacks?',
+        'What would make the biggest commercial difference: less noise for analysts, better payment-control responsiveness, or easier integration into the bank\'s own architecture?'
+      ],
+      talkPoints: [
+        'This is not a workflow replacement conversation; it is a data-and-operating-model fit conversation.',
+        'OnDemand lets the bank keep its own engine, filtering partner and review workflow while improving the quality and freshness of the World-Check data feeding that stack.',
+        'For large banks, the value is often better filtering precision, fewer avoidable false positives and faster use of updated content across KYC and payments.',
+        'If the client already has a mature internal stack, data delivery is often more realistic than asking them to move into a vendor-managed workflow.'
+      ],
+      objections: [
+        {
+          objection: 'We already have a screening engine and filtering partner.',
+          response: 'That can strengthen the OnDemand conversation. The opportunity is to improve the data feeding that stack, not to replace the parts the bank already considers strategic.'
+        },
+        {
+          objection: 'We do not want another compliance platform.',
+          response: 'That is exactly why OnDemand can fit. It lets the bank keep workflow, matching and decisioning where they are, while improving the quality and freshness of the World-Check content used by those systems.'
+        }
+      ],
+      solutionExampleRef: 'tier1-bank-wcod-kyc-payments',
+      tags: ['api', 'banking', 'payments', 'owned-stack']
     },
 
     /* ── 4. Global travel marketplace ────────────────────────── */
@@ -690,12 +757,12 @@ var AppData = (function () {
       interactionType: 'mixed',
       lsegProducts: ['custom-app', 'wc1', 'verify'],
       description:
-        'A real-estate business screens buyers, sellers, landlords, beneficial owners and key intermediaries ' +
-        'during listing, offer acceptance and funds movement. World-Check Verify supports embedded upfront screening ' +
+        'A real-estate business screens buyers, sellers, beneficial owners and key intermediaries ' +
+        'during client intake, offer acceptance and funds movement. World-Check Verify as a screening API supports embedded upfront screening ' +
         'against World-Check and internal watchlists, while World-Check One provides the governed review, audit trail and ongoing monitoring layer.',
       phases: [
         { id: 1, title: 'Party Capture',         desc: 'Agent opens deal and captures buyer, seller and all intermediary details.',                            products: ['custom-app'] },
-        { id: 2, title: 'Embedded Screening',    desc: 'Upfront check against World-Check and internal watchlists at point of submission.',                   products: ['custom-app', 'verify'] },
+        { id: 2, title: 'Embedded Screening',    desc: 'Upfront API check against World-Check and internal watchlists at point of submission.',               products: ['custom-app', 'verify'] },
         { id: 3, title: 'Escalation',            desc: 'Straightforward parties cleared; higher-risk records escalated to governed review.',                  products: ['custom-app', 'verify', 'wc1'] },
         { id: 4, title: 'Analyst Review',        desc: 'Disposition recorded — clear, enhanced due diligence, hold or decline — with full audit trail.',      products: ['custom-app', 'wc1'] },
         { id: 5, title: 'Ongoing Monitoring',    desc: 'Approved parties enrolled for monitoring until deal completion and post-close window.',                products: ['custom-app', 'wc1'] },
@@ -726,6 +793,49 @@ var AppData = (function () {
         { id: 13, lane: 'wc1-workflow', label: 'World-Check change alert or adverse event triggers follow-up review before exchange or completion', type: 'webhook', to: 'property' },
         { id: 14, lane: 'property',     label: 'Deal progression or escrow release is paused, approved or escalated based on review outcome', type: 'process' },
         { id: 15, lane: 'downstream',   label: 'Audit-ready property transaction outcome recorded', type: 'outcome' }
+      ]
+    },
+
+    /* ── 4. Tier 1 bank with customer-owned screening stack ──── */
+    {
+      id: 'tier1-bank-wcod-kyc-payments',
+      title: 'Tier 1 Bank — OnDemand for KYC and Payments',
+      subtitle: 'World-Check data delivered into custom apps and a filtering partner for customer-owned screening controls',
+      scenarioRef: 'kyc-onboarding',
+      interactionType: 'mixed',
+      lsegProducts: ['custom-app', 'filter-partner', 'wcod'],
+      description:
+        'A Tier 1 bank already operates its own KYC and payment-screening environment. World-Check OnDemand ' +
+        'supplies structured World-Check data into the bank’s custom applications and filtering partner so the bank ' +
+        'can control matching, filtering, routing and payment decisioning inside its own operating model.',
+      phases: [
+        { id: 1, title: 'Client Intake',        desc: 'Bank-owned channels collect customer, account and payment party data.',                                                        products: ['custom-app'] },
+        { id: 2, title: 'Data Delivery',        desc: 'OnDemand delivers structured World-Check data into the bank’s filtering partner and custom screening stack.',               products: ['wcod', 'filter-partner', 'custom-app'] },
+        { id: 3, title: 'KYC Screening',        desc: 'The bank’s own KYC engine screens customers and related parties using OnDemand-fed data and customer-defined policies.',      products: ['custom-app', 'filter-partner', 'wcod'] },
+        { id: 4, title: 'Payment Screening',    desc: 'The bank’s payment controls use the same OnDemand-fed data and partner filtering layer for pre-execution checks.',            products: ['custom-app', 'filter-partner', 'wcod'] },
+        { id: 5, title: 'Triage & Routing',     desc: 'Customer-owned rules and partner filtering suppress noise, prioritise likely matches and route only review-worthy alerts.',    products: ['custom-app', 'filter-partner', 'wcod'] },
+        { id: 6, title: 'Decision & Audit',     desc: 'The bank records disposition, payment outcome and audit evidence in its own workflow environment.',                         products: ['custom-app', 'filter-partner'] }
+      ],
+      lanes: [
+        { id: 'customer',      label: 'Customer / Counterparty',          type: 'actor' },
+        { id: 'bank-app',      label: 'Bank Custom Apps',                 type: 'customer-system' },
+        { id: 'ondemand',      label: 'World-Check OnDemand',             type: 'lseg-product' },
+        { id: 'partner',       label: 'Filtering Partner',                type: 'customer-system' },
+        { id: 'bank-engine',   label: 'Bank Screening Engine',            type: 'customer-system' },
+        { id: 'ops',           label: 'Bank Compliance / Payments Ops',   type: 'actor' }
+      ],
+      steps: [
+        { id: 1,  lane: 'customer',    label: 'Customer submits onboarding or payment instructions through bank-owned channels', type: 'user-action' },
+        { id: 2,  lane: 'bank-app',    label: 'Bank custom apps structure customer, account and payment-party data', type: 'process' },
+        { id: 3,  lane: 'ondemand',    label: 'World-Check data feed makes current structured risk content available to the bank environment', type: 'process', note: 'Data only — not the screening engine' },
+        { id: 4,  lane: 'bank-app',    label: 'Bank custom apps pass screening payloads and policy context to the filtering partner', type: 'api-request', to: 'partner' },
+        { id: 5,  lane: 'partner',     label: 'Filtering partner applies bank-defined filtering, enrichment and routing logic', type: 'process' },
+        { id: 6,  lane: 'partner',     label: 'Partner forwards filtered screening request into the bank-owned screening engine with OnDemand-fed data references', type: 'api-request', to: 'bank-engine' },
+        { id: 7,  lane: 'bank-engine', label: 'Bank-owned KYC or payment-screening engine evaluates parties using OnDemand data, bank rules and partner filtering output', type: 'process' },
+        { id: 8,  lane: 'bank-engine', label: 'Return scored result, matched records and supporting attributes to bank apps and partner layer', type: 'api-response', from: 'bank-engine' },
+        { id: 9,  lane: 'bank-app',    label: 'Low-risk items are auto-cleared; higher-risk alerts are routed into the bank’s own review workflow', type: 'process' },
+        { id: 10, lane: 'ops',         label: 'Bank compliance or payments operations review remaining alerts and record disposition', type: 'user-action' },
+        { id: 11, lane: 'bank-app',    label: 'Bank-owned workflow records final customer or payment decision with audit evidence', type: 'outcome' }
       ]
     }
   ];
@@ -990,6 +1100,146 @@ var AppData = (function () {
   /* ── Public API ───────────────────────────────────────────────
      Lookup helpers used by render.js and interactions.js.
      ──────────────────────────────────────────────────────────── */
+  /* ── API Comparison data ──────────────────────────────────────── */
+  var apiComparison = [
+    {
+      id: 'wcod',
+      name: 'World-Check OnDemand',
+      badge: 'Data API',
+      badgeType: 'api',
+      icon: '&#128190;',
+      tagline: 'Structured World-Check data for customers that own screening and decisioning.',
+      valueStatement: 'WCOD is a data-delivery model, not a screening workflow. It fits customers that already have their own screening engine, payment controls, filtering partner or orchestration layer and want current World-Check data feeding that stack.',
+      bestFor: 'Large banks, PSPs and mature compliance teams that already own matching, filtering, alert handling and case workflow outside the LSEG platform.',
+      capabilities: [
+        'Structured World-Check data delivery for customer-owned screening stacks',
+        'Filter-based pulls by entity type, jurisdiction, category and update date',
+        'OAuth 2.0 client credentials for system-to-system access',
+        'Designed for teams that need to control matching, routing and downstream workflow themselves'
+      ],
+      diagramLabel: 'Data-led model — customer or partner owns screening logic',
+      flowSteps: ['Your App', 'WCOD API', 'Structured Data', 'Your Screening Engine'],
+      flowArrows: ['OAuth2 Pull', 'World-Check data', 'Match / Filter / Route'],
+      comparison: {
+        authentication:    'OAuth 2.0',
+        screeningModel:    'Customer-built',
+        caseManagement:    false,
+        ongoingScreening:  false,
+        auditTrail:        false,
+        bulkOperations:    true,
+        userManagement:    false,
+        webhooks:          false,
+        dataResidency:     'Client / partner hosted',
+        integrationEffort: 'High (build engine)'
+      }
+    },
+    {
+      id: 'wc1v2',
+      name: 'WC1 API v2',
+      badge: 'Case Mgmt API',
+      badgeType: 'api',
+      legacy: true,
+      legacyNote: 'WC1 v2 is a legacy API. LSEG recommends migrating to WC1 v3 for all new and existing integrations.',
+      icon: '&#128196;',
+      tagline: 'Stateful screening with built-in cases, audit and ongoing screening — legacy version.',
+      valueStatement: 'WC1 v2 is the legacy stateful World-Check One API. It fits customers that want screening to create and manage cases, audit trail and ongoing screening inside the WC1 operating model rather than in their own workflow stack.',
+      bestFor: 'Existing customers with a live v2 integration. All new builds should target WC1 v3.',
+      capabilities: [
+        'Stateful case creation so screening results land directly into managed review workflow',
+        'Ongoing screening and alert management inside the WC1 operating model',
+        'Built-in audit trail and case history for governed review',
+        'HMAC authentication with key / secret model',
+        'Bulk screening support for higher-volume onboarding and review queues'
+      ],
+      diagramLabel: 'Managed workflow model — cases live inside WC1',
+      flowSteps: ['Your App', 'WC1 v2 API', 'Case Created', 'Workflow / OGS / Audit'],
+      flowArrows: ['HMAC Auth', 'Screen request', 'Case lifecycle'],
+      comparison: {
+        authentication:    'HMAC (key / secret)',
+        screeningModel:    'Stateful / cases',
+        caseManagement:    true,
+        ongoingScreening:  true,
+        auditTrail:        true,
+        bulkOperations:    true,
+        userManagement:    false,
+        webhooks:          false,
+        dataResidency:     'EMEA',
+        integrationEffort: 'Medium'
+      }
+    },
+    {
+      id: 'wc1v3',
+      name: 'WC1 API v3',
+      badge: 'Case Mgmt API',
+      badgeType: 'api',
+      icon: '&#9889;',
+      tagline: 'The strategic WC1 API for customers that want managed cases, audit and ongoing screening.',
+      valueStatement: 'WC1 v3 is the strategic World-Check One API. It fits customers that want screening, case management, audit trail and ongoing screening inside the WC1 platform, with a more modern OAuth 2.0 integration model than v2.',
+      bestFor: 'All new integrations, and the recommended migration target for any existing WC1 v2 customers.',
+      migrationReasons: [
+        'OAuth 2.0 replaces HMAC, aligning better with modern bank and enterprise security standards',
+        'Consistent REST design is easier for delivery teams to learn, support and maintain',
+        'Strategic investment is going into v3; v2 is maintenance-only',
+        'Cleaner bulk operations are better suited to high-volume screening programs',
+        'Webhooks reduce polling overhead by pushing case and monitoring events to customer systems'
+      ],
+      capabilities: [
+        'Managed case creation and workflow inside WC1',
+        'Ongoing screening, audit trail and reporting in the same operating model',
+        'Bulk screening support for higher-volume onboarding and remediation programs',
+        'Webhooks for monitoring and case-event notifications',
+        'OAuth 2.0 for modern identity and access patterns',
+        'Cleaner REST endpoints for faster integration and lower maintenance effort'
+      ],
+      diagramLabel: 'Managed workflow model — strategic WC1 integration path',
+      flowSteps: ['Your App', 'WC1 v3 API', 'Case Created', 'Workflow / OGS / Audit'],
+      flowArrows: ['OAuth2', 'Screen request', 'Case / monitoring events'],
+      comparison: {
+        authentication:    'OAuth 2.0',
+        screeningModel:    'Stateful / cases',
+        caseManagement:    true,
+        ongoingScreening:  true,
+        auditTrail:        true,
+        bulkOperations:    true,
+        userManagement:    true,
+        webhooks:          true,
+        dataResidency:     'EMEA',
+        integrationEffort: 'Medium (recommended)'
+      }
+    },
+    {
+      id: 'verify',
+      name: 'World-Check Verify',
+      badge: 'Screening API',
+      badgeType: 'api',
+      icon: '&#128203;',
+      tagline: 'Low-latency screening for onboarding and customer-defined decision points.',
+      valueStatement: 'Verify is a stateless screening API for customers that want a fast screening response inside onboarding, beneficiary setup, payout release or similar decision points, without adopting a full case-management platform.',
+      bestFor: 'Fintechs, digital banks, PSPs and onboarding platforms that need embedded screening and will handle triage or escalation in their own systems or a separate workflow layer.',
+      capabilities: [
+        'Stateless screening response suited to onboarding and event-driven screening checkpoints',
+        'Returns match detail and supporting attributes in a single response',
+        'Group-based configuration for sensitivity and policy alignment by use case',
+        'OAuth 2.0 with relatively low integration overhead'
+      ],
+      diagramLabel: 'Inline screening model — response goes back to your journey',
+      flowSteps: ['Customer', 'Your App', '/screen call', 'Screening Result', 'Accept / Escalate'],
+      flowArrows: ['Submit data', 'OAuth2 + payload', 'Low-latency response', 'Decision'],
+      comparison: {
+        authentication:    'OAuth 2.0',
+        screeningModel:    'Stateless (one call)',
+        caseManagement:    false,
+        ongoingScreening:  false,
+        auditTrail:        false,
+        bulkOperations:    true,
+        userManagement:    false,
+        webhooks:          false,
+        dataResidency:     'EMEA / APAC',
+        integrationEffort: 'Low'
+      }
+    }
+  ];
+
   return {
     products:            products,
     scenarios:           scenarios,
@@ -997,6 +1247,7 @@ var AppData = (function () {
     solutionExamples:    solutionExamples,
     fpReductionLevers:   fpReductionLevers,
     salesTalkTrack:      salesTalkTrack,
+    apiComparison:       apiComparison,
 
     getProduct: function (id) {
       return products.find(function (p) { return p.id === id; }) || null;

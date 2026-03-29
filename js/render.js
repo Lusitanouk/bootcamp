@@ -50,6 +50,10 @@ var Render = (function () {
           'Capability Explorer',
           'Compare WC1, WCOD and Verify across workflow, integration, matching controls and deployment style.') +
 
+        _navCard('api-comparison', '&#128268;',
+          'API Comparison',
+          'Compare World-Check OnDemand, WC1 v2, WC1 v3 and Verify — integration model, capabilities and client fit.') +
+
         _navCard('false-positive-reduction', '&#127919;',
           'False Positive Reduction',
           'Practical levers to reduce overscreening — before, during and after screening, and in operations.') +
@@ -497,6 +501,193 @@ var Render = (function () {
     '</section>';
   }
 
+  /* ── API Comparison view ─────────────────────────────────── */
+  function viewApiComparison() {
+    var apis = AppData.apiComparison;
+
+    /* Quick-fact chips shown in the collapsed summary */
+    function factChip(label, value) {
+      return '<span style="display:inline-flex;align-items:center;gap:4px;background:#f0f1f8;' +
+             'border-radius:4px;padding:3px 8px;font-size:0.7rem;color:#5a6180;">' +
+        '<span style="font-weight:600;color:#3a4060;">' + esc(label) + '</span>' +
+        '<span>' + esc(value) + '</span>' +
+      '</span>';
+    }
+
+    /* Integration flow diagram (shown in expanded body) */
+    function flowDiagram(a) {
+      var boxes = a.flowSteps.map(function (step, i) {
+        var isFirst = i === 0;
+        var isLast  = i === a.flowSteps.length - 1;
+        var boxBg     = isFirst ? '#f0f1f8' : isLast ? '#e8f0ff' : '#fff';
+        var boxBorder = isLast  ? '#001eff' : '#dde0ea';
+        var arrow = (i < a.flowSteps.length - 1)
+          ? '<div style="display:flex;flex-direction:column;align-items:center;padding:0 4px;">' +
+              '<span style="font-size:0.6rem;color:#9aa0b8;white-space:nowrap;max-width:64px;text-align:center;">' + (a.flowArrows[i] || '') + '</span>' +
+              '<span style="color:#9aa0b8;line-height:1;">&#8594;</span>' +
+            '</div>'
+          : '';
+        return '<div style="display:flex;align-items:center;">' +
+          '<div style="background:' + boxBg + ';border:1px solid ' + boxBorder + ';border-radius:4px;padding:6px 10px;min-width:72px;text-align:center;">' +
+            '<span style="font-size:0.75rem;font-weight:600;color:#1a1e2e;">' + esc(step) + '</span>' +
+          '</div>' + arrow +
+        '</div>';
+      }).join('');
+      return '<div style="margin-top:4px;">' +
+        '<p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#9aa0b8;margin-bottom:8px;">' + esc(a.diagramLabel) + '</p>' +
+        '<div style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:2px;">' + boxes + '</div>' +
+      '</div>';
+    }
+
+    /* Build collapsible product cards */
+    var productCards = apis.map(function (a) {
+      var c = a.comparison || {};
+
+      /* Summary chips: auth + integration effort */
+      var chips =
+        factChip('Auth', c.authentication || '') + ' ' +
+        factChip('Effort', c.integrationEffort || '') + ' ' +
+        (c.caseManagement  ? factChip('Cases', 'Full workflow') + ' ' : '') +
+        (c.webhooks        ? factChip('Webhooks', 'Yes') + ' ' : '');
+
+      /* Capability list */
+      var capList = a.capabilities.map(function (cap) {
+        return '<li style="font-size:0.8125rem;color:#3a4060;padding:4px 0;border-bottom:1px solid #f0f1f8;line-height:1.5;">' + esc(cap) + '</li>';
+      }).join('');
+
+      /* Legacy warning */
+      var legacyBanner = a.legacy
+        ? '<div style="background:#fff8e8;border:1px solid #f0c040;border-radius:6px;padding:10px 14px;' +
+               'display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;">' +
+            '<span style="flex-shrink:0;">&#9888;&#65039;</span>' +
+            '<p style="font-size:0.8125rem;color:#7a5000;line-height:1.5;margin:0;">' + esc(a.legacyNote) + '</p>' +
+          '</div>'
+        : '';
+
+      /* Migration reasons (v3 only) */
+      var migrationBlock = (a.migrationReasons && a.migrationReasons.length)
+        ? '<div style="background:#f0fff8;border:1px solid #b0e8d0;border-radius:6px;padding:12px 14px;margin-bottom:12px;">' +
+            '<p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#007a45;margin-bottom:8px;">Why migrate from v2?</p>' +
+            '<ul style="padding:0;list-style:none;margin:0;">' +
+            a.migrationReasons.map(function (r) {
+              return '<li style="font-size:0.8125rem;color:#1a5c3a;padding:4px 0;border-bottom:1px solid #d0f0e0;line-height:1.5;display:flex;gap:8px;">' +
+                '<span style="color:#00a060;flex-shrink:0;">&#8594;</span>' + esc(r) +
+              '</li>';
+            }).join('') +
+            '</ul>' +
+          '</div>'
+        : '';
+
+      return '<details class="coll capability-product">' +
+        '<summary>' +
+          '<span class="cap-head-main">' +
+            '<span class="coll-title">' + esc(a.name) + '</span>' +
+            '<span class="cap-head-badge">' +
+              tagPill(a.badge, a.badgeType) +
+              (a.legacy ? '&nbsp;<span class="tag" style="background:#fff0c0;color:#7a5000;">Legacy</span>' : '') +
+            '</span>' +
+          '</span>' +
+          '<span class="coll-meta" style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;">' + chips + '</span>' +
+          '<span class="coll-chevron">&#8250;</span>' +
+        '</summary>' +
+        '<div class="coll-body">' +
+          legacyBanner +
+          '<p style="font-size:0.875rem;color:#3a4060;line-height:1.6;margin-bottom:12px;">' + esc(a.valueStatement) + '</p>' +
+          '<div style="background:#f8f9ff;border-radius:6px;padding:10px 14px;margin-bottom:12px;">' +
+            '<p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#9aa0b8;margin-bottom:4px;">Best for</p>' +
+            '<p style="font-size:0.8125rem;color:#3a4060;line-height:1.5;margin:0;">' + esc(a.bestFor) + '</p>' +
+          '</div>' +
+          migrationBlock +
+          '<p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#9aa0b8;margin-bottom:8px;">Key capabilities</p>' +
+          '<ul style="padding:0;list-style:none;margin:0 0 14px;">' + capList + '</ul>' +
+          flowDiagram(a) +
+        '</div>' +
+      '</details>';
+    }).join('');
+
+    /* At-a-glance comparison table */
+    var boolCell = function (val, trueLabel) {
+      return val ? '<span style="color:#007a45;">&#10003;</span> ' + (trueLabel || 'Yes') : '<span style="color:#c0c4d8;">&mdash;</span>';
+    };
+
+    var compRows = [
+      { label: 'Authentication',     key: 'authentication',    bool: false },
+      { label: 'Screening model',    key: 'screeningModel',    bool: false },
+      { label: 'Case management',    key: 'caseManagement',    bool: true,  trueLabel: 'Built-in' },
+      { label: 'Ongoing screening',  key: 'ongoingScreening',  bool: true },
+      { label: 'Audit trail',        key: 'auditTrail',        bool: true,  trueLabel: 'Built-in' },
+      { label: 'Bulk operations',    key: 'bulkOperations',    bool: true },
+      { label: 'User management',    key: 'userManagement',    bool: true },
+      { label: 'Webhooks',           key: 'webhooks',          bool: true,  trueLabel: 'Monitoring alerts' },
+      { label: 'Data residency',     key: 'dataResidency',     bool: false },
+      { label: 'Integration effort', key: 'integrationEffort', bool: false }
+    ];
+
+    var tableRows = compRows.map(function (row, i) {
+      var bg = i % 2 === 0 ? '#f8f9ff' : '#fff';
+      var cells = apis.map(function (a, ai) {
+        var val     = a.comparison ? a.comparison[row.key] : '';
+        var display = row.bool ? boolCell(val, row.trueLabel) : esc(String(val || ''));
+        var isLast  = ai === apis.length - 1;
+        return '<td style="padding:10px 14px;font-size:0.8125rem;color:#3a4060;' +
+               (isLast ? '' : 'border-right:1px solid #eef0f8;') + '">' + display + '</td>';
+      }).join('');
+      return '<tr style="background:' + bg + ';">' +
+        '<td style="padding:10px 14px;font-size:0.8125rem;font-weight:600;color:#0d1230;' +
+             'border-right:2px solid #c8ccdb;background:#f0f1f8;' +
+             'position:sticky;left:0;z-index:1;white-space:nowrap;">' + esc(row.label) + '</td>' +
+        cells +
+      '</tr>';
+    }).join('');
+
+    var compTable =
+      '<details class="coll coll--scroll" style="margin-top:16px;">' +
+        '<summary>' +
+          '<span class="coll-title">At-a-glance comparison</span>' +
+          '<span class="coll-meta">' + compRows.length + ' dimensions</span>' +
+          '<span class="coll-chevron">&#8250;</span>' +
+        '</summary>' +
+        '<div class="coll-body">' +
+          '<table style="width:100%;min-width:580px;border-collapse:collapse;">' +
+            '<thead>' +
+              '<tr style="background:#eef0f8;">' +
+                '<th style="padding:10px 14px;font-size:0.75rem;font-weight:700;text-transform:uppercase;' +
+                    'letter-spacing:0.06em;color:#5a6180;text-align:left;border-right:2px solid #c8ccdb;' +
+                    'position:sticky;left:0;background:#eef0f8;z-index:2;white-space:nowrap;">Feature</th>' +
+                apis.map(function (a, i) {
+                  var isLast = i === apis.length - 1;
+                  return '<th style="padding:10px 14px;font-size:0.75rem;font-weight:700;text-transform:uppercase;' +
+                         'letter-spacing:0.06em;color:#5a6180;text-align:left;' +
+                         (isLast ? '' : 'border-right:1px solid #dde0ea;') + '">' + esc(a.name) + '</th>';
+                }).join('') +
+              '</tr>' +
+            '</thead>' +
+            '<tbody>' + tableRows + '</tbody>' +
+          '</table>' +
+        '</div>' +
+      '</details>';
+
+    return '<section class="view-section">' +
+      '<div class="page-header">' +
+        '<h1 class="page-title">API Product Comparison</h1>' +
+        '<p class="page-subtitle">' +
+          'How World-Check OnDemand, WC1 v2, WC1 v3 and Verify compare across operating model, workflow ownership and delivery fit.' +
+        '</p>' +
+      '</div>' +
+
+      '<div class="section-intro">' +
+        '<p>All four products use World-Check intelligence, but they solve different implementation problems. ' +
+        'The real buyer questions are <strong>who owns matching and workflow</strong>, ' +
+        '<strong>whether results should create cases or just return a response</strong>, and ' +
+        '<strong>how much of the surrounding compliance stack already exists</strong>.</p>' +
+      '</div>' +
+
+      '<div style="display:flex;flex-direction:column;gap:8px;">' + productCards + '</div>' +
+
+      compTable +
+    '</section>';
+  }
+
   /* ── View map ────────────────────────────────────────────── */
   var views = {
     'home':                   viewHome,
@@ -504,7 +695,8 @@ var Render = (function () {
     'solution-examples':      viewSolutionExamples,
     'capability-explorer':    viewCapabilityExplorer,
     'false-positive-reduction': viewFalsePositiveReduction,
-    'sales-talk-track':       viewSalesTalkTrack
+    'sales-talk-track':       viewSalesTalkTrack,
+    'api-comparison':         viewApiComparison
   };
 
   /* ── Public API ──────────────────────────────────────────── */
