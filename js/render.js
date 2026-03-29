@@ -649,9 +649,13 @@ var Render = (function () {
                   'position:sticky;left:0;background:#eef0f8;z-index:2;white-space:nowrap;">Feature</th>' +
               apis.map(function (a, i) {
                 var isLast = i === apis.length - 1;
-                return '<th style="padding:10px 14px;font-size:0.75rem;font-weight:700;text-transform:uppercase;' +
-                       'letter-spacing:0.06em;color:#5a6180;text-align:left;' +
-                       (isLast ? '' : 'border-right:1px solid #dde0ea;') + '">' + esc(a.name) + '</th>';
+                return '<th style="padding:10px 14px;text-align:left;' +
+                       (isLast ? '' : 'border-right:1px solid #dde0ea;') + '">' +
+                  '<div style="display:flex;flex-direction:column;gap:3px;">' +
+                    '<span style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#5a6180;">' + esc(a.name) + '</span>' +
+                    tagPill(a.badge, a.badgeType) +
+                  '</div>' +
+                '</th>';
               }).join('') +
             '</tr>' +
           '</thead>' +
