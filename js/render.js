@@ -66,13 +66,13 @@ var Render = (function () {
           'Capability Explorer',
           'Compare WC1, WCOD, Professional Services and Verify across workflow, integration, matching controls and delivery style.') +
 
-        _navCard('api-comparison', '&#128268;',
-          'API Comparison',
-          'Compare World-Check OnDemand, WC1 v2, WC1 v3 and Verify — integration model, capabilities and client fit.') +
-
         _navCard('false-positive-reduction', '&#127919;',
           'False Positive Reduction',
           'Practical levers to reduce overscreening — before, during and after screening, and in operations.') +
+
+        _navCard('api-comparison', '&#128268;',
+          'API Comparison',
+          'Compare World-Check OnDemand, WC1 v2, WC1 v3 and Verify — integration model, capabilities and client fit.') +
 
         _navCard('sales-talk-track', '&#127908;',
           'Sales Talk Track',
