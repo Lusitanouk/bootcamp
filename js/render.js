@@ -600,60 +600,108 @@ var Render = (function () {
     }).join('');
 
     /* At-a-glance comparison table */
+    var yesCell = function (trueLabel) {
+      return '<span style="display:inline-flex;align-items:center;gap:4px;background:#e6f9f0;color:#007a45;' +
+             'border-radius:4px;padding:2px 8px;font-size:0.75rem;font-weight:600;">&#10003; ' + (trueLabel || 'Yes') + '</span>';
+    };
+    var noCell = function () {
+      return '<span style="display:inline-flex;align-items:center;background:#f5f5f8;color:#b0b4cc;' +
+             'border-radius:4px;padding:2px 8px;font-size:0.75rem;">&mdash;</span>';
+    };
     var boolCell = function (val, trueLabel) {
-      return val ? '<span style="color:#007a45;">&#10003;</span> ' + (trueLabel || 'Yes') : '<span style="color:#c0c4d8;">&mdash;</span>';
+      return val ? yesCell(trueLabel) : noCell();
     };
 
-    var compRows = [
-      { label: 'Volume',             key: 'volume',            bool: false },
-      { label: 'Customer tier',      key: 'customerTier',      bool: false },
-      { label: 'Authentication',     key: 'authentication',    bool: false },
-      { label: 'Screening model',    key: 'screeningModel',    bool: false },
-      { label: 'Data structure & provenance', key: 'dataStructureProvenance', bool: false },
-      { label: 'Case management',    key: 'caseManagement',    bool: true,  trueLabel: 'Built-in' },
-      { label: 'Ongoing screening',  key: 'ongoingScreening',  bool: true },
-      { label: 'Audit trail',        key: 'auditTrail',        bool: true,  trueLabel: 'Built-in' },
-      { label: 'Bulk operations',    key: 'bulkOperations',    bool: true },
-      { label: 'User management',    key: 'userManagement',    bool: true },
-      { label: 'Webhooks',           key: 'webhooks',          bool: true,  trueLabel: 'Monitoring alerts' },
-      { label: 'Admin portal',       key: 'adminPortal',       bool: true,  trueLabel: 'Available' },
-      { label: 'End-user portal',    key: 'endUserPortal',     bool: true,  trueLabel: 'Available' },
-      { label: 'Data residency',     key: 'dataResidency',     bool: false },
-      { label: 'Integration effort', key: 'integrationEffort', bool: false }
+    var compGroups = [
+      {
+        heading: 'Fit',
+        rows: [
+          { label: 'Volume',             key: 'volume',            bool: false },
+          { label: 'Customer tier',      key: 'customerTier',      bool: false }
+        ]
+      },
+      {
+        heading: 'Architecture',
+        rows: [
+          { label: 'Authentication',     key: 'authentication',    bool: false },
+          { label: 'Screening model',    key: 'screeningModel',    bool: false },
+          { label: 'Data delivery',      key: 'dataUpdates',       bool: false },
+          { label: 'Data structure & provenance', key: 'dataStructureProvenance', bool: false }
+        ]
+      },
+      {
+        heading: 'Capabilities',
+        rows: [
+          { label: 'Case management',    key: 'caseManagement',    bool: true,  trueLabel: 'Built-in' },
+          { label: 'Ongoing screening',  key: 'ongoingScreening',  bool: true },
+          { label: 'Audit trail',        key: 'auditTrail',        bool: true,  trueLabel: 'Built-in' },
+          { label: 'Bulk operations',    key: 'bulkOperations',    bool: true },
+          { label: 'User management',    key: 'userManagement',    bool: true },
+          { label: 'Webhooks',           key: 'webhooks',          bool: true,  trueLabel: 'Monitoring alerts' },
+          { label: 'Admin portal',       key: 'adminPortal',       bool: true,  trueLabel: 'Available' },
+          { label: 'End-user portal',    key: 'endUserPortal',     bool: true,  trueLabel: 'Available' }
+        ]
+      },
+      {
+        heading: 'Deployment',
+        rows: [
+          { label: 'Data residency',     key: 'dataResidency',     bool: false },
+          { label: 'Integration effort', key: 'integrationEffort', bool: false }
+        ]
+      }
     ];
 
-    var tableRows = compRows.map(function (row, i) {
-      var bg = i % 2 === 0 ? '#f8f9ff' : '#fff';
-      var cells = apis.map(function (a, ai) {
-        var val     = a.comparison ? a.comparison[row.key] : '';
-        var display = row.bool ? boolCell(val, row.trueLabel) : esc(String(val || ''));
-        var isLast  = ai === apis.length - 1;
-        return '<td style="padding:10px 14px;font-size:0.8125rem;color:#3a4060;' +
-               (isLast ? '' : 'border-right:1px solid #eef0f8;') + '">' + display + '</td>';
+    var colCount = apis.length + 1;
+    var tableRows = compGroups.map(function (group) {
+      var headingRow =
+        '<tr>' +
+          '<td colspan="' + colCount + '" style="padding:8px 14px 4px;font-size:0.68rem;font-weight:700;' +
+               'text-transform:uppercase;letter-spacing:0.09em;color:#9aa0b8;background:#f5f6fc;' +
+               'border-top:2px solid #dde0ea;border-bottom:1px solid #eef0f8;">' +
+            esc(group.heading) +
+          '</td>' +
+        '</tr>';
+
+      var dataRows = group.rows.map(function (row, i) {
+        var bg = i % 2 === 0 ? '#fff' : '#fafbff';
+        var cells = apis.map(function (a, ai) {
+          var val     = a.comparison ? a.comparison[row.key] : '';
+          var display = row.bool ? boolCell(val, row.trueLabel) : (val ? esc(String(val)) : noCell());
+          var isLast  = ai === apis.length - 1;
+          return '<td style="padding:10px 14px;font-size:0.8125rem;color:#3a4060;text-align:center;' +
+                 (isLast ? '' : 'border-right:1px solid #eef0f8;') + '">' + display + '</td>';
+        }).join('');
+        return '<tr style="background:' + bg + ';">' +
+          '<td style="padding:10px 14px;font-size:0.8rem;font-weight:600;color:#3a4060;' +
+               'border-right:2px solid #dde0ea;background:' + bg + ';' +
+               'position:sticky;left:0;z-index:1;white-space:nowrap;">' + esc(row.label) + '</td>' +
+          cells +
+        '</tr>';
       }).join('');
-      return '<tr class="api-glance-row" style="background:' + bg + ';">' +
-        '<td style="padding:10px 14px;font-size:0.8125rem;font-weight:600;color:#0d1230;' +
-             'border-right:2px solid #c8ccdb;background:#f0f1f8;' +
-             'position:sticky;left:0;z-index:1;white-space:nowrap;">' + esc(row.label) + '</td>' +
-        cells +
-      '</tr>';
+
+      return headingRow + dataRows;
     }).join('');
 
     var compTable =
-      '<div class="coll--scroll" style="border:1px solid #dde0ea;border-radius:6px;overflow:auto;-webkit-overflow-scrolling:touch;">' +
-        '<table class="api-glance-table" style="width:100%;min-width:580px;border-collapse:collapse;">' +
+      '<div class="coll--scroll" style="border:1px solid #dde0ea;border-radius:8px;overflow:auto;max-height:70vh;-webkit-overflow-scrolling:touch;">' +
+        '<table style="width:100%;min-width:580px;border-collapse:collapse;">' +
           '<thead>' +
             '<tr style="background:#eef0f8;">' +
-              '<th style="padding:10px 14px;font-size:0.75rem;font-weight:700;text-transform:uppercase;' +
-                  'letter-spacing:0.06em;color:#5a6180;text-align:left;border-right:2px solid #c8ccdb;' +
-                  'position:sticky;left:0;background:#eef0f8;z-index:2;white-space:nowrap;">Feature</th>' +
+              '<th style="padding:12px 14px;font-size:0.75rem;font-weight:700;text-transform:uppercase;' +
+                  'letter-spacing:0.06em;color:#5a6180;text-align:left;border-right:1px solid #dde0ea;' +
+                  'position:sticky;left:0;top:0;background:#eef0f8;z-index:4;white-space:nowrap;min-width:140px;">Feature</th>' +
               apis.map(function (a, i) {
                 var isLast = i === apis.length - 1;
-                return '<th style="padding:12px 14px;vertical-align:top;text-align:center;' +
+                return '<th style="padding:14px 14px 12px;vertical-align:top;text-align:center;' +
+                       'position:sticky;top:0;background:#eef0f8;z-index:3;' +
                        (isLast ? '' : 'border-right:1px solid #dde0ea;') + '">' +
-                  '<div style="display:flex;flex-direction:column;align-items:center;gap:6px;">' +
-                    '<span style="font-size:0.8rem;font-weight:700;line-height:1.3;color:#5a6180;">' + esc(a.name) + '</span>' +
-                    tagPill(a.badge, a.badgeType) +
+                  '<div style="display:flex;flex-direction:column;align-items:center;gap:5px;">' +
+                    '<span style="font-size:1.2rem;line-height:1;">' + (a.icon || '') + '</span>' +
+                    '<span style="font-size:0.8rem;font-weight:700;color:#1a1e2e;line-height:1.2;">' + esc(a.name) + '</span>' +
+                    '<div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center;">' +
+                      tagPill(a.badge, a.badgeType) +
+                      (a.legacy ? '<span class="tag" style="background:#fff0c0;color:#7a5000;">Legacy</span>' : '') +
+                    '</div>' +
                   '</div>' +
                 '</th>';
               }).join('') +

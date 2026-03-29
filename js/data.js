@@ -965,6 +965,7 @@
         adminPortal:       true,
         endUserPortal:     false,
         dataResidency:     'Client / partner hosted',
+        dataUpdates:       'Near real-time',
         integrationEffort: 'High (build engine) / Low (Via Partner)',
         volume:            'Very high',
         customerTier:      'Tier 1–2'
@@ -1004,6 +1005,7 @@
         adminPortal:       true,
         endUserPortal:     true,
         dataResidency:     'EMEA',
+        dataUpdates:       'Every 30m',
         integrationEffort: 'Medium',
         volume:            'Medium',
         customerTier:      'Tier 2–3'
@@ -1050,6 +1052,7 @@
         adminPortal:       true,
         endUserPortal:     true,
         dataResidency:     'EMEA',
+        dataUpdates:       'Every 30m',
         integrationEffort: 'Medium (recommended)',
         volume:            'High',
         customerTier:      'Tier 2–3'
@@ -1087,6 +1090,7 @@
         adminPortal:       true,
         endUserPortal:     false,
         dataResidency:     'EMEA / APAC',
+        dataUpdates:       'Every 30m',
         integrationEffort: 'Low',
         volume:            'Very high',
         customerTier:      'Tier 1–3'
