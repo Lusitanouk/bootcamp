@@ -631,7 +631,7 @@ var Render = (function () {
         return '<td style="padding:10px 14px;font-size:0.8125rem;color:#3a4060;' +
                (isLast ? '' : 'border-right:1px solid #eef0f8;') + '">' + display + '</td>';
       }).join('');
-      return '<tr style="background:' + bg + ';">' +
+      return '<tr class="api-glance-row" style="background:' + bg + ';">' +
         '<td style="padding:10px 14px;font-size:0.8125rem;font-weight:600;color:#0d1230;' +
              'border-right:2px solid #c8ccdb;background:#f0f1f8;' +
              'position:sticky;left:0;z-index:1;white-space:nowrap;">' + esc(row.label) + '</td>' +
@@ -641,7 +641,7 @@ var Render = (function () {
 
     var compTable =
       '<div class="coll--scroll" style="border:1px solid #dde0ea;border-radius:6px;overflow:auto;-webkit-overflow-scrolling:touch;">' +
-        '<table style="width:100%;min-width:580px;border-collapse:collapse;">' +
+        '<table class="api-glance-table" style="width:100%;min-width:580px;border-collapse:collapse;">' +
           '<thead>' +
             '<tr style="background:#eef0f8;">' +
               '<th style="padding:10px 14px;font-size:0.75rem;font-weight:700;text-transform:uppercase;' +
@@ -649,10 +649,10 @@ var Render = (function () {
                   'position:sticky;left:0;background:#eef0f8;z-index:2;white-space:nowrap;">Feature</th>' +
               apis.map(function (a, i) {
                 var isLast = i === apis.length - 1;
-                return '<th style="padding:10px 14px;text-align:left;' +
+                return '<th style="padding:12px 14px;vertical-align:top;text-align:center;' +
                        (isLast ? '' : 'border-right:1px solid #dde0ea;') + '">' +
-                  '<div style="display:flex;flex-direction:column;gap:3px;">' +
-                    '<span style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#5a6180;">' + esc(a.name) + '</span>' +
+                  '<div style="display:flex;flex-direction:column;align-items:center;gap:6px;">' +
+                    '<span style="font-size:0.8rem;font-weight:700;line-height:1.3;color:#5a6180;">' + esc(a.name) + '</span>' +
                     tagPill(a.badge, a.badgeType) +
                   '</div>' +
                 '</th>';
@@ -665,8 +665,8 @@ var Render = (function () {
 
     var tabs =
       '<div class="example-tabs">' +
-        '<button class="example-tab active" data-api-tab="detail">Product Detail</button>' +
-        '<button class="example-tab"        data-api-tab="glance">At a Glance</button>' +
+        '<button class="example-tab active" data-api-tab="glance">At a Glance</button>' +
+        '<button class="example-tab"        data-api-tab="detail">Product Detail</button>' +
       '</div>';
 
     return '<section class="view-section">' +
@@ -686,8 +686,8 @@ var Render = (function () {
 
       tabs +
 
-      '<div id="api-tab-detail" style="display:flex;flex-direction:column;gap:8px;">' + productCards + '</div>' +
-      '<div id="api-tab-glance" style="display:none;">' + compTable + '</div>' +
+      '<div id="api-tab-detail" style="display:none;flex-direction:column;gap:8px;">' + productCards + '</div>' +
+      '<div id="api-tab-glance" style="display:block;">' + compTable + '</div>' +
 
     '</section>';
   }

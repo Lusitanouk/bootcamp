@@ -709,6 +709,14 @@ body.presentation-mode .home-hero-title     { font-size: 2.25rem; }
   padding: 0;
 }
 
+.api-glance-table .api-glance-row {
+  transition: background 0.15s ease;
+}
+
+.api-glance-table .api-glance-row:hover {
+  background: #eef4ff !important;
+}
+
 .capability-product > summary {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
