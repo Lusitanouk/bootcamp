@@ -318,11 +318,25 @@ var Render = (function () {
         '</details>';
       }).join('');
 
+      /* Look up video from apiComparison (wc1 → wc1v3) */
+      var apiId    = p.id === 'wc1' ? 'wc1v3' : p.id;
+      var apiEntry = (AppData.apiComparison || []).filter(function (a) { return a.id === apiId; })[0];
+      var videoId  = apiEntry && apiEntry.videoId;
+      var videoLink = videoId
+        ? '<a href="https://www.youtube.com/watch?v=' + videoId + '" target="_blank" rel="noopener noreferrer" ' +
+             'onclick="event.stopPropagation();" ' +
+             'style="display:inline-flex;align-items:center;gap:3px;text-decoration:none;color:#ff0000;' +
+                    'font-size:0.7rem;font-weight:600;padding:3px 7px;border-radius:4px;background:#fff0f0;margin-left:6px;">' +
+            '<svg viewBox="0 0 24 24" width="12" height="12" style="flex-shrink:0;"><path fill="currentColor" d="M21.8 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.8 5 12 5 12 5s-4.8 0-7 .1c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S2 9.6 2 11.2v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.7 2.2.8C6.8 19 12 19 12 19s4.8 0 7-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C22 9.6 21.8 8 21.8 8zM10 15V9l5.5 3-5.5 3z"/></svg>' +
+            'Watch' +
+          '</a>'
+        : '';
+
       return '<details class="coll capability-product">' +
         '<summary>' +
           '<span class="cap-head-main">' +
             '<span class="coll-title">' + esc(p.name) + '</span>' +
-            '<span class="cap-head-badge">' + badge + '</span>' +
+            '<span class="cap-head-badge">' + badge + videoLink + '</span>' +
           '</span>' +
           '<span class="coll-meta">' + esc(p.tagline) + '</span>' +
           '<span class="coll-chevron">›</span>' +
@@ -556,7 +570,18 @@ var Render = (function () {
               (a.legacy ? '&nbsp;<span class="tag" style="background:#fff0c0;color:#7a5000;">Legacy</span>' : '') +
             '</span>' +
           '</span>' +
-          '<span class="coll-meta" style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;">' + chips + '</span>' +
+          '<span class="coll-meta" style="display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:6px;">' +
+            chips +
+            (a.videoId
+              ? ' <a href="https://www.youtube.com/watch?v=' + a.videoId + '" target="_blank" rel="noopener noreferrer" ' +
+                   'onclick="event.stopPropagation();" ' +
+                   'style="display:inline-flex;align-items:center;gap:3px;text-decoration:none;color:#ff0000;' +
+                          'font-size:0.7rem;font-weight:600;padding:3px 7px;border-radius:4px;background:#fff0f0;">' +
+                  '<svg viewBox="0 0 24 24" width="12" height="12" style="flex-shrink:0;"><path fill="currentColor" d="M21.8 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.8 5 12 5 12 5s-4.8 0-7 .1c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S2 9.6 2 11.2v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.7 2.2.8C6.8 19 12 19 12 19s4.8 0 7-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C22 9.6 21.8 8 21.8 8zM10 15V9l5.5 3-5.5 3z"/></svg>' +
+                  'Watch' +
+                '</a>'
+              : '') +
+          '</span>' +
           '<span class="coll-chevron">›</span>' +
         '</summary>' +
         '<div class="coll-body">' +
