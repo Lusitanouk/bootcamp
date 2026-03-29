@@ -1007,7 +1007,7 @@
         adminPortal:       true,
         endUserPortal:     false,
         dataResidency:     'Client / partner hosted',
-        integrationEffort: 'High (build engine)',
+        integrationEffort: 'High (build engine) / Low (Via Partner)',
         volume:            'Very high',
         customerTier:      'Tier 1–2'
       }

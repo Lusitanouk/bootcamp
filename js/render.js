@@ -516,12 +516,8 @@ var Render = (function () {
     var productCards = apis.map(function (a) {
       var c = a.comparison || {};
 
-      /* Summary chips: auth + integration effort */
-      var chips =
-        factChip('Auth', c.authentication || '') + ' ' +
-        factChip('Effort', c.integrationEffort || '') + ' ' +
-        (c.caseManagement  ? factChip('Cases', 'Full workflow') + ' ' : '') +
-        (c.webhooks        ? factChip('Webhooks', 'Yes') + ' ' : '');
+      /* Summary chip: effort level only */
+      var chips = factChip('Effort', c.integrationEffort || '');
 
       /* Capability list */
       var capList = a.capabilities.map(function (cap) {
