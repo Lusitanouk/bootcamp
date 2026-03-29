@@ -87,6 +87,53 @@ ul {
   align-items: center;
 }
 
+/* ── Presentation mode toggle ────────────────────────────────── */
+.present-toggle {
+  margin-left: auto;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1.5px solid #c0c4d8;
+  background: transparent;
+  color: #5a6180;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.present-toggle:hover {
+  border-color: #001eff;
+  color: #001eff;
+}
+
+body.presentation-mode .present-toggle {
+  background: #001eff;
+  border-color: #001eff;
+  color: #ffffff;
+}
+
+
+/* ── Presentation mode — hide verbose content ─────────────────
+   Class toggled on <body>. No re-render needed.
+   ─────────────────────────────────────────────────────────────*/
+body.presentation-mode .page-subtitle       { display: none; }
+body.presentation-mode .section-intro       { display: none; }
+body.presentation-mode .home-hero-body      { display: none; }
+body.presentation-mode .card-body           { display: none; }
+body.presentation-mode .scenario-desc       { display: none; }
+body.presentation-mode .example-header-desc { display: none; }
+body.presentation-mode .sf-desc             { display: none; }
+body.presentation-mode .obj-response        { display: none; }
+body.presentation-mode .lever-desc          { display: none; }
+body.presentation-mode .lever-map           { display: none; }
+
+/* Slightly larger type for big-screen legibility */
+body.presentation-mode .page-title          { font-size: 1.875rem; }
+body.presentation-mode .home-hero-title     { font-size: 2.25rem; }
+
 /* ── Brand lockup ────────────────────────────────────────────── */
 .brand-lockup {
   display: flex;

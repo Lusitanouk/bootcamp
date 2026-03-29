@@ -127,7 +127,7 @@ var Render = (function () {
           '<div class="scenario-card-header">' +
             '<p class="card-title">' + esc(s.title) + '</p>' +
             '<p class="text-muted" style="margin:4px 0 8px;">' + esc(s.industry) + ' &mdash; ' + esc(s.subtitle || '') + '</p>' +
-            '<p style="font-size:0.8125rem;color:#5a6180;line-height:1.5;margin-bottom:10px;">' + esc(s.description) + '</p>' +
+            '<p class="scenario-desc" style="font-size:0.8125rem;color:#5a6180;line-height:1.5;margin-bottom:10px;">' + esc(s.description) + '</p>' +
             '<div class="scenario-toggle-row">' +
               productTags + ' ' + tags +
               '<span class="scenario-toggle-btn">Details ›</span>' +
@@ -643,31 +643,30 @@ var Render = (function () {
     }).join('');
 
     var compTable =
-      '<details class="coll coll--scroll" style="margin-top:16px;">' +
-        '<summary>' +
-          '<span class="coll-title">At-a-glance comparison</span>' +
-          '<span class="coll-meta">' + compRows.length + ' dimensions</span>' +
-          '<span class="coll-chevron">&#8250;</span>' +
-        '</summary>' +
-        '<div class="coll-body">' +
-          '<table style="width:100%;min-width:580px;border-collapse:collapse;">' +
-            '<thead>' +
-              '<tr style="background:#eef0f8;">' +
-                '<th style="padding:10px 14px;font-size:0.75rem;font-weight:700;text-transform:uppercase;' +
-                    'letter-spacing:0.06em;color:#5a6180;text-align:left;border-right:2px solid #c8ccdb;' +
-                    'position:sticky;left:0;background:#eef0f8;z-index:2;white-space:nowrap;">Feature</th>' +
-                apis.map(function (a, i) {
-                  var isLast = i === apis.length - 1;
-                  return '<th style="padding:10px 14px;font-size:0.75rem;font-weight:700;text-transform:uppercase;' +
-                         'letter-spacing:0.06em;color:#5a6180;text-align:left;' +
-                         (isLast ? '' : 'border-right:1px solid #dde0ea;') + '">' + esc(a.name) + '</th>';
-                }).join('') +
-              '</tr>' +
-            '</thead>' +
-            '<tbody>' + tableRows + '</tbody>' +
-          '</table>' +
-        '</div>' +
-      '</details>';
+      '<div class="coll--scroll" style="border:1px solid #dde0ea;border-radius:6px;overflow:auto;-webkit-overflow-scrolling:touch;">' +
+        '<table style="width:100%;min-width:580px;border-collapse:collapse;">' +
+          '<thead>' +
+            '<tr style="background:#eef0f8;">' +
+              '<th style="padding:10px 14px;font-size:0.75rem;font-weight:700;text-transform:uppercase;' +
+                  'letter-spacing:0.06em;color:#5a6180;text-align:left;border-right:2px solid #c8ccdb;' +
+                  'position:sticky;left:0;background:#eef0f8;z-index:2;white-space:nowrap;">Feature</th>' +
+              apis.map(function (a, i) {
+                var isLast = i === apis.length - 1;
+                return '<th style="padding:10px 14px;font-size:0.75rem;font-weight:700;text-transform:uppercase;' +
+                       'letter-spacing:0.06em;color:#5a6180;text-align:left;' +
+                       (isLast ? '' : 'border-right:1px solid #dde0ea;') + '">' + esc(a.name) + '</th>';
+              }).join('') +
+            '</tr>' +
+          '</thead>' +
+          '<tbody>' + tableRows + '</tbody>' +
+        '</table>' +
+      '</div>';
+
+    var tabs =
+      '<div class="example-tabs">' +
+        '<button class="example-tab active" data-api-tab="detail">Product Detail</button>' +
+        '<button class="example-tab"        data-api-tab="glance">At a Glance</button>' +
+      '</div>';
 
     return '<section class="view-section">' +
       '<div class="page-header">' +
@@ -684,9 +683,11 @@ var Render = (function () {
         '<strong>how much of the surrounding compliance stack already exists</strong>.</p>' +
       '</div>' +
 
-      '<div style="display:flex;flex-direction:column;gap:8px;">' + productCards + '</div>' +
+      tabs +
 
-      compTable +
+      '<div id="api-tab-detail" style="display:flex;flex-direction:column;gap:8px;">' + productCards + '</div>' +
+      '<div id="api-tab-glance" style="display:none;">' + compTable + '</div>' +
+
     '</section>';
   }
 

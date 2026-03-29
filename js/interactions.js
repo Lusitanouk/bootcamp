@@ -30,6 +30,9 @@ var Interactions = (function () {
       bindExampleTabs();
       bindFlowStepControls();
     }
+    if (viewId === 'api-comparison') {
+      bindApiComparisonTabs();
+    }
   }
 
   /* ── Bind home nav cards (data-nav-target) ───────────────── */
@@ -45,6 +48,17 @@ var Interactions = (function () {
           navigateTo(card.dataset.navTarget);
         }
       });
+    });
+  }
+
+  /* ── Presentation mode toggle ───────────────────────────── */
+  function bindPresentationToggle() {
+    var btn = document.getElementById('present-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var isOn = document.body.classList.toggle('presentation-mode');
+      btn.textContent = isOn ? 'Presenting' : 'Present';
+      btn.setAttribute('aria-pressed', isOn ? 'true' : 'false');
     });
   }
 
@@ -76,6 +90,24 @@ var Interactions = (function () {
       link.addEventListener('click', function (e) {
         e.preventDefault();
         navigateTo(link.dataset.view);
+      });
+    });
+  }
+
+  /* ── API Comparison tab switching ───────────────────────── */
+  function bindApiComparisonTabs() {
+    var tabs   = document.querySelectorAll('[data-api-tab]');
+    var detail = document.getElementById('api-tab-detail');
+    var glance = document.getElementById('api-tab-glance');
+    if (!tabs.length || !detail || !glance) return;
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        var target = tab.dataset.apiTab;
+        detail.style.display = target === 'detail' ? 'flex'  : 'none';
+        glance.style.display = target === 'glance' ? 'block' : 'none';
       });
     });
   }
@@ -184,6 +216,7 @@ var Interactions = (function () {
       bindNavToggle();
       bindNavLinks();
       bindNavCards();
+      bindPresentationToggle();
     },
     navigateTo: navigateTo,
     bindNavCards: bindNavCards,
