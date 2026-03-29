@@ -619,6 +619,8 @@ var Render = (function () {
       { label: 'Bulk operations',    key: 'bulkOperations',    bool: true },
       { label: 'User management',    key: 'userManagement',    bool: true },
       { label: 'Webhooks',           key: 'webhooks',          bool: true,  trueLabel: 'Monitoring alerts' },
+      { label: 'Admin portal',       key: 'adminPortal',       bool: true,  trueLabel: 'Available' },
+      { label: 'End-user portal',    key: 'endUserPortal',     bool: true,  trueLabel: 'Available' },
       { label: 'Data residency',     key: 'dataResidency',     bool: false },
       { label: 'Integration effort', key: 'integrationEffort', bool: false }
     ];

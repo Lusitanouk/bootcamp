@@ -18,34 +18,34 @@ var AppData = (function () {
       shortName: 'WC1',
       badge: 'Platform',
       deploymentType: 'api',
-      tagline: 'Screening software plus World-Check data for governed compliance workflows.',
+      tagline: 'Managed screening, case workflow and audit for teams that need governed compliance operations.',
       description:
-        'World-Check One combines purpose-built screening software with proprietary ' +
-        'World-Check data. It supports customer and third-party screening, ongoing monitoring, ' +
-        'case management, collaboration and audit-ready remediation workflows.',
+        'World-Check One combines screening, case workflow and audit-ready remediation in one managed ' +
+        'operating model. It supports customer and third-party screening, ongoing monitoring, analyst ' +
+        'review and documented decisioning for firms that need control after a match is found.',
       integrationPattern: 'Online platform with WC1 API, batch screening, Salesforce integration and Zero Footprint screening options.',
-      reviewWorkflow: 'Built-in case management, collaboration tools, workflow optimisation, status tracking and date-stamped audit trail.',
+      reviewWorkflow: 'Built-in case management, collaboration tools, workflow optimisation, status tracking, admin controls and date-stamped audit trail.',
       dataResidency: 'WC1 is hosted in the UK and Ireland and supports a global client base from that managed platform footprint.',
       typicalBuyers: [
-        'Banks and fintechs needing screening plus governed review workflows',
-        'Compliance teams that want a single environment for case handling and audit',
-        'Firms with ongoing screening obligations and operational escalation paths',
-        'Customers blending WC1 API submission with analyst-led decisioning'
+        'Banks and fintechs that need screening plus governed review workflow',
+        'Compliance teams that want one place for case handling, audit and operational oversight',
+        'Firms with ongoing screening obligations and defined escalation paths',
+        'Customers blending API-led submission with analyst-led review and final decisioning'
       ],
       differentiators: [
-        'Combines data, screening, workflow, audit and ongoing screening in one platform',
-        'Supports both automated submission and analyst review operating models',
+        'Combines screening, workflow, audit and ongoing screening in one managed environment',
+        'Supports both API-led submission and analyst-led review operating models',
         'Built-in case handling reduces the need for separate compliance workflow tooling',
-        'Ongoing screening and event management sit alongside initial screening'
+        'Includes both an admin portal and an end-user portal for managed operations'
       ],
       capabilities: {
         'overview': {
-          summary: 'Broad screening and remediation platform combining World-Check data, screening software and governed review tooling.',
+          summary: 'Managed screening and remediation platform for firms that need review workflow, audit trail and ongoing monitoring, not just a screening response.',
           keyPoints: [
-            'Advanced name matching with secondary identifiers',
+            'Advanced matching with secondary identifiers',
             'Sanctions, PEP and adverse media screening in one platform',
             'Ongoing monitoring and rescreening included',
-            'Case management and collaboration tools for remediation'
+            'Case management, analyst collaboration and portal-based operations'
           ]
         },
         'data-quality': {
@@ -72,7 +72,7 @@ var AppData = (function () {
             'Case management and collaboration tools are built in',
             'Workflow optimisation includes routing, risk tagging and status tracking',
             'Every action is logged and date-stamped for audit trail needs',
-            'Screening Resolution Service is available to reduce review burden'
+            'Admin and end-user portal experiences support managed operational workflows'
           ]
         },
         'post-processing': {
@@ -85,12 +85,12 @@ var AppData = (function () {
           ]
         },
         'integration': {
-          summary: 'Supports several operating models: direct platform use, WC1 API-led integration, batch processing and CRM-connected workflows.',
+          summary: 'Supports direct platform use, API-led integration and hybrid workflows where customer systems and compliance teams share the process.',
           keyPoints: [
             'WC1 API integration into onboarding systems and compliance workflows',
             'Batch screening and Zero Footprint WC1 API integration are available',
             'Salesforce integration supports connected onboarding and monitoring',
-            'Multi-language user interface supports global analyst teams'
+            'Admin portal is available for managed workflow, and end-user portal access is available in WC1'
           ]
         },
         'false-positive': {
@@ -112,34 +112,34 @@ var AppData = (function () {
       shortName: 'OnDemand',
       badge: 'Data API',
       deploymentType: 'api',
-      tagline: 'API-first real-time risk intelligence for structured data access.',
+      tagline: 'Structured World-Check data delivery for customers that already own screening and decisioning.',
       description:
-        'World-Check On Demand provides structured, enriched, machine-readable risk ' +
-        'intelligence data in real time. It is positioned as an API-first way to access ' +
-        'World-Check content for faster onboarding, screening and payment-related workflows.',
+        'World-Check On Demand provides structured, machine-readable World-Check data for customers that want ' +
+        'to feed their own screening engine, filtering layer or partner platform. It is a data-delivery model, ' +
+        'not a managed screening workflow.',
       integrationPattern: 'API-first architecture for direct integration into in-house, cloud-based or third-party screening platforms.',
-      reviewWorkflow: 'No built-in screening workflow, case management or ongoing screening operations.',
+      reviewWorkflow: 'No built-in screening workflow, case management, end-user portal or ongoing screening operations.',
       dataResidency: 'Data-delivery model that supports customer-controlled downstream hosting and processing after delivery into the client or partner screening stack.',
       typicalBuyers: [
         'Teams that primarily need access to World-Check data',
         'Organisations with their own screening engine or partner platform',
-        'Teams needing current structured risk data inside automated controls',
-        'Users needing data access without full screening operations'
+        'Teams that want fresher data inside automated controls without replacing their stack',
+        'Customers that do not want a vendor-managed workflow layer'
       ],
       differentiators: [
         'Focused on data access rather than operational workflow',
-        'Useful where the requirement is structured data delivery into customer-owned screening operations, not end-to-end workflow',
-        'Designed for organisations that want to power their own screening stack',
-        'Can complement broader screening and workflow products'
+        'Useful where the requirement is structured data delivery into customer-owned screening operations',
+        'Designed for organisations that want to power their own matching, routing and decisioning stack',
+        'Includes admin access patterns but no end-user portal or managed case workflow'
       ],
       capabilities: {
         'overview': {
-          summary: 'Real-time data delivery layer for organisations that want current World-Check intelligence inside their own platforms.',
+          summary: 'Data-delivery layer for organisations that want current World-Check intelligence inside their own platforms and workflows.',
           keyPoints: [
             'API-first solution for real-time risk intelligence access',
             'Structured, enriched, machine-readable data delivery',
-            'Designed for faster onboarding and screening use cases',
-            'No waiting for batch updates when records change'
+            'Designed for faster onboarding, KYC and payment-control use cases',
+            'Supports delta-style retrieval patterns when records change'
           ]
         },
         'data-quality': {
@@ -161,7 +161,7 @@ var AppData = (function () {
           ]
         },
         'workflow-review': {
-          summary: 'No built-in case management, audit workflow or review queues.',
+          summary: 'No built-in case management, audit workflow, end-user portal or review queues.',
           keyPoints: [
             'No native review queues',
             'No case disposition workflow',
@@ -183,7 +183,7 @@ var AppData = (function () {
           keyPoints: [
             'Easily absorbed into in-house, cloud-based or third-party platforms',
             'Supports digital onboarding and customer-owned payment-control environments',
-            'Future-ready architecture aligned with ISO 20022 and instant payments mandates',
+            'Admin portal access supports setup and administration',
             'Built to scale as regulations and risk landscapes change'
           ]
         },
@@ -206,31 +206,30 @@ var AppData = (function () {
       shortName: 'Verify',
       badge: 'Screening API',
       deploymentType: 'api',
-      tagline: 'Cloud-native, stateless screening API for embedded KYC and internal-watchlist screening.',
+      tagline: 'Cloud-native, stateless screening API for embedded KYC and customer-defined decision points.',
       description:
-        'World-Check Verify is a next-generation, cloud-native, stateless screening API ' +
-        'designed for embedded use in onboarding and customer screening workflows. It delivers ' +
-        'real-time screening against trusted World-Check data with low latency and in-region hosting options.',
+        'World-Check Verify is a cloud-native, stateless screening API designed for embedded use in onboarding ' +
+        'and other customer-defined screening checkpoints. It delivers a fast screening response against trusted ' +
+        'World-Check data and can also support client watchlist screening in the same embedded pattern.',
       integrationPattern: 'Cloud-native API for frictionless embedding into onboarding, KYC, KYX and customer screening workflows.',
-      reviewWorkflow: 'Customer-managed follow-up, with configurable screening parameters and optional auto-resolution capabilities.',
+      reviewWorkflow: 'Customer-managed follow-up, with configurable screening parameters and routing into customer-owned review workflow where needed.',
       dataResidency: 'Cloud-native AWS architecture with in-region hosting support in key EU and APAC markets for data sovereignty requirements.',
       typicalBuyers: [
-        'Teams needing World-Check data plus straightforward name screening',
-        'Customers combining World-Check screening with their own internal watchlists',
-        'Customers that want screening without a full workflow platform',
-        'Digital onboarding teams embedding screening into customer journeys',
+        'Teams that need embedded screening without adopting a full workflow platform',
+        'Customers combining World-Check screening with their own internal or client watchlists',
+        'Digital onboarding teams that care about customer friction and response speed',
         'Organisations that will manage case handling in their own environment'
       ],
       differentiators: [
-        'Pairs World-Check data with name screening in a lighter operational model',
-        'Supports World-Check plus internal-watchlist screening in one embedded API pattern',
+        'Pairs trusted World-Check data with fast embedded screening in a lighter operational model',
+        'Supports World-Check plus client-watchlist screening in one embedded API pattern',
         'Simpler fit where case management and audit workflow are not required',
         'Supports embedded screening experiences for digital channels',
-        'Natural step up to World-Check One when workflow needs expand'
+        'Includes admin access but no end-user portal or managed case workflow'
       ],
       capabilities: {
         'overview': {
-          summary: 'Low-latency embedded screening API built for digital onboarding and event-driven customer screening at high availability.',
+          summary: 'Low-latency embedded screening API built for digital onboarding and other moments where the customer journey needs a fast risk decision.',
           keyPoints: [
             'Next-generation cloud-native screening API',
             'Embedded low-latency checks within onboarding and transaction-adjacent customer screening flows',
@@ -245,7 +244,7 @@ var AppData = (function () {
             'Screens against structured, aggregated and de-duplicated World-Check data',
             'Supports secondary identifiers to refine name matching',
             'Coverage includes sanctions, PEPs, RCAs, adverse media, SOEs and SIEs',
-            'Supports screening against World-Check data and internal watchlists'
+            'Supports screening against World-Check data and client watchlists'
           ]
         },
         'screening-matching': {
@@ -262,7 +261,7 @@ var AppData = (function () {
           keyPoints: [
             'No persistent customer data store in the product',
             'No built-in case management, audit workflow or ongoing screening layer',
-            'Manual review workload is reduced through lower-friction screening',
+            'Admin portal access supports configuration and administration',
             'Results can be routed into customer-managed review flows',
             'Can sit alongside broader workflow tooling when governed remediation is needed'
           ]
@@ -282,7 +281,7 @@ var AppData = (function () {
             'Cloud-native AWS infrastructure engineered for global high availability',
             'Instant scalability and resilience under demand spikes',
             'In-region hosting supports sovereignty and privacy requirements',
-            'Flexible integration for modular adoption across onboarding and transaction-triggered screening moments'
+            'Admin access supports setup and policy administration, while end-user portal access is not part of the model'
           ]
         },
         'false-positive': {
@@ -323,12 +322,13 @@ var AppData = (function () {
       shortName: 'Filter Partner',
       badge: 'Partner Layer',
       deploymentType: 'client',
-      tagline: 'Third-party screening or filtering layer operated outside the LSEG product stack.',
+      tagline: 'Third-party service or orchestration layer used alongside LSEG solutions for customer-specific needs.',
       description:
-        'Represents a customer-selected partner layer that consumes World-Check data and applies ' +
-        'partner-owned filtering, matching or orchestration before results return to the bank\'s own systems.',
-      integrationPattern: 'Partner-managed screening, filtering or orchestration layer connected to customer-owned applications and LSEG data feeds.',
-      reviewWorkflow: 'Workflow, filtering logic and operational handling are defined by the partner and the customer operating model.',
+        'Represents a customer-selected partner layer that can sit alongside WCOD, Verify and/or WC1 API. ' +
+        'The partner may provide filtering, orchestration, enrichment, specialist workflow or other services ' +
+        'that address customer use cases not fulfilled natively in the chosen LSEG product pattern.',
+      integrationPattern: 'Partner-managed screening, filtering, orchestration or specialist service layer connected to customer-owned applications and one or more LSEG APIs.',
+      reviewWorkflow: 'Workflow, service logic and operational handling are defined by the partner and the customer operating model.',
       dataResidency: 'Hosting and data handling depend on the partner environment and customer controls.',
       typicalBuyers: [],
       differentiators: [],
@@ -363,10 +363,9 @@ var AppData = (function () {
       recommendedProducts: ['custom-app', 'wcod', 'verify', 'wc1'],
       primaryProduct: 'wc1',
       rationale:
-        'Verify supports low-latency KYC screening inside the onboarding journey. ' +
-        'OnDemand supplies refreshed World-Check data into the PSP\'s own screening stack when ' +
-        'the client needs immediate use of updated content for restrictive-measures controls and related customer-owned payment checks. WC1 fits ' +
-        'the KYC and ongoing-screening operating model when the PSP also needs governed review, audit and remediation workflow.',
+        'Verify supports low-latency KYC screening inside the onboarding journey where the PSP wants a fast answer at the point of submission. ' +
+        'OnDemand supplies current World-Check data into the PSP\'s own screening stack when the client already owns matching and payment controls. WC1 fits ' +
+        'when the PSP also needs governed review, audit and ongoing-screening workflow after a hit is found.',
       keyQuestions: [
         'How quickly do you need to refresh PSU checks after new or amended restrictive measures enter into force?',
         'Do you run your own screening engine, or rely fully on a vendor workflow today?',
@@ -375,10 +374,10 @@ var AppData = (function () {
         'How are restrictive-measures checks, verification of payee and payment-decision ownership split operationally today?'
       ],
       talkPoints: [
-        'Verify gives you low-latency screening in the onboarding journey and supports screening against World-Check plus internal watchlists.',
-        'OnDemand is relevant when you want current World-Check data feeding your own screening stack rather than a full vendor workflow.',
+        'Verify helps reduce onboarding friction by returning a fast screening response inside the digital journey.',
+        'OnDemand is relevant when you want current World-Check data feeding your own screening stack rather than a managed vendor workflow.',
         'For EU instant payments, the regulatory conversation is not just transaction speed but also restrictive-measures controls and verification of payee.',
-        'WC1 gives operations teams an audit-ready place to manage KYC and ongoing-screening cases rather than payment screening itself.'
+        'WC1 gives operations teams an audit-ready place to manage KYC and ongoing-screening cases when alerts need human ownership.'
       ],
       objections: [
         {
@@ -414,7 +413,7 @@ var AppData = (function () {
       recommendedProducts: ['custom-app', 'verify', 'wc1'],
       primaryProduct: 'wc1',
       rationale:
-        'Verify fits the embedded screening moments in onboarding and transaction flows. ' +
+        'Verify fits the embedded screening moments in onboarding and transaction flows where the marketplace wants a fast yes-or-escalate answer. ' +
         'WC1 fits the operational layer for ongoing screening, alert handling, review and audit ' +
         'when buyers or sellers need to be restricted, monitored or offboarded.',
       keyQuestions: [
@@ -465,7 +464,7 @@ var AppData = (function () {
       rationale:
         'WC1 is the natural centre of gravity when a property firm needs governed screening, review workflow, ' +
         'audit trail and documented escalation around higher-value transactions. Verify complements that by handling embedded API-led ' +
-        'upfront screening against World-Check and internal watchlists without pushing the firm toward a raw-data ' +
+        'upfront screening against World-Check and client watchlists without pushing the firm toward a raw-data ' +
         'operating model that is usually unnecessary at this volume. The wider compliance need is often not only name screening, ' +
         'but also documenting beneficial ownership, identifying higher-risk intermediaries and knowing when enhanced due diligence is required.',
       keyQuestions: [
@@ -516,10 +515,11 @@ var AppData = (function () {
       primaryProduct: 'wcod',
       rationale:
         'OnDemand is the natural fit when the bank already owns matching, filtering, payment controls, alert handling and case workflow. ' +
-        'The client value is better data into an existing operating model: current World-Check content, structured attributes, provenance and filtering support that help the bank and its partner layer reduce noise without replacing core screening infrastructure.',
+        'A filtering partner may still sit alongside WCOD, Verify and/or WC1 API to cover specific customer requirements, specialist routing or service gaps that are not handled natively. ' +
+        'The client value is better data into an existing operating model without replacing core screening infrastructure.',
       keyQuestions: [
         'Which parts of the screening stack do you already own internally: matching, filtering, alert handling, case workflow, or all of them?',
-        'Where does your filtering partner sit today: pre-screening enrichment, match suppression, routing, or all three?',
+        'Where does your filtering partner sit today: pre-screening enrichment, match suppression, routing, specialist workflow, or all of the above?',
         'Is the bigger pain point data freshness, false positives, partner orchestration, or auditability across multiple internal systems?',
         'Do KYC and payment screening use the same data supply and filtering layer, or separate stacks?',
         'What would make the biggest commercial difference: less noise for analysts, better payment-control responsiveness, or easier integration into the bank\'s own architecture?'
@@ -527,6 +527,7 @@ var AppData = (function () {
       talkPoints: [
         'This is not a workflow replacement conversation; it is a data-and-operating-model fit conversation.',
         'OnDemand lets the bank keep its own engine, filtering partner and review workflow while improving the quality and freshness of the World-Check data feeding that stack.',
+        'A partner layer can also sit with Verify or WC1 API where the bank wants extra orchestration, niche controls or customer-specific service coverage.',
         'For large banks, the value is often better filtering precision, fewer avoidable false positives and faster use of updated content across KYC and payments.',
         'If the client already has a mature internal stack, data delivery is often more realistic than asking them to move into a vendor-managed workflow.'
       ],
@@ -1084,7 +1085,7 @@ var AppData = (function () {
       },
       {
         objection: 'We need internal watchlists as well as World-Check.',
-        response: 'That is a strong discovery point. Verify and World-Check One support internal watchlists in the screening conversation, while OnDemand is about delivering World-Check data into the customer’s own surrounding screening stack.'
+        response: 'That is a strong discovery point. Verify and World-Check One fit the screening conversation, while OnDemand is about delivering World-Check data into the customer-owned surrounding stack. The next question is whether the client needs a fast screening response, a governed case workflow, or only better data feeding its own engine.'
       },
       {
         objection: 'We need beneficial-owner screening.',
@@ -1108,14 +1109,14 @@ var AppData = (function () {
       badge: 'Data API',
       badgeType: 'api',
       icon: '&#128190;',
-      tagline: 'Structured World-Check data for customers that own screening and decisioning.',
+      tagline: 'Structured World-Check data for customers that own screening, routing and decisioning.',
       valueStatement: 'WCOD is a data-delivery model, not a screening workflow. It fits customers that already have their own screening engine, payment controls, filtering partner or orchestration layer and want current World-Check data feeding that stack.',
       bestFor: 'Large banks, PSPs and mature compliance teams that already own matching, filtering, alert handling and case workflow outside the LSEG platform.',
       capabilities: [
         'Structured World-Check data delivery for customer-owned screening stacks',
-        'Filter-based pulls by entity type, jurisdiction, category and update date',
+        'Filter-based retrieval by entity type, jurisdiction, category and update date',
         'OAuth 2.0 client credentials for system-to-system access',
-        'Designed for teams that need to control matching, routing and downstream workflow themselves'
+        'Admin portal supports setup and administration, but there is no end-user portal'
       ],
       diagramLabel: 'Data-led model — customer or partner owns screening logic',
       flowSteps: ['Your App', 'WCOD API', 'Structured Data', 'Your Screening Engine'],
@@ -1129,6 +1130,8 @@ var AppData = (function () {
         bulkOperations:    true,
         userManagement:    false,
         webhooks:          false,
+        adminPortal:       true,
+        endUserPortal:     false,
         dataResidency:     'Client / partner hosted',
         integrationEffort: 'High (build engine)'
       }
@@ -1141,7 +1144,7 @@ var AppData = (function () {
       legacy: true,
       legacyNote: 'WC1 v2 is a legacy API. LSEG recommends migrating to WC1 v3 for all new and existing integrations.',
       icon: '&#128196;',
-      tagline: 'Stateful screening with built-in cases, audit and ongoing screening — legacy version.',
+      tagline: 'Legacy managed case workflow API with built-in cases, audit and ongoing screening.',
       valueStatement: 'WC1 v2 is the legacy stateful World-Check One API. It fits customers that want screening to create and manage cases, audit trail and ongoing screening inside the WC1 operating model rather than in their own workflow stack.',
       bestFor: 'Existing customers with a live v2 integration. All new builds should target WC1 v3.',
       capabilities: [
@@ -1149,7 +1152,7 @@ var AppData = (function () {
         'Ongoing screening and alert management inside the WC1 operating model',
         'Built-in audit trail and case history for governed review',
         'HMAC authentication with key / secret model',
-        'Bulk screening support for higher-volume onboarding and review queues'
+        'Admin portal and end-user portal support managed workflow operations'
       ],
       diagramLabel: 'Managed workflow model — cases live inside WC1',
       flowSteps: ['Your App', 'WC1 v2 API', 'Case Created', 'Workflow / OGS / Audit'],
@@ -1163,6 +1166,8 @@ var AppData = (function () {
         bulkOperations:    true,
         userManagement:    false,
         webhooks:          false,
+        adminPortal:       true,
+        endUserPortal:     true,
         dataResidency:     'EMEA',
         integrationEffort: 'Medium'
       }
@@ -1181,15 +1186,15 @@ var AppData = (function () {
         'Consistent REST design is easier for delivery teams to learn, support and maintain',
         'Strategic investment is going into v3; v2 is maintenance-only',
         'Cleaner bulk operations are better suited to high-volume screening programs',
-        'Webhooks reduce polling overhead by pushing case and monitoring events to customer systems'
+        'Webhook and monitoring-event patterns reduce polling overhead for customer systems'
       ],
       capabilities: [
         'Managed case creation and workflow inside WC1',
         'Ongoing screening, audit trail and reporting in the same operating model',
         'Bulk screening support for higher-volume onboarding and remediation programs',
-        'Webhooks for monitoring and case-event notifications',
+        'Monitoring-event and webhook-style integration patterns for customer notification',
         'OAuth 2.0 for modern identity and access patterns',
-        'Cleaner REST endpoints for faster integration and lower maintenance effort'
+        'Admin portal is available today; user management is expected shortly; end-user portal is available in WC1'
       ],
       diagramLabel: 'Managed workflow model — strategic WC1 integration path',
       flowSteps: ['Your App', 'WC1 v3 API', 'Case Created', 'Workflow / OGS / Audit'],
@@ -1203,6 +1208,8 @@ var AppData = (function () {
         bulkOperations:    true,
         userManagement:    true,
         webhooks:          true,
+        adminPortal:       true,
+        endUserPortal:     true,
         dataResidency:     'EMEA',
         integrationEffort: 'Medium (recommended)'
       }
@@ -1220,7 +1227,7 @@ var AppData = (function () {
         'Stateless screening response suited to onboarding and event-driven screening checkpoints',
         'Returns match detail and supporting attributes in a single response',
         'Group-based configuration for sensitivity and policy alignment by use case',
-        'OAuth 2.0 with relatively low integration overhead'
+        'Admin portal supports setup and administration, but there is no end-user portal'
       ],
       diagramLabel: 'Inline screening model — response goes back to your journey',
       flowSteps: ['Customer', 'Your App', '/screen call', 'Screening Result', 'Accept / Escalate'],
@@ -1234,6 +1241,8 @@ var AppData = (function () {
         bulkOperations:    true,
         userManagement:    false,
         webhooks:          false,
+        adminPortal:       true,
+        endUserPortal:     false,
         dataResidency:     'EMEA / APAC',
         integrationEffort: 'Low'
       }
