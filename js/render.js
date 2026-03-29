@@ -539,8 +539,8 @@ var Render = (function () {
         var boxBg     = isFirst ? '#f0f1f8' : isLast ? '#e8f0ff' : '#fff';
         var boxBorder = isLast  ? '#001eff' : '#dde0ea';
         var arrow = (i < a.flowSteps.length - 1)
-          ? '<div style="display:flex;flex-direction:column;align-items:center;padding:0 4px;">' +
-              '<span style="font-size:0.6rem;color:#9aa0b8;white-space:nowrap;max-width:64px;text-align:center;">' + (a.flowArrows[i] || '') + '</span>' +
+          ? '<div style="display:flex;flex-direction:column;align-items:center;padding:0 4px;min-width:48px;max-width:72px;">' +
+              '<span style="font-size:0.6rem;color:#9aa0b8;text-align:center;word-break:break-word;line-height:1.3;">' + (a.flowArrows[i] || '') + '</span>' +
               '<span style="color:#9aa0b8;line-height:1;">&#8594;</span>' +
             '</div>'
           : '';
