@@ -696,7 +696,6 @@ var Render = (function () {
                        'position:sticky;top:0;background:#eef0f8;z-index:3;' +
                        (isLast ? '' : 'border-right:1px solid #dde0ea;') + '">' +
                   '<div style="display:flex;flex-direction:column;align-items:center;gap:5px;">' +
-                    '<span style="font-size:1.2rem;line-height:1;">' + (a.icon || '') + '</span>' +
                     '<span style="font-size:0.8rem;font-weight:700;color:#1a1e2e;line-height:1.2;">' + esc(a.name) + '</span>' +
                     '<div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center;">' +
                       tagPill(a.badge, a.badgeType) +
