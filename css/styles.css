@@ -169,6 +169,17 @@ ul {
   font-weight: 600;
 }
 
+.mobile-home-link {
+  display: none;
+}
+
+.mobile-home-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
 /* Hamburger toggle — visible only below 900px */
 .nav-toggle {
   display: none;
@@ -185,6 +196,25 @@ ul {
 
 @media (max-width: 900px) {
   .nav-toggle { display: block; }
+
+  .mobile-home-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    margin-right: auto;
+    border-bottom: none;
+    border-left: none;
+    font-size: 1.9rem;
+    line-height: 1;
+  }
+
+  .mobile-home-icon {
+    width: 26px;
+    height: 26px;
+  }
 
   .nav-list {
     position: absolute;
@@ -212,10 +242,21 @@ ul {
     font-size: 0.9rem;
   }
 
+  .mobile-home-link.nav-link {
+    padding: 0;
+    border-left: none;
+  }
+
   .nav-link.active {
     border-left-color: #001eff;
     border-bottom: none;
     background: #f5f7ff;
+  }
+
+  .mobile-home-link.nav-link.active {
+    border-left-color: transparent;
+    background: transparent;
+    border-bottom: 3px solid #001eff;
   }
 
   .top-nav {
@@ -412,6 +453,7 @@ ul {
 
 /* ── Tag: identity variant ───────────────────────────────────── */
 .tag-identity { background: #f5eeff; color: #6a00cc; }
+.tag-client   { background: #e8faf4; color: #00734d; }
 
 /* ── Two-column layout ───────────────────────────────────────── */
 .two-col {
@@ -515,6 +557,49 @@ ul {
   padding: 12px 14px 14px;
 }
 
+.capability-product > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "main chevron"
+    "meta chevron";
+  align-items: start;
+  column-gap: 14px;
+  row-gap: 6px;
+}
+
+.cap-head-main {
+  grid-area: main;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 10px;
+}
+
+.cap-head-badge {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.capability-product .coll-title {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.capability-product .coll-meta {
+  grid-area: meta;
+  display: block;
+  margin-top: 0;
+  letter-spacing: 0.03em;
+  line-height: 1.45;
+  white-space: normal;
+}
+
+.capability-product .coll-chevron {
+  grid-area: chevron;
+  align-self: center;
+}
+
 /* ── Lever item (nested collapsible) ─────────────────────────── */
 .lever {
   border: 1px solid #eef0f8;
@@ -577,17 +662,44 @@ ul {
 }
 
 .lever-map-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 0.775rem;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: start;
+  gap: 10px;
+  font-size: 0.8rem;
   color: #3a4060;
-  line-height: 1.45;
+  line-height: 1.55;
+}
+
+.lever-map-pill {
+  padding-top: 1px;
 }
 
 .lever-map-row .tag {
-  flex-shrink: 0;
-  margin-top: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.lever-map-note {
+  min-width: 0;
+}
+
+@media (max-width: 560px) {
+  .lever-map-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .lever-map-pill {
+    padding-top: 0;
+  }
 }
 
 /* ── Objection collapsible ───────────────────────────────────── */
@@ -670,7 +782,8 @@ ul {
 .scenario-toggle-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 8px;
   margin-top: 10px;
 }
@@ -688,6 +801,8 @@ ul {
   gap: 4px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .scenario-detail {
@@ -753,6 +868,37 @@ ul {
   .home-hero { border-radius: 6px; }
   .page-title { font-size: 1.125rem; }
   .content-area { padding: 16px 12px 32px; }
+
+  .capability-product > summary {
+    padding: 14px 14px 12px;
+    column-gap: 10px;
+    row-gap: 4px;
+  }
+
+  .cap-head-main {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .capability-product .coll-title {
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+
+  .capability-product .coll-meta {
+    font-size: 0.66rem;
+    margin-top: 4px;
+  }
+
+  .capability-product .coll-chevron {
+    align-self: start;
+    margin-top: 2px;
+  }
+
+  .cap-head-badge .tag {
+    font-size: 0.66rem;
+    padding: 4px 10px;
+  }
 }
 
 /* =============================================================

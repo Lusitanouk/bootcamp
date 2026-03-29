@@ -295,6 +295,25 @@ var AppData = (function () {
           ]
         }
       }
+    },
+
+    /* ── Custom App ──────────────────────────────────────────────── */
+    {
+      id: 'custom-app',
+      name: 'Custom App',
+      shortName: 'Custom App',
+      badge: 'Client App',
+      deploymentType: 'client',
+      tagline: 'Client-side application built and operated by the customer.',
+      description:
+        'Represents the customer\'s own client-side application — a web app, mobile app or ' +
+        'portal that drives the user journey, collects data and orchestrates calls to LSEG APIs.',
+      integrationPattern: 'Customer-built front end or workflow layer that integrates LSEG screening APIs.',
+      reviewWorkflow: 'Owned entirely by the customer — decisioning logic, UX and workflow routing are defined by the client application.',
+      dataResidency: 'Data handling is the responsibility of the customer application and its hosting environment.',
+      typicalBuyers: [],
+      differentiators: [],
+      capabilities: {}
     }
   ];
 
@@ -322,7 +341,7 @@ var AppData = (function () {
         regulatoryContext: 'AML / KYC',
         dataResidencyRequirement: false
       },
-      recommendedProducts: ['wcod', 'verify', 'wc1'],
+      recommendedProducts: ['custom-app', 'wcod', 'verify', 'wc1'],
       primaryProduct: 'wc1',
       rationale:
         'Verify supports low-latency KYC screening inside the onboarding journey. ' +
@@ -373,7 +392,7 @@ var AppData = (function () {
         regulatoryContext: 'AML / Sanctions',
         dataResidencyRequirement: false
       },
-      recommendedProducts: ['verify', 'wc1'],
+      recommendedProducts: ['custom-app', 'verify', 'wc1'],
       primaryProduct: 'wc1',
       rationale:
         'Verify fits the embedded screening moments in onboarding and transaction flows. ' +
@@ -422,7 +441,7 @@ var AppData = (function () {
         regulatoryContext: 'AML / Sanctions / EDD',
         dataResidencyRequirement: true
       },
-      recommendedProducts: ['wc1', 'verify'],
+      recommendedProducts: ['custom-app', 'wc1', 'verify'],
       primaryProduct: 'wc1',
       rationale:
         'WC1 is the natural centre of gravity when a property firm needs governed screening, review workflow, ' +
@@ -475,7 +494,7 @@ var AppData = (function () {
         regulatoryContext: 'Sanctions / Enhanced Due Diligence',
         dataResidencyRequirement: false
       },
-      recommendedProducts: ['wc1', 'verify'],
+      recommendedProducts: ['custom-app', 'wc1', 'verify'],
       primaryProduct: 'wc1',
       rationale:
         'Verify supports embedded screening directly in the onboarding journey. ' +
@@ -569,19 +588,19 @@ var AppData = (function () {
       subtitle: 'Buyer and seller onboarding, money-in and money-out controls with escalation workflow',
       scenarioRef: 'global-marketplace',
       interactionType: 'mixed',
-      lsegProducts: ['verify', 'wc1'],
+      lsegProducts: ['custom-app', 'verify', 'wc1'],
       description:
         'A social media platform runs a marketplace with buyers and sellers, card top-ups, ' +
         'wallet balances and payouts. World-Check Verify supports embedded screening during ' +
         'onboarding and transaction moments, while World-Check One manages ongoing screening, ' +
         'alerts, analyst review and audit-ready case handling.',
       phases: [
-        { id: 1, title: 'Register',              desc: 'Buyer or seller submits onboarding details to the marketplace platform.',                              products: [] },
-        { id: 2, title: 'KYC Screening',         desc: 'KYC screening at onboarding can be handled by Verify for low-latency embedded flows or by WC1 where governed review and workflow are needed.', products: ['verify', 'wc1'] },
-        { id: 3, title: 'Auto-clear or Escalate', desc: 'Low-risk profiles cleared instantly. Matches routed to analyst review queue.',                       products: ['verify', 'wc1'] },
-        { id: 4, title: 'Transaction Screening', desc: 'Screen payment counterparty before wallet top-up or payout is executed.',                             products: ['verify'] },
-        { id: 5, title: 'Ongoing Monitoring',    desc: 'World-Check record changes trigger alerts for enrolled buyers and sellers.',                           products: ['wc1'] },
-        { id: 6, title: 'Review & Action',       desc: 'Analyst records decision; account or wallet controls updated with full audit trail.',                  products: ['wc1'] }
+        { id: 1, title: 'Register',              desc: 'Buyer or seller submits onboarding details to the marketplace platform.',                              products: ['custom-app'] },
+        { id: 2, title: 'KYC Screening',         desc: 'KYC screening at onboarding can be handled by Verify for low-latency embedded flows or by WC1 where governed review and workflow are needed.', products: ['custom-app', 'verify', 'wc1'] },
+        { id: 3, title: 'Auto-clear or Escalate', desc: 'Low-risk profiles cleared instantly. Matches routed to analyst review queue.',                       products: ['custom-app', 'verify', 'wc1'] },
+        { id: 4, title: 'Transaction Screening', desc: 'Screen payment counterparty before wallet top-up or payout is executed.',                             products: ['custom-app', 'verify'] },
+        { id: 5, title: 'Ongoing Monitoring',    desc: 'World-Check record changes trigger alerts for enrolled buyers and sellers.',                           products: ['custom-app', 'wc1'] },
+        { id: 6, title: 'Review & Action',       desc: 'Analyst records decision; account or wallet controls updated with full audit trail.',                  products: ['custom-app', 'wc1'] }
       ],
       lanes: [
         { id: 'user',            label: 'Buyer / Seller',                 type: 'actor' },
@@ -620,18 +639,18 @@ var AppData = (function () {
       subtitle: 'Customer onboarding plus immediate restrictive-measures refresh after list updates for instant payments',
       scenarioRef: 'ongoing-screening',
       interactionType: 'mixed',
-      lsegProducts: ['wcod', 'verify', 'wc1'],
+      lsegProducts: ['custom-app', 'wcod', 'verify', 'wc1'],
       description:
         'A midsized EU payments service provider needs fast onboarding and must refresh restrictive-measures controls immediately after list updates while keeping instant payments moving. ' +
         'World-Check OnDemand supplies real-time data updates into the PSP\'s own screening stack, ' +
         'World-Check Verify supports low-latency KYC screening against World-Check and internal watchlists, and World-Check One supports KYC and ongoing-screening workflow where governed review is needed.',
       phases: [
-        { id: 1, title: 'Account Opening',       desc: 'Customer submits KYC and beneficiary data to the PSP.',                                               products: [] },
-        { id: 2, title: 'KYC Screening - SaaS / Screening API', desc: 'If the PSP prefers a managed screening path, KYC screening can be handled by Verify for low-latency onboarding or by WC1 where governed review and workflow are needed from the start.', products: ['verify', 'wc1'] },
-        { id: 3, title: 'KYC Screening - Customer Engine',      desc: 'If the PSP prefers to use its own screening engine, OnDemand can supply refreshed World-Check data into that customer-owned KYC screening stack.', products: ['wcod'] },
-        { id: 4, title: 'Payment Controls',      desc: 'The PSP can use Verify for low-latency party-screening checkpoints or OnDemand to power its own payment controls, while restrictive-measures PSU checks are refreshed separately after list updates.', products: ['verify', 'wcod'] },
-        { id: 5, title: 'Governed Review',       desc: 'Higher-risk customers routed to an audit-ready case workflow with queue and remediation path.',        products: ['wc1'] },
-        { id: 6, title: 'Outcome & Monitoring',  desc: 'Case closed with audit trail; enrolled customers continue to be monitored for list changes.',          products: ['wc1'] }
+        { id: 1, title: 'Account Opening',       desc: 'Customer submits KYC and beneficiary data to the PSP.',                                               products: ['custom-app'] },
+        { id: 2, title: 'KYC Screening - SaaS / Screening API', desc: 'If the PSP prefers a managed screening path, KYC screening can be handled by Verify for low-latency onboarding or by WC1 where governed review and workflow are needed from the start.', products: ['custom-app', 'verify', 'wc1'] },
+        { id: 3, title: 'KYC Screening - Customer Engine',      desc: 'If the PSP prefers to use its own screening engine, OnDemand can supply refreshed World-Check data into that customer-owned KYC screening stack.', products: ['custom-app', 'wcod'] },
+        { id: 4, title: 'Payment Controls',      desc: 'The PSP can use Verify for low-latency party-screening checkpoints or OnDemand to power its own payment controls, while restrictive-measures PSU checks are refreshed separately after list updates.', products: ['custom-app', 'verify', 'wcod'] },
+        { id: 5, title: 'Governed Review',       desc: 'Higher-risk customers routed to an audit-ready case workflow with queue and remediation path.',        products: ['custom-app', 'wc1'] },
+        { id: 6, title: 'Outcome & Monitoring',  desc: 'Case closed with audit trail; enrolled customers continue to be monitored for list changes.',          products: ['custom-app', 'wc1'] }
       ],
       lanes: [
         { id: 'payer',         label: 'PSP Customer / Payer',          type: 'actor' },
@@ -669,18 +688,18 @@ var AppData = (function () {
       subtitle: 'High-value property transactions with audit, escalation and ongoing monitoring',
       scenarioRef: 'legal-firm-hybrid',
       interactionType: 'mixed',
-      lsegProducts: ['wc1', 'verify'],
+      lsegProducts: ['custom-app', 'wc1', 'verify'],
       description:
         'A real-estate business screens buyers, sellers, landlords, beneficial owners and key intermediaries ' +
         'during listing, offer acceptance and funds movement. World-Check Verify supports embedded upfront screening ' +
         'against World-Check and internal watchlists, while World-Check One provides the governed review, audit trail and ongoing monitoring layer.',
       phases: [
-        { id: 1, title: 'Party Capture',         desc: 'Agent opens deal and captures buyer, seller and all intermediary details.',                            products: [] },
-        { id: 2, title: 'Embedded Screening',    desc: 'Upfront check against World-Check and internal watchlists at point of submission.',                   products: ['verify'] },
-        { id: 3, title: 'Escalation',            desc: 'Straightforward parties cleared; higher-risk records escalated to governed review.',                  products: ['verify', 'wc1'] },
-        { id: 4, title: 'Analyst Review',        desc: 'Disposition recorded — clear, enhanced due diligence, hold or decline — with full audit trail.',      products: ['wc1'] },
-        { id: 5, title: 'Ongoing Monitoring',    desc: 'Approved parties enrolled for monitoring until deal completion and post-close window.',                products: ['wc1'] },
-        { id: 6, title: 'Deal Outcome',          desc: 'Audit-ready transaction record with complete chain of screening decisions.',                           products: ['wc1'] }
+        { id: 1, title: 'Party Capture',         desc: 'Agent opens deal and captures buyer, seller and all intermediary details.',                            products: ['custom-app'] },
+        { id: 2, title: 'Embedded Screening',    desc: 'Upfront check against World-Check and internal watchlists at point of submission.',                   products: ['custom-app', 'verify'] },
+        { id: 3, title: 'Escalation',            desc: 'Straightforward parties cleared; higher-risk records escalated to governed review.',                  products: ['custom-app', 'verify', 'wc1'] },
+        { id: 4, title: 'Analyst Review',        desc: 'Disposition recorded — clear, enhanced due diligence, hold or decline — with full audit trail.',      products: ['custom-app', 'wc1'] },
+        { id: 5, title: 'Ongoing Monitoring',    desc: 'Approved parties enrolled for monitoring until deal completion and post-close window.',                products: ['custom-app', 'wc1'] },
+        { id: 6, title: 'Deal Outcome',          desc: 'Audit-ready transaction record with complete chain of screening decisions.',                           products: ['custom-app', 'wc1'] }
       ],
       lanes: [
         { id: 'agent',         label: 'Agent / Case Manager',               type: 'actor' },
@@ -721,10 +740,11 @@ var AppData = (function () {
       {
         id: 'data-prep',
         label: 'Data Preparation & Cleaning',
-        description: 'Structuring and normalising input data before submission. Clean inputs reduce noise-driven matches.',
+        description: 'Structuring and normalising input data before screening. Clean, well-formed inputs reduce noise-driven matches before they reach analysts or customer-facing journeys.',
         productMapping: [
-          { productId: 'wc1',    note: 'Structured screening inputs can flow straight into workflow, case handling and audit.' },
-          { productId: 'verify', note: 'Structured data inputs improve name-screening precision in lightweight digital flows.' }
+          { productId: 'wc1',    note: 'Structured inputs improve screening quality before cases are created, helping analysts start with cleaner results and less avoidable noise.' },
+          { productId: 'verify', note: 'Structured name and reference fields improve embedded screening precision in digital onboarding and trigger-based flows.' },
+          { productId: 'wcod',   note: 'Structured World-Check data can be consumed by a customer-owned engine that also depends on clean input formatting and field discipline.' }
         ]
       },
       {
@@ -732,8 +752,9 @@ var AppData = (function () {
         label: 'Structured Inputs',
         description: 'Separate name, DOB and identifier fields instead of free-text. Reduces ambiguous or partial matches.',
         productMapping: [
-          { productId: 'wc1',    note: 'Structured fields support screening, routing and governed case creation.' },
-          { productId: 'verify', note: 'API-led name screening performs best when name and reference data are structured.' }
+          { productId: 'wc1',    note: 'Structured fields support sharper matching, cleaner routing and more targeted governed case creation.' },
+          { productId: 'verify', note: 'Verify performs best when name, DOB and reference data are sent as discrete fields rather than loose free text.' },
+          { productId: 'wcod',   note: 'Customer-owned screening engines using OnDemand data typically depend on structured input and structured record attributes to improve matching quality.' }
         ]
       },
       {
@@ -741,8 +762,9 @@ var AppData = (function () {
         label: 'Entity Classification',
         description: 'Correctly classifying individuals vs entities before screening avoids cross-type false positives.',
         productMapping: [
-          { productId: 'wc1',    note: 'Entity type controls improve screening precision before workflow begins.' },
-          { productId: 'verify', note: 'Entity scoping keeps lightweight name-screening requests relevant.' }
+          { productId: 'wc1',    note: 'Entity type controls improve precision before workflow begins, reducing poor-quality alerts that would otherwise enter review queues.' },
+          { productId: 'verify', note: 'Entity scoping keeps lightweight name-screening requests relevant at the point of interaction.' },
+          { productId: 'wcod',   note: 'Entity classifications and record taxonomy help customer-owned engines avoid mixing individual and organisation screening logic.' }
         ]
       },
       {
@@ -750,8 +772,9 @@ var AppData = (function () {
         label: 'Name Normalisation',
         description: 'Standardising formats, transliterations and special characters before submission.',
         productMapping: [
-          { productId: 'wc1',    note: 'Normalisation supports consistent initial and ongoing screening outcomes.' },
-          { productId: 'verify', note: 'Name normalisation improves match quality in embedded screening flows.' }
+          { productId: 'wc1',    note: 'Normalisation supports more consistent initial and ongoing screening outcomes across governed workflows.' },
+          { productId: 'verify', note: 'Name normalisation improves match quality where screening must happen quickly inside customer journeys.' },
+          { productId: 'wcod',   note: 'Customer-owned engines consuming OnDemand data still benefit from upstream normalisation to get the best value from rich structured content.' }
         ]
       }
     ],
@@ -760,11 +783,11 @@ var AppData = (function () {
       {
         id: 'scope-control',
         label: 'Scope Control',
-        description: 'Restricting which lists, categories and jurisdictions apply to a given screening population. Not every entity needs every list.',
+        description: 'Restricting which datasets, categories and jurisdictions apply to a given screening population. Not every entity needs every risk type every time.',
         productMapping: [
-          { productId: 'wc1',    note: 'Category and list controls help determine what enters workflow and ongoing monitoring.' },
-          { productId: 'verify', note: 'Scope controls keep lightweight screening requests focused on the relevant risk types.' },
-          { productId: 'wcod',   note: 'Data filters and categorisation help downstream platforms work with only the most relevant risk content.' }
+          { productId: 'wc1',    note: 'Category and list controls help determine what enters workflow and ongoing monitoring, reducing avoidable alert volume.' },
+          { productId: 'verify', note: 'Scope controls keep embedded screening requests focused on the relevant risk types for that customer journey.' },
+          { productId: 'wcod',   note: 'Data filters and categorisation help downstream screening platforms work with only the most relevant World-Check content.' }
         ]
       },
       {
@@ -772,8 +795,8 @@ var AppData = (function () {
         label: 'Match Sensitivity Tuning',
         description: 'Adjusting fuzzy matching thresholds. Lower sensitivity returns fewer, higher-confidence results.',
         productMapping: [
-          { productId: 'wc1',    note: 'Sensitivity settings can be tuned alongside workflow and disposition outcomes.' },
-          { productId: 'verify', note: 'Sensitivity controls support leaner digital-screening use cases.' }
+          { productId: 'wc1',    note: 'Sensitivity settings can be tuned alongside workflow outcomes and analyst dispositions, helping teams find a better noise-to-catch balance.' },
+          { productId: 'verify', note: 'Sensitivity controls support leaner digital-screening use cases where fast, lower-noise responses matter.' }
         ]
       },
       {
@@ -781,9 +804,9 @@ var AppData = (function () {
         label: 'Avoiding Overscreening',
         description: 'Screening only when required and only against relevant lists. Blanket screening against all categories drives unnecessary volume.',
         productMapping: [
-          { productId: 'wc1',    note: 'Targeted scope reduces unnecessary alerts and review workload.' },
-          { productId: 'verify', note: 'Appropriate list scoping avoids noisy screening responses in customer journeys.' },
-          { productId: 'wcod',   note: 'Enhanced categorisation and filtered data delivery help reduce overscreening in customer-owned screening stacks.' }
+          { productId: 'wc1',    note: 'Targeted scope reduces unnecessary alerts, queue build-up and analyst workload.' },
+          { productId: 'verify', note: 'Appropriate list scoping avoids noisy responses in onboarding and trigger-based screening journeys.' },
+          { productId: 'wcod',   note: 'Enhanced categorisation and filtered data delivery help customer-owned screening stacks avoid pulling in irrelevant content.' }
         ]
       },
       {
@@ -791,8 +814,9 @@ var AppData = (function () {
         label: 'Identifier-Assisted Matching',
         description: 'Including national ID, passport number or LEI alongside name anchors matching to specific records.',
         productMapping: [
-          { productId: 'wc1',    note: 'Identifiers strengthen triage and help analysts disposition cases faster.' },
-          { productId: 'verify', note: 'Identifiers improve confidence in lighter-weight screening responses.' }
+          { productId: 'wc1',    note: 'Identifiers strengthen matching confidence and help analysts disposition cases faster with fewer ambiguous escalations.' },
+          { productId: 'verify', note: 'Identifiers improve confidence in low-latency screening responses where the customer needs a fast decision.' },
+          { productId: 'wcod',   note: 'Granular identifiers in OnDemand data can improve downstream customer-side matching and corroboration logic.' }
         ]
       }
     ],
@@ -803,9 +827,9 @@ var AppData = (function () {
         label: 'Use of Returned Attributes',
         description: 'DOB, nationality, gender and identifier fields returned per result support rapid programmatic or human dismissal.',
         productMapping: [
-          { productId: 'wc1',    note: 'Full attribute payload supports routing, case creation and dismissal logic.' },
-          { productId: 'verify', note: 'Returned attributes help customer systems suppress obvious non-matches.' },
-          { productId: 'wcod',   note: 'Granular World-Check data fields strengthen downstream matching and manual corroboration.' }
+          { productId: 'wc1',    note: 'Returned attributes support routing, case creation, analyst corroboration and more confident dismissal logic.' },
+          { productId: 'verify', note: 'Returned attributes help customer systems suppress obvious non-matches before unnecessary escalation.' },
+          { productId: 'wcod',   note: 'Granular World-Check data fields strengthen downstream customer-side matching and manual corroboration.' }
         ]
       },
       {
@@ -813,9 +837,9 @@ var AppData = (function () {
         label: 'Provenance & Source Context',
         description: 'Knowing which source a match comes from helps assess materiality. Obscure or low-quality sources warrant less weight.',
         productMapping: [
-          { productId: 'wc1',    note: 'Source category and list origin can drive workflow routing and review priority.' },
-          { productId: 'verify', note: 'Source context helps customer teams decide which results need escalation.' },
-          { productId: 'wcod',   note: 'Provenance-rich data delivery helps customer platforms and analysts understand why a record matters.' }
+          { productId: 'wc1',    note: 'Source category and list origin can drive workflow routing, review priority and analyst confidence.' },
+          { productId: 'verify', note: 'Source context helps customer teams decide which results deserve escalation rather than automatic rejection or clearance.' },
+          { productId: 'wcod',   note: 'Provenance-rich data delivery helps customer platforms and analysts understand why a record matters before they escalate it.' }
         ]
       },
       {
@@ -823,8 +847,9 @@ var AppData = (function () {
         label: 'Post-Processing Rules',
         description: 'Customer-side logic applied to results before routing — suppress, auto-clear or escalate based on attributes.',
         productMapping: [
-          { productId: 'wc1',    note: 'Rules can route cases, suppress noise and support audit-ready decisioning.' },
-          { productId: 'verify', note: 'Customer-defined rules can suppress low-risk results before escalation.' }
+          { productId: 'wc1',    note: 'Rules can route cases, suppress noise and support more consistent audit-ready decisioning.' },
+          { productId: 'verify', note: 'Customer-defined rules can suppress low-risk results before escalation in embedded journeys.' },
+          { productId: 'wcod',   note: 'OnDemand data can feed customer-owned post-processing logic that suppresses, prioritises or enriches results before review.' }
         ]
       },
       {
@@ -832,8 +857,9 @@ var AppData = (function () {
         label: 'Routing & Suppression',
         description: 'Sending different result types to different queues; suppressing known-good entities from repeated review.',
         productMapping: [
-          { productId: 'wc1',    note: 'Workflow queues and case-routing logic are built into the platform.' },
-          { productId: 'verify', note: 'Routing remains customer-managed when using the lighter screening model.' }
+          { productId: 'wc1',    note: 'Workflow queues, routing logic and remediation history are built into the platform.' },
+          { productId: 'verify', note: 'Routing remains customer-managed when using the lighter screening model.' },
+          { productId: 'wcod',   note: 'Customer-owned engines using OnDemand data can route alerts by category, source or severity inside their own workflow stack.' }
         ]
       }
     ],
@@ -844,8 +870,9 @@ var AppData = (function () {
         label: 'Workflow Design',
         description: 'Structuring review queues and SLAs to reduce re-work and improve consistency across the team.',
         productMapping: [
-          { productId: 'wc1',    note: 'Configurable queues, SLA timers and escalation paths support managed compliance operations.' },
-          { productId: 'verify', note: 'Operational workflow sits outside the product unless escalated into WC1.' }
+          { productId: 'wc1',    note: 'Configurable queues, SLA timers and escalation paths support managed compliance operations and reduce repeated analyst handling.' },
+          { productId: 'verify', note: 'Operational workflow sits outside the product unless escalated into WC1.' },
+          { productId: 'wcod',   note: 'Customers using OnDemand must design this layer themselves or through a partner platform; good workflow design is critical to controlling noise.' }
         ]
       },
       {
@@ -853,9 +880,9 @@ var AppData = (function () {
         label: 'Triage Practices',
         description: 'Analyst skills in rapidly dismissing non-matches using available data. Reduces average handling time.',
         productMapping: [
-          { productId: 'wc1',    note: 'Match detail, workflow context and disposition history support rapid triage.' },
+          { productId: 'wc1',    note: 'Match detail, workflow context and disposition history support faster, more consistent analyst triage.' },
           { productId: 'verify', note: 'Attribute-rich responses support customer-side triage in lightweight deployments.' },
-          { productId: 'wcod',   note: 'Detailed World-Check data supports manual corroboration when a reviewer needs deeper context.' }
+          { productId: 'wcod',   note: 'Detailed World-Check data supports manual corroboration when a reviewer needs deeper context in a customer-owned stack.' }
         ]
       },
       {
@@ -864,7 +891,8 @@ var AppData = (function () {
         description: 'Periodic review of sensitivity settings, scope configuration and false positive rates to refine over time.',
         productMapping: [
           { productId: 'wc1',    note: 'Disposition outcomes, queues and alert volumes support tuning reviews over time.' },
-          { productId: 'verify', note: 'Customers can review result volumes and escalation rates to refine settings.' }
+          { productId: 'verify', note: 'Customers can review result volumes and escalation rates to refine settings in embedded flows.' },
+          { productId: 'wcod',   note: 'Customers using OnDemand can review downstream alert volumes and tune their own engine, filters and routing rules against the delivered data.' }
         ]
       },
       {
@@ -872,8 +900,9 @@ var AppData = (function () {
         label: 'Continuous Optimisation',
         description: 'Using match quality metrics and operational data to drive improvement in inputs, scope and thresholds.',
         productMapping: [
-          { productId: 'wc1',    note: 'Operational and screening data support continuous optimisation across review workflows.' },
-          { productId: 'verify', note: 'Response data supports lightweight optimisation of embedded screening journeys.' }
+          { productId: 'wc1',    note: 'Operational and screening data support continuous optimisation across review workflows and ongoing-screening operations.' },
+          { productId: 'verify', note: 'Response data supports lightweight optimisation of embedded screening journeys and decision checkpoints.' },
+          { productId: 'wcod',   note: 'Delivered data, provenance and change detail help customers optimise their own matching, filtering and payment-control logic over time.' }
         ]
       }
     ]

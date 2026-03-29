@@ -24,6 +24,7 @@ var Interactions = (function () {
     AppState.currentView = viewId;
     setActiveNav(viewId);
     Render.renderView(viewId);
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     bindNavCards();
     if (viewId === 'solution-examples') {
       bindExampleTabs();

@@ -82,7 +82,8 @@ var Render = (function () {
       var productTags = s.recommendedProducts.map(function (pid) {
         var p = AppData.getProduct(pid);
         if (!p) return '';
-        var type = p.deploymentType === 'desktop' ? 'desktop' : 'api';
+        var dt = p.deploymentType;
+        var type = dt === 'desktop' ? 'desktop' : dt === 'client' ? 'client' : 'api';
         return tagPill(p.shortName, type);
       }).join(' ');
 
@@ -180,7 +181,8 @@ var Render = (function () {
     var productTags = ex.lsegProducts.map(function (pid) {
       var prod = AppData.getProduct(pid);
       var label = prod ? prod.shortName : pid;
-      var type  = prod && prod.deploymentType === 'desktop' ? 'desktop' : 'api';
+      var dt    = prod ? prod.deploymentType : '';
+      var type  = dt === 'desktop' ? 'desktop' : dt === 'client' ? 'client' : 'api';
       return tagPill(label, type);
     }).join(' ');
 
@@ -205,7 +207,8 @@ var Render = (function () {
       var prodTags = (phase.products || []).map(function (pid) {
         var prod = AppData.getProduct(pid);
         var label = prod ? prod.shortName : pid;
-        var type  = prod && prod.deploymentType === 'desktop' ? 'desktop' : 'api';
+        var dt    = prod ? prod.deploymentType : '';
+        var type  = dt === 'desktop' ? 'desktop' : dt === 'client' ? 'client' : 'api';
         return tagPill(label, type);
       }).join(' ');
 
@@ -287,9 +290,12 @@ var Render = (function () {
         '</details>';
       }).join('');
 
-      return '<details class="coll">' +
+      return '<details class="coll capability-product">' +
         '<summary>' +
-          '<span class="coll-title">' + esc(p.name) + ' ' + badge + '</span>' +
+          '<span class="cap-head-main">' +
+            '<span class="coll-title">' + esc(p.name) + '</span>' +
+            '<span class="cap-head-badge">' + badge + '</span>' +
+          '</span>' +
           '<span class="coll-meta">' + esc(p.tagline) + '</span>' +
           '<span class="coll-chevron">›</span>' +
         '</summary>' +
@@ -322,10 +328,11 @@ var Render = (function () {
     function leverItem(item) {
       var mapRows = (item.productMapping || []).map(function (m) {
         var prod = AppData.getProduct(m.productId);
-          var badgeType = prod && prod.deploymentType === 'desktop' ? 'desktop' : 'api';
+        var dt = prod ? prod.deploymentType : '';
+        var badgeType = dt === 'desktop' ? 'desktop' : dt === 'client' ? 'client' : 'api';
         return '<div class="lever-map-row">' +
-          tagPill(prod ? prod.shortName : m.productId, badgeType) +
-          '<span>' + esc(m.note) + '</span>' +
+          '<div class="lever-map-pill">' + tagPill(prod ? prod.shortName : m.productId, badgeType) + '</div>' +
+          '<div class="lever-map-note">' + esc(m.note) + '</div>' +
         '</div>';
       }).join('');
 
