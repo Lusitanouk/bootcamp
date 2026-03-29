@@ -708,7 +708,7 @@ var Render = (function () {
       if (!container) return;
       var fn = views[viewId] || viewHome;
       container.innerHTML = fn();
-      container.focus();
+      container.focus({ preventScroll: true });
     },
     buildExamplePanel: buildExamplePanel
   };

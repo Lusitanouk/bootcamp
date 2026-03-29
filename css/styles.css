@@ -38,6 +38,9 @@
 html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  /* Reserve space for the two sticky bars (site-header 56px + top-nav ~44px)
+     so focus/anchor scrolls never land content under them */
+  scroll-padding-top: 108px;
 }
 
 body {
