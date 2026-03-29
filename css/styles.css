@@ -73,14 +73,13 @@ ul {
   position: sticky;
   top: 0;
   z-index: 100;
-  overflow: visible;
 }
 
 .header-inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 10px 24px;
-  min-height: 56px;
+  padding: 0 24px;
+  height: 56px;
   display: flex;
   align-items: center;
 }
@@ -95,11 +94,8 @@ ul {
 
 .brand-logo {
   display: block;
-  height: auto;
-  max-height: 32px;
+  height: 28px;
   width: auto;
-  object-fit: contain;
-  flex-shrink: 0;
 }
 
 .brand-divider {
@@ -717,27 +713,6 @@ ul {
 }
 
 @media (max-width: 560px) {
-  .header-inner {
-    padding: 8px 12px;
-    min-height: 52px;
-  }
-
-  .brand-lockup {
-    min-width: 0;
-  }
-
-  .brand-logo {
-    max-height: 24px;
-  }
-
-  .brand-divider {
-    display: none;
-  }
-
-  .brand-product {
-    display: none;
-  }
-
   .lever-map-row {
     grid-template-columns: 1fr;
     gap: 6px;

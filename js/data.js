@@ -322,13 +322,12 @@ var AppData = (function () {
       shortName: 'Filter Partner',
       badge: 'Partner Layer',
       deploymentType: 'client',
-      tagline: 'Third-party service or orchestration layer used alongside LSEG solutions for customer-specific needs.',
+      tagline: 'Third-party screening or filtering layer operated outside the LSEG product stack.',
       description:
-        'Represents a customer-selected partner layer that can sit alongside WCOD, Verify and/or WC1 API. ' +
-        'The partner may provide filtering, orchestration, enrichment, specialist workflow or other services ' +
-        'that address customer use cases not fulfilled natively in the chosen LSEG product pattern.',
-      integrationPattern: 'Partner-managed screening, filtering, orchestration or specialist service layer connected to customer-owned applications and one or more LSEG APIs.',
-      reviewWorkflow: 'Workflow, service logic and operational handling are defined by the partner and the customer operating model.',
+        'Represents a customer-selected partner layer that consumes World-Check data and applies ' +
+        'partner-owned filtering, matching or orchestration before results return to the bank\'s own systems.',
+      integrationPattern: 'Partner-managed screening, filtering or orchestration layer connected to customer-owned applications and LSEG data feeds.',
+      reviewWorkflow: 'Workflow, filtering logic and operational handling are defined by the partner and the customer operating model.',
       dataResidency: 'Hosting and data handling depend on the partner environment and customer controls.',
       typicalBuyers: [],
       differentiators: [],
@@ -515,11 +514,10 @@ var AppData = (function () {
       primaryProduct: 'wcod',
       rationale:
         'OnDemand is the natural fit when the bank already owns matching, filtering, payment controls, alert handling and case workflow. ' +
-        'A filtering partner may still sit alongside WCOD, Verify and/or WC1 API to cover specific customer requirements, specialist routing or service gaps that are not handled natively. ' +
-        'The client value is better data into an existing operating model without replacing core screening infrastructure.',
+        'The client value is better data into an existing operating model: current World-Check content, structured attributes, provenance and filtering support that help the bank and its partner layer reduce noise without replacing core screening infrastructure.',
       keyQuestions: [
         'Which parts of the screening stack do you already own internally: matching, filtering, alert handling, case workflow, or all of them?',
-        'Where does your filtering partner sit today: pre-screening enrichment, match suppression, routing, specialist workflow, or all of the above?',
+        'Where does your filtering partner sit today: pre-screening enrichment, match suppression, routing, or all three?',
         'Is the bigger pain point data freshness, false positives, partner orchestration, or auditability across multiple internal systems?',
         'Do KYC and payment screening use the same data supply and filtering layer, or separate stacks?',
         'What would make the biggest commercial difference: less noise for analysts, better payment-control responsiveness, or easier integration into the bank\'s own architecture?'
@@ -527,7 +525,6 @@ var AppData = (function () {
       talkPoints: [
         'This is not a workflow replacement conversation; it is a data-and-operating-model fit conversation.',
         'OnDemand lets the bank keep its own engine, filtering partner and review workflow while improving the quality and freshness of the World-Check data feeding that stack.',
-        'A partner layer can also sit with Verify or WC1 API where the bank wants extra orchestration, niche controls or customer-specific service coverage.',
         'For large banks, the value is often better filtering precision, fewer avoidable false positives and faster use of updated content across KYC and payments.',
         'If the client already has a mature internal stack, data delivery is often more realistic than asking them to move into a vendor-managed workflow.'
       ],
