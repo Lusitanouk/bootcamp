@@ -261,8 +261,8 @@ var Render = (function () {
   function viewCapabilityExplorer() {
     var domains  = AppData.capabilityDomains;
     var orderMap = {
-      'wc1': 0,
-      'wcod': 1,
+      'wcod': 0,
+      'wc1': 1,
       'verify': 2,
       'professional-services': 3,
       'custom-app': 4,
