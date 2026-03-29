@@ -379,7 +379,7 @@ var Render = (function () {
         'the product mapping and configuration detail.</p>' +
       '</div>' +
 
-      stageGroup('Before Screening',  levers.beforeScreening,  true)  +
+      stageGroup('Before Screening',  levers.beforeScreening,  false)  +
       stageGroup('During Screening',  levers.duringScreening,  false) +
       stageGroup('After Screening',   levers.afterScreening,   false) +
       stageGroup('In Operations',     levers.inOperations,     false) +
