@@ -39,30 +39,27 @@
       ],
       capabilities: {
         'overview': {
-          summary: 'Managed screening and remediation platform for firms that need review workflow, audit trail and ongoing monitoring, not just a screening response.',
+          summary: 'Managed screening platform for firms that need workflow, audit trail and ongoing monitoring, not just a screening response.',
           keyPoints: [
-            'Advanced matching with secondary identifiers',
             'Sanctions, PEP and adverse media screening in one platform',
             'Ongoing monitoring and rescreening included',
             'Case management, analyst collaboration and portal-based operations'
           ]
         },
         'data-quality': {
-          summary: 'Relies on rich, structured World-Check content plus secondary identifiers to improve precision, review confidence and downstream decision quality.',
+          summary: 'Uses rich, structured World-Check content to improve precision, review confidence and downstream decisions.',
           keyPoints: [
             'Uses rich, structured and de-duplicated World-Check data',
             'Secondary identifiers help sharpen match precision',
-            'Supports customer and third-party screening contexts with fuller record context',
             'Data captured in screening feeds remediation, provenance review and audit steps'
           ]
         },
         'screening-matching': {
-          summary: 'Offers configurable screening with advanced matching for KYC, client screening and ongoing-screening operating models.',
+          summary: 'Offers configurable screening with advanced matching for KYC, client screening and ongoing-screening use cases.',
           keyPoints: [
             'Advanced name-matching algorithms with secondary identifiers',
             'PEP and sanctions screening',
-            'Adverse media checks with AI-powered relevance filtering',
-            'Supports customer and third-party screening plus internal watchlists'
+            'Adverse media checks with AI-powered relevance filtering'
           ]
         },
         'workflow-review': {
@@ -70,8 +67,7 @@
           keyPoints: [
             'Case management and collaboration tools are built in',
             'Workflow optimisation includes routing, risk tagging and status tracking',
-            'Every action is logged and date-stamped for audit trail needs',
-            'Admin and end-user portal experiences support managed operational workflows'
+            'Every action is logged and date-stamped for audit trail needs'
           ]
         },
         'post-processing': {
@@ -79,25 +75,22 @@
           keyPoints: [
             'Configurable screening and matching settings support risk-based automation',
             'Filtering technology helps prioritise relevant alerts',
-            'Case records preserve rationale and remediation history',
-            'Clearer insight into sanctions, PEP, reputational and financial crime risk'
+            'Case records preserve rationale and remediation history'
           ]
         },
         'integration': {
-          summary: 'Supports direct platform use, API-led integration and hybrid workflows where customer systems and compliance teams share the process.',
+          summary: 'Supports direct platform use, API-led integration and hybrid workflows.',
           keyPoints: [
             'WC1 API integration into onboarding systems and compliance workflows',
             'Batch screening and Zero Footprint WC1 API integration are available',
-            'Salesforce integration supports connected onboarding and monitoring',
-            'Admin portal is available for managed workflow, and end-user portal access is available in WC1'
+            'Salesforce integration supports connected onboarding and monitoring'
           ]
         },
         'false-positive': {
-          summary: 'Aims to reduce false positives through secondary matching, configurable settings and relevance filtering aligned to the client’s risk appetite and operating model.',
+          summary: 'Reduces false positives through secondary matching, configurable settings and relevance filtering aligned to risk appetite and operations.',
           keyPoints: [
             'Secondary identifiers reduce ambiguous name-only matches',
             'Configurable data selection, name-matching and filtering settings help align outcomes to risk appetite and operations',
-            'AI-powered relevance filtering supports adverse media review',
             'Reporting, analytics and remediation history support ongoing tuning over time'
           ]
         }
@@ -136,7 +129,6 @@
           keyPoints: [
             'API-first solution for timely risk-intelligence access',
             'Structured, enriched, machine-readable data delivery',
-            'Designed for faster onboarding, KYC and payment-control use cases',
             'Supports delta-style retrieval patterns when records change'
           ]
         },
@@ -145,7 +137,6 @@
           keyPoints: [
             'Single, consistent data model across sanctions, PEPs and adverse media',
             'Detailed classifications, granular fields and source provenance',
-            'Rich, structured and de-duplicated World-Check data',
             'Tailorable data model aligned to customer risk appetite and review needs'
           ]
         },
@@ -154,7 +145,6 @@
           keyPoints: [
             'Built to supply current and timely risk data into customer-owned screening and payment-control stacks',
             'Deep filtering and enhanced categorisation reduce screening noise',
-            'Structured risk taxonomy and richer attributes sharpen focus on true risk indicators',
             'Transparent record change summaries highlight what changed'
           ]
         },
@@ -168,21 +158,19 @@
           ]
         },
         'post-processing': {
-          summary: 'Best used where customer platforms will apply their own routing, sync and decision logic on top of the delivered data.',
+          summary: 'Best used where customer platforms apply their own routing, sync and decision logic on top of the delivered data.',
           keyPoints: [
             'Metadata and provenance support downstream decision making',
             'Change summaries help keep internal systems in sync',
-            'Data can be filtered to match compliance framework needs',
             'Operational decisioning remains in customer-controlled workflows'
           ]
         },
         'integration': {
-          summary: 'API-first architecture is designed to slot into evolving compliance stacks and modern payment workflows.',
+          summary: 'API-first architecture designed to slot into evolving compliance stacks and modern payment workflows.',
           keyPoints: [
             'Easily absorbed into in-house, cloud-based or third-party platforms',
             'Supports digital onboarding and customer-owned payment-control environments',
-            'Admin portal access supports setup and administration',
-            'Built to scale as regulations and risk landscapes change'
+            'Admin portal access supports setup and administration'
           ]
         },
         'false-positive': {
@@ -190,8 +178,7 @@
           keyPoints: [
             'Deep filtering and categorisation reduce overscreening',
             'Granular fields and provenance sharpen matching context',
-            'Tailored data outputs help focus only on relevant content',
-            'Supports automated workflows that accelerate remediation'
+            'Tailored data outputs help focus only on relevant content'
           ]
         }
       }
@@ -224,7 +211,7 @@
         'Supports embedded screening experiences for digital channels',
         'Includes admin access but no end-user portal or managed case workflow'
       ],
-      capabilities: { 'overview': { summary: 'Low-latency embedded screening API built for digital onboarding and other moments where the customer journey needs a fast risk decision.', keyPoints: [ 'Next-generation cloud-native screening API', 'Embedded low-latency checks within onboarding and transaction-adjacent customer screening flows', 'Useful at customer lifecycle checkpoints such as onboarding, account changes, beneficiary setup or payout release', 'Stateless architecture designed for privacy-sensitive use cases', 'High availability for digital platforms and neobanks' ] }, 'data-quality': { summary: 'Uses trusted, structured World-Check data and configurable matching inputs to improve precision in embedded screening scenarios.', keyPoints: [ 'Screens against rich, structured and de-duplicated World-Check data', 'Supports secondary identifiers to refine name matching', 'Coverage includes sanctions, PEPs, RCAs, adverse media, SOEs and SIEs', 'Supports screening against World-Check data and client watchlists with source provenance in the response' ] }, 'screening-matching': { summary: 'Focused on fast, configurable screening where customer systems need a rapid response at key decision points.', keyPoints: [ 'Advanced multi-layered name-matching algorithms', 'Configurable screening parameters and policy alignment options', 'Flexible auto-resolution capabilities', 'Core use cases include onboarding, KYC and transaction-triggered party screening workflows' ] }, 'workflow-review': { summary: 'Optimised for screening at the point of interaction rather than for built-in remediation case management.', keyPoints: [ 'No persistent customer data store in the product', 'No built-in case management, audit workflow or ongoing screening layer', 'Admin portal access supports configuration and administration', 'Results can be routed into customer-managed review flows', 'Can sit alongside broader workflow tooling when governed remediation is needed' ] }, 'post-processing': { summary: 'Designed to feed customer systems with fast screening outcomes that support automated routing and transaction-decision checkpoints.', keyPoints: [ 'Supports consistent screening across onboarding, account changes and transaction-triggered checkpoints', 'Results can drive customer-side triage and escalation logic', 'Low-latency responses reduce friction in customer journeys', 'Decisioning policies remain configurable and customer-aligned' ] }, 'integration': { summary: 'Built for seamless integration, global scale and strong privacy posture in modern cloud environments.', keyPoints: [ 'Cloud-native AWS infrastructure engineered for global high availability', 'Instant scalability and resilience under demand spikes', 'In-region hosting supports sovereignty and privacy requirements', 'Admin access supports setup and policy administration, while end-user portal access is not part of the model' ] }, 'false-positive': { summary: 'Positions false-positive reduction around advanced matching, configurability and rapid screening that can be aligned to the client’s risk appetite and operating model.', keyPoints: [ 'Advanced technology helps manage regional name-matching challenges', 'Secondary identifiers improve confidence in relevant matches', 'Configurable data selection, name-matching and inclusion or exclusion settings help align outcomes to risk appetite and operations', 'Severity-based suppression, reporting and analytics support ongoing tuning and faster resolution' ] } }
+      capabilities: { 'overview': { summary: 'Low-latency embedded screening API for digital onboarding and other moments where the customer journey needs a fast risk decision.', keyPoints: [ 'Embedded low-latency checks within onboarding and transaction-adjacent flows', 'Useful at lifecycle checkpoints such as onboarding, account changes and beneficiary setup', 'Stateless architecture designed for privacy-sensitive use cases' ] }, 'data-quality': { summary: 'Uses trusted, structured World-Check data and configurable matching inputs to improve precision in embedded screening scenarios.', keyPoints: [ 'Screens against rich, structured and de-duplicated World-Check data', 'Supports secondary identifiers to refine name matching', 'Supports World-Check data and client watchlists with source provenance in the response' ] }, 'screening-matching': { summary: 'Focused on fast, configurable screening where customer systems need a rapid response at key decision points.', keyPoints: [ 'Advanced multi-layered name-matching algorithms', 'Configurable screening parameters and policy alignment options', 'Flexible auto-resolution capabilities' ] }, 'workflow-review': { summary: 'Optimised for screening at the point of interaction rather than for built-in remediation case management.', keyPoints: [ 'No persistent customer data store in the product', 'No built-in case management, audit workflow or ongoing screening layer', 'Results can be routed into customer-managed review flows' ] }, 'post-processing': { summary: 'Designed to feed customer systems with fast screening outcomes that support automated routing and transaction-decision checkpoints.', keyPoints: [ 'Supports consistent screening across onboarding and transaction-triggered checkpoints', 'Results can drive customer-side triage and escalation logic', 'Decisioning policies remain configurable and customer-aligned' ] }, 'integration': { summary: 'Built for seamless integration, global scale and strong privacy posture in modern cloud environments.', keyPoints: [ 'Cloud-native AWS infrastructure engineered for high availability', 'In-region hosting supports sovereignty and privacy requirements', 'Admin access supports setup and policy administration' ] }, 'false-positive': { summary: 'Reduces false positives through advanced matching and configurable screening aligned to risk appetite and operations.', keyPoints: [ 'Secondary identifiers improve confidence in relevant matches', 'Configurable data selection, name-matching and inclusion or exclusion settings help align outcomes to risk appetite and operations', 'Severity-based suppression, reporting and analytics support ongoing tuning and faster resolution' ] } }
     },
 
     {
@@ -243,7 +230,7 @@
       dataResidency: 'Operates alongside the client architecture and chosen LSEG products; hosting remains defined by the underlying solution pattern.',
       typicalBuyers: [ 'Teams that need faster time to value and less implementation risk', 'Clients with limited internal delivery capacity or specialist compliance engineering resources', 'Programmes involving migration, workflow redesign, tuning or operational uplift', 'Customers that need additional analyst capacity to remediate alerts on their behalf' ],
       differentiators: [ 'Helps clients get value faster without carrying the full delivery burden themselves', 'Useful when solution design, migration or tuning is as important as the product choice', 'Can strengthen customer outcomes across data, screening and workflow-led operating models', 'Can add analyst capacity for alert remediation where client teams are under pressure' ],
-      capabilities: { 'overview': { summary: 'Service-led support for clients that need implementation, tuning, migration, remediation help or additional analyst capacity around their chosen LSEG solution.', keyPoints: [ 'Speeds up delivery where internal teams are stretched', 'Helps shape solution design around customer-specific workflows and controls', 'Supports migration, remediation and optimisation programmes', 'Can provide additional analyst support to help remediate alerts on behalf of the client' ] }, 'data-quality': { summary: 'Can help clients improve upstream data preparation, field quality and operational handling so the underlying product performs better.', keyPoints: [ 'Supports data clean-up and structured-input design', 'Helps clients reduce avoidable noise caused by poor inputs', 'Can improve how data is prepared for screening and workflow steps', 'Useful where poor upstream data quality is driving unnecessary alert volumes' ] }, 'screening-matching': { summary: 'Helps clients configure, tune and operationalise screening models so they fit the real use case rather than a generic deployment.', keyPoints: [ 'Supports policy, threshold and scope design', 'Helps align screening models to customer-specific risk appetite', 'Can refine how native product features are applied to a given use case', 'Can help reduce alert volumes before they reach client or LSEG remediation teams' ] }, 'workflow-review': { summary: 'Especially relevant where the client needs help designing queues, escalation paths, analyst workflows or extra analyst capacity for review and remediation.', keyPoints: [ 'Supports workflow and remediation design', 'Can help define queueing, triage and escalation approaches', 'Useful during migration from legacy tools or fragmented internal processes', 'Can provide additional analyst support to remediate alerts on behalf of the client where capacity is constrained' ] }, 'post-processing': { summary: 'Can help clients shape routing, suppression and downstream handling so screening results become workable operational outcomes.', keyPoints: [ 'Supports routing and post-processing design', 'Helps clients reduce friction between screening outputs and business workflow', 'Can improve how review decisions feed downstream action', 'Useful where better routing and suppression reduce the number of alerts needing analyst remediation' ] }, 'integration': { summary: 'Adds delivery capacity and solution-design support across API, workflow and hybrid deployments, with optional remediation support once live.', keyPoints: [ 'Supports implementation planning and integration acceleration', 'Can help customers migrate from legacy integrations or fragmented controls', 'Useful where partner, customer and LSEG roles need to be aligned', 'Can extend into analyst support models where clients need help managing live alert volumes' ] }, 'false-positive': { summary: 'Can improve false-positive outcomes by helping clients tune inputs, screening scope, routing and operating practices around the chosen product mix.', keyPoints: [ 'Supports tuning reviews and operating-model optimisation', 'Helps identify whether noise is caused by data, scope, matching or workflow design', 'Can reduce analyst burden through better triage and suppression design', 'Can add remediation capacity where clients need extra analyst support while broader false-positive improvements are being implemented' ] } }
+      capabilities: { 'overview': { summary: 'Service-led support for clients that need implementation, tuning, migration, remediation help or additional analyst capacity.', keyPoints: [ 'Speeds up delivery where internal teams are stretched', 'Helps shape solution design around customer-specific workflows and controls', 'Can provide additional analyst support to remediate alerts on behalf of the client' ] }, 'data-quality': { summary: 'Can help clients improve upstream data preparation, field quality and operational handling so the underlying product performs better.', keyPoints: [ 'Supports data clean-up and structured-input design', 'Helps clients reduce avoidable noise caused by poor inputs', 'Useful where poor upstream data quality is driving unnecessary alert volumes' ] }, 'screening-matching': { summary: 'Helps clients configure and tune screening models so they fit the real use case rather than a generic deployment.', keyPoints: [ 'Supports policy, threshold and scope design', 'Helps align screening models to customer-specific risk appetite', 'Can help reduce alert volumes before they reach client or LSEG remediation teams' ] }, 'workflow-review': { summary: 'Especially relevant where the client needs help designing queues, escalation paths, analyst workflows or extra analyst capacity.', keyPoints: [ 'Supports workflow and remediation design', 'Can help define queueing, triage and escalation approaches', 'Can provide additional analyst support to remediate alerts on behalf of the client where capacity is constrained' ] }, 'post-processing': { summary: 'Can help clients shape routing, suppression and downstream handling so screening results become workable operational outcomes.', keyPoints: [ 'Supports routing and post-processing design', 'Helps clients reduce friction between screening outputs and business workflow', 'Useful where better routing and suppression reduce the number of alerts needing analyst remediation' ] }, 'integration': { summary: 'Adds delivery capacity and solution-design support across API, workflow and hybrid deployments, with optional remediation support once live.', keyPoints: [ 'Supports implementation planning and integration acceleration', 'Can help customers migrate from legacy integrations or fragmented controls', 'Can extend into analyst support models where clients need help managing live alert volumes' ] }, 'false-positive': { summary: 'Can improve false-positive outcomes by helping clients tune inputs, screening scope, routing and operating practices around the chosen product mix.', keyPoints: [ 'Supports tuning reviews and operating-model optimisation', 'Helps identify whether noise is caused by data, scope, matching or workflow design', 'Can reduce analyst burden through better triage and suppression design' ] } }
     },
 
     {
@@ -276,21 +263,15 @@
       recommendedProducts: ['wcod', 'verify', 'wc1', 'professional-services', 'custom-app'],
       primaryProduct: 'wc1',
       rationale:
-        'Verify supports low-latency KYC screening inside the onboarding journey where the PSP wants a fast answer at the point of submission. ' +
-        'OnDemand supplies current World-Check data into the PSP\'s own screening stack when the client already owns matching and payment controls. WC1 fits ' +
-        'when the PSP also needs governed review, audit and ongoing-screening workflow after a hit is found.',
+        'Verify fits fast KYC decisions inside the onboarding journey. OnDemand fits where the PSP owns its own screening and payment controls, while WC1 fits where governed review, audit and ongoing screening are also needed.',
       keyQuestions: [
         'How quickly do you need to refresh PSU checks after new or amended restrictive measures enter into force?',
         'Do you run your own screening engine, or rely fully on a vendor workflow today?',
-        'What is your target onboarding time for a standard low-risk retail customer?',
-        'How are payer, payee and beneficiary checks handled before payment execution?',
         'How are restrictive-measures checks, verification of payee and payment-decision ownership split operationally today?'
       ],
       talkPoints: [
         'Verify helps reduce onboarding friction by returning a fast screening response inside the digital journey.',
-        'OnDemand is relevant when you want current World-Check data feeding your own screening stack rather than a managed vendor workflow.',
-        'Professional Services can help if the PSP needs to stand up the target design quickly, tune controls, or bridge internal delivery gaps.',
-        'For EU instant payments, the regulatory conversation is not just transaction speed but also restrictive-measures controls and verification of payee.',
+        'For EU instant payments, the conversation is not just speed but restrictive-measures controls, verification of payee and auditability.',
         'WC1 gives operations teams an audit-ready place to manage KYC and ongoing-screening cases when alerts need human ownership.'
       ],
       objections: [
@@ -327,20 +308,15 @@
       recommendedProducts: ['verify', 'wc1', 'professional-services', 'custom-app'],
       primaryProduct: 'wc1',
       rationale:
-        'Verify fits the embedded screening moments in onboarding and transaction flows where the marketplace wants a fast yes-or-escalate answer. ' +
-        'WC1 fits the operational layer for ongoing screening, alert handling, review and audit ' +
-        'when buyers or sellers need to be restricted, monitored or offboarded.',
+        'Verify fits embedded screening at onboarding and transaction checkpoints. WC1 fits the operational layer when the marketplace needs ongoing screening, alert handling and governed review for buyers or sellers already on platform.',
       keyQuestions: [
         'Do you need to screen buyers, sellers, or both?',
         'Which moments matter most: onboarding, wallet funding, payout, or all three?',
-        'How quickly do trust-and-safety or payments teams need to act on new sanctions or adverse media hits?',
-        'Do you already have separate tooling for transaction controls and account restrictions?',
         'What happens operationally when a seller is flagged after funds are already on platform?'
       ],
       talkPoints: [
         'You can screen quietly inside the user journey without adding visible compliance friction.',
         'WC1 ongoing screening means you are not relying only on the onboarding decision; you can react when a seller or buyer profile changes later, including adverse media developments.',
-        'Professional Services can help if the marketplace needs support designing trust-and-safety workflows, escalation rules or phased rollout.',
         'The operational question is what to do with money-in, money-out and account status once a sanctions, PEP or adverse media alert appears.'
       ],
       objections: [
@@ -377,24 +353,15 @@
       recommendedProducts: ['verify', 'wc1', 'professional-services', 'custom-app'],
       primaryProduct: 'wc1',
       rationale:
-        'WC1 is the natural centre of gravity when a property firm needs governed screening, review workflow, ' +
-        'audit trail and documented escalation around higher-value transactions. Verify complements that by handling embedded API-led ' +
-        'upfront screening against World-Check and client watchlists without pushing the firm toward a raw-data ' +
-        'operating model that is usually unnecessary at this volume. The wider compliance need is often not only name screening, ' +
-        'but also documenting beneficial ownership, identifying higher-risk intermediaries and knowing when enhanced due diligence is required.',
+        'WC1 is the natural fit when a property firm needs governed screening, review workflow, audit trail and documented escalation around higher-value transactions. Verify complements that by handling embedded upfront screening without pushing the firm into a raw-data operating model.',
       keyQuestions: [
         'Which parties need screening: buyer, seller, beneficial owner, broker, introducer, legal representative, or all of them?',
         'At which stages do you need controls: client intake, offer acceptance, funds receipt, exchange, or completion?',
-        'How do you identify and document beneficial ownership, including layered entities or trusts?',
-        'How often do higher-risk matters require enhanced due diligence, adverse media review or external research?',
-        'Who owns the compliance decision when a party is flagged close to exchange or completion?',
-        'Do you need source of funds or source of wealth checks alongside screening for higher-risk deals?'
+        'Who owns the compliance decision when a party is flagged close to exchange or completion?'
       ],
       talkPoints: [
         'Verify can handle lightweight embedded API screening at intake, while WC1 manages governed review, escalation and audit.',
         'The key value is not only screening coverage but operational control when a property transaction is time-sensitive and high value.',
-        'In property matters, beneficial ownership, intermediaries and source-of-funds context often matter as much as the initial name-screening result.',
-        'Professional Services can help where the client needs support shaping intake, escalation or enhanced-due-diligence workflow around a small compliance team.',
         'For most property firms, WC1 plus Verify is a more realistic fit than building around raw data delivery.'
       ],
       objections: [
@@ -430,21 +397,15 @@
       recommendedProducts: ['wcod', 'professional-services', 'custom-app', 'filter-partner'],
       primaryProduct: 'wcod',
       rationale:
-        'OnDemand is the natural fit when the bank already owns matching, filtering, payment controls, alert handling and case workflow. ' +
-        'The client value is better data into an existing operating model: current, rich World-Check content, structured attributes, source provenance and filtering support that help the bank and its partner layer reduce noise without replacing core screening infrastructure. ' +
-        'In this pattern, ongoing monitoring remains in the bank’s own engine or partner workflow unless the client chooses to add WC1.',
+        'OnDemand is the natural fit when the bank already owns matching, filtering, payment controls, alert handling and case workflow. The value is better data into the existing stack: current, rich World-Check content without a workflow rip-and-replace.',
       keyQuestions: [
         'Which parts of the screening stack do you already own internally: matching, filtering, alert handling, case workflow, or all of them?',
         'Where does your filtering partner sit today: pre-screening enrichment, match suppression, routing, or all three?',
-        'Is the bigger pain point data freshness, false positives, partner orchestration, or auditability across multiple internal systems?',
-        'Do KYC and payment screening use the same data supply and filtering layer, or separate stacks?',
-        'What would make the biggest commercial difference: less noise for analysts, better payment-control responsiveness, or easier integration into the bank\'s own architecture?'
+        'Is the bigger pain point data freshness, false positives, partner orchestration, or auditability across multiple internal systems?'
       ],
       talkPoints: [
         'This is not a workflow replacement conversation; it is a data-and-operating-model fit conversation.',
         'OnDemand lets the bank keep its own engine, filtering partner and review workflow while improving the quality and freshness of the World-Check data feeding that stack.',
-        'Ongoing monitoring can still exist in this model, but it remains customer-owned or partner-owned unless the bank chooses to add WC1.',
-        'Professional Services can help accelerate integration, tuning and migration where the bank wants to improve outcomes without overloading internal delivery teams.',
         'For large banks, the value is often better filtering precision, fewer avoidable false positives and faster use of updated content across KYC and payments.',
         'If the client already has a mature internal stack, data delivery is often more realistic than asking them to move into a vendor-managed workflow.'
       ],
@@ -482,19 +443,15 @@
       recommendedProducts: ['verify', 'wc1', 'professional-services', 'custom-app'],
       primaryProduct: 'wc1',
       rationale:
-        'Verify supports embedded screening directly in the onboarding journey. ' +
-        'WC1 adds workflow and ongoing screening where the marketplace needs governed escalation, ' +
-        'auditability or follow-up handling across host and partner populations.',
+        'Verify supports embedded screening directly in the onboarding journey. WC1 adds workflow and ongoing screening where the marketplace needs governed escalation, auditability or follow-up handling across hosts and partners.',
       keyQuestions: [
         'Are you screening hosts, property managers, partners, or all of them?',
         'Is there an ongoing-screening or post-onboarding review requirement?',
-        'What is the regulatory driver — sanctions compliance, platform safety, or both?',
-        'Do you need to screen at host onboarding, listing creation, booking, or payout events?'
+        'What is the regulatory driver — sanctions compliance, platform safety, or both?'
       ],
       talkPoints: [
         'Verify and WC1 can support screening inside onboarding and partner-management flows without creating visible compliance friction for hosts.',
         'WC1 ongoing screening means the marketplace can be alerted if a listed host or partner becomes higher risk after onboarding.',
-        'Professional Services can help if the marketplace needs a phased rollout, workflow design help or support integrating screening into multiple partner journeys.',
         'Rich match attributes support customer-defined auto-clear and escalation rules, reducing unnecessary analyst effort.'
       ],
       objections: [
