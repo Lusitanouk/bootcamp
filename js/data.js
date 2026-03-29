@@ -996,7 +996,7 @@
       flowArrows: ['OAuth2 Pull', 'World-Check data', 'Match / Filter / Route'],
       comparison: {
         authentication:    'OAuth 2.0',
-        screeningModel:    'Customer-built',
+        screeningModel:    'Customer/Partner built',
         dataStructureProvenance: 'Rich structured records + source provenance',
         caseManagement:    false,
         ongoingScreening:  false,
@@ -1035,7 +1035,7 @@
       flowArrows: ['HMAC Auth', 'Screen request', 'Case lifecycle'],
       comparison: {
         authentication:    'HMAC (key / secret)',
-        screeningModel:    'Stateful / cases',
+        screeningModel:    'SaaS',
         dataStructureProvenance: 'Limited',
         caseManagement:    true,
         ongoingScreening:  true,
@@ -1080,7 +1080,7 @@
       flowArrows: ['OAuth2', 'Screen request', 'Case / monitoring events'],
       comparison: {
         authentication:    'OAuth 2.0',
-        screeningModel:    'Stateful / cases',
+        screeningModel:    'SaaS',
         dataStructureProvenance: 'Rich case data + source provenance',
         caseManagement:    true,
         ongoingScreening:  true,
@@ -1116,7 +1116,7 @@
       flowArrows: ['Submit data', 'OAuth2 + payload', 'Low-latency response', 'Decision'],
       comparison: {
         authentication:    'OAuth 2.0',
-        screeningModel:    'Stateless (one call)',
+        screeningModel:    'SaaS (Stateless)',
         dataStructureProvenance: 'Structured response + source provenance',
         caseManagement:    false,
         ongoingScreening:  false,
