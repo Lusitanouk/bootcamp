@@ -514,7 +514,8 @@ var AppData = (function () {
       primaryProduct: 'wcod',
       rationale:
         'OnDemand is the natural fit when the bank already owns matching, filtering, payment controls, alert handling and case workflow. ' +
-        'The client value is better data into an existing operating model: current World-Check content, structured attributes, provenance and filtering support that help the bank and its partner layer reduce noise without replacing core screening infrastructure.',
+        'The client value is better data into an existing operating model: current World-Check content, structured attributes, provenance and filtering support that help the bank and its partner layer reduce noise without replacing core screening infrastructure. ' +
+        'In this pattern, ongoing monitoring remains in the bank’s own engine or partner workflow unless the client chooses to add WC1.',
       keyQuestions: [
         'Which parts of the screening stack do you already own internally: matching, filtering, alert handling, case workflow, or all of them?',
         'Where does your filtering partner sit today: pre-screening enrichment, match suppression, routing, or all three?',
@@ -525,6 +526,7 @@ var AppData = (function () {
       talkPoints: [
         'This is not a workflow replacement conversation; it is a data-and-operating-model fit conversation.',
         'OnDemand lets the bank keep its own engine, filtering partner and review workflow while improving the quality and freshness of the World-Check data feeding that stack.',
+        'Ongoing monitoring can still exist in this model, but it remains customer-owned or partner-owned unless the bank chooses to add WC1.',
         'For large banks, the value is often better filtering precision, fewer avoidable false positives and faster use of updated content across KYC and payments.',
         'If the client already has a mature internal stack, data delivery is often more realistic than asking them to move into a vendor-managed workflow.'
       ],
@@ -805,14 +807,14 @@ var AppData = (function () {
       description:
         'A Tier 1 bank already operates its own KYC and payment-screening environment. World-Check OnDemand ' +
         'supplies structured World-Check data into the bank’s custom applications and filtering partner so the bank ' +
-        'can control matching, filtering, routing and payment decisioning inside its own operating model.',
+        'can control matching, filtering, routing, monitoring and payment decisioning inside its own operating model.',
       phases: [
         { id: 1, title: 'Client Intake',        desc: 'Bank-owned channels collect customer, account and payment party data.',                                                        products: ['custom-app'] },
         { id: 2, title: 'Data Delivery',        desc: 'OnDemand delivers structured World-Check data into the bank’s filtering partner and custom screening stack.',               products: ['wcod', 'filter-partner', 'custom-app'] },
         { id: 3, title: 'KYC Screening',        desc: 'The bank’s own KYC engine screens customers and related parties using OnDemand-fed data and customer-defined policies.',      products: ['custom-app', 'filter-partner', 'wcod'] },
         { id: 4, title: 'Payment Screening',    desc: 'The bank’s payment controls use the same OnDemand-fed data and partner filtering layer for pre-execution checks.',            products: ['custom-app', 'filter-partner', 'wcod'] },
-        { id: 5, title: 'Triage & Routing',     desc: 'Customer-owned rules and partner filtering suppress noise, prioritise likely matches and route only review-worthy alerts.',    products: ['custom-app', 'filter-partner', 'wcod'] },
-        { id: 6, title: 'Decision & Audit',     desc: 'The bank records disposition, payment outcome and audit evidence in its own workflow environment.',                         products: ['custom-app', 'filter-partner'] }
+        { id: 5, title: 'Triage, Routing & Monitoring', desc: 'Customer-owned rules and partner filtering suppress noise, prioritise likely matches and feed ongoing monitoring inside the bank’s own stack.', products: ['custom-app', 'filter-partner', 'wcod'] },
+        { id: 6, title: 'Decision & Audit',     desc: 'The bank records disposition, monitoring outcome and payment decision in its own workflow environment.',                         products: ['custom-app', 'filter-partner'] }
       ],
       lanes: [
         { id: 'customer',      label: 'Customer / Counterparty',          type: 'actor' },
@@ -831,9 +833,9 @@ var AppData = (function () {
         { id: 6,  lane: 'partner',     label: 'Partner forwards filtered screening request into the bank-owned screening engine with OnDemand-fed data references', type: 'api-request', to: 'bank-engine' },
         { id: 7,  lane: 'bank-engine', label: 'Bank-owned KYC or payment-screening engine evaluates parties using OnDemand data, bank rules and partner filtering output', type: 'process' },
         { id: 8,  lane: 'bank-engine', label: 'Return scored result, matched records and supporting attributes to bank apps and partner layer', type: 'api-response', from: 'bank-engine' },
-        { id: 9,  lane: 'bank-app',    label: 'Low-risk items are auto-cleared; higher-risk alerts are routed into the bank’s own review workflow', type: 'process' },
-        { id: 10, lane: 'ops',         label: 'Bank compliance or payments operations review remaining alerts and record disposition', type: 'user-action' },
-        { id: 11, lane: 'bank-app',    label: 'Bank-owned workflow records final customer or payment decision with audit evidence', type: 'outcome' }
+        { id: 9,  lane: 'bank-app',    label: 'Low-risk items are auto-cleared; higher-risk alerts are routed into the bank’s own review and monitoring workflow', type: 'process' },
+        { id: 10, lane: 'ops',         label: 'Bank compliance or payments operations review remaining alerts, monitoring events and record disposition', type: 'user-action' },
+        { id: 11, lane: 'bank-app',    label: 'Bank-owned workflow records final customer, monitoring or payment decision with audit evidence', type: 'outcome' }
       ]
     }
   ];
