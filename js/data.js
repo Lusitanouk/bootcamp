@@ -1132,7 +1132,9 @@ var AppData = (function () {
         adminPortal:       true,
         endUserPortal:     false,
         dataResidency:     'Client / partner hosted',
-        integrationEffort: 'High (build engine)'
+        integrationEffort: 'High (build engine)',
+        volume:            'Very high',
+        customerTier:      'Tier 1–2'
       }
     },
     {
@@ -1168,7 +1170,9 @@ var AppData = (function () {
         adminPortal:       true,
         endUserPortal:     true,
         dataResidency:     'EMEA',
-        integrationEffort: 'Medium'
+        integrationEffort: 'Medium',
+        volume:            'Medium',
+        customerTier:      'Tier 2–3'
       }
     },
     {
@@ -1210,7 +1214,9 @@ var AppData = (function () {
         adminPortal:       true,
         endUserPortal:     true,
         dataResidency:     'EMEA',
-        integrationEffort: 'Medium (recommended)'
+        integrationEffort: 'Medium (recommended)',
+        volume:            'High',
+        customerTier:      'Tier 2–3'
       }
     },
     {
@@ -1243,7 +1249,9 @@ var AppData = (function () {
         adminPortal:       true,
         endUserPortal:     false,
         dataResidency:     'EMEA / APAC',
-        integrationEffort: 'Low'
+        integrationEffort: 'Low',
+        volume:            'Very high',
+        customerTier:      'Tier 1–3'
       }
     }
   ];

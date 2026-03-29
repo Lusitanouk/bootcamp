@@ -628,6 +628,8 @@ var Render = (function () {
     };
 
     var compRows = [
+      { label: 'Volume',             key: 'volume',            bool: false },
+      { label: 'Customer tier',      key: 'customerTier',      bool: false },
       { label: 'Authentication',     key: 'authentication',    bool: false },
       { label: 'Screening model',    key: 'screeningModel',    bool: false },
       { label: 'Case management',    key: 'caseManagement',    bool: true,  trueLabel: 'Built-in' },
