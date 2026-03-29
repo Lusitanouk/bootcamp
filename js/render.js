@@ -462,18 +462,15 @@ var Render = (function () {
           'Discovery questions by theme and objection handling. Click any item to expand.' +
         '</p>' +
       '</div>' +
-      '<div class="two-col">' +
-        '<div>' +
-          '<p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;' +
-             'color:#9aa0b8;margin-bottom:10px;">Discovery Questions</p>' +
-          qGroups +
-        '</div>' +
-        '<div>' +
-          '<p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;' +
-             'color:#9aa0b8;margin-bottom:10px;">Objection Handling</p>' +
-          objItems +
-        '</div>' +
+
+      '<div class="example-tabs">' +
+        '<button class="example-tab active" data-stt-tab="discovery">Discovery Questions</button>' +
+        '<button class="example-tab"        data-stt-tab="objections">Objection Handling</button>' +
       '</div>' +
+
+      '<div id="stt-tab-discovery">' + qGroups + '</div>' +
+      '<div id="stt-tab-objections" style="display:none;">' + objItems + '</div>' +
+
     '</section>';
   }
 

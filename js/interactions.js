@@ -33,6 +33,9 @@ var Interactions = (function () {
     if (viewId === 'api-comparison') {
       bindApiComparisonTabs();
     }
+    if (viewId === 'sales-talk-track') {
+      bindSalesTalkTrackTabs();
+    }
   }
 
   /* ── Bind home nav cards (data-nav-target) ───────────────── */
@@ -89,6 +92,24 @@ var Interactions = (function () {
       link.addEventListener('click', function (e) {
         e.preventDefault();
         navigateTo(link.dataset.view);
+      });
+    });
+  }
+
+  /* ── Sales Talk Track tab switching ─────────────────────── */
+  function bindSalesTalkTrackTabs() {
+    var tabs      = document.querySelectorAll('[data-stt-tab]');
+    var discovery = document.getElementById('stt-tab-discovery');
+    var objections = document.getElementById('stt-tab-objections');
+    if (!tabs.length || !discovery || !objections) return;
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        var target = tab.dataset.sttTab;
+        discovery.style.display  = target === 'discovery'  ? 'block' : 'none';
+        objections.style.display = target === 'objections' ? 'block' : 'none';
       });
     });
   }
