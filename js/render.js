@@ -1,4 +1,4 @@
-/* =============================================================
+﻿/* =============================================================
    render.js — view rendering functions
    Each view returns an HTML string; renderView swaps <main>.
    ============================================================= */
@@ -409,75 +409,18 @@ var Render = (function () {
     '</section>';
   }
 
-  /* ── Sales Talk Track view ───────────────────────────────── */
+  /* Sales Talk Track view */
   function viewSalesTalkTrack() {
-    /* Discovery questions grouped by theme */
-    var questionGroups = [
-      {
-        theme: 'Current state',
-        questions: [
-          'How are you currently screening customers and counterparties today?',
-          'What systems do your compliance analysts use for review and case management?',
-          'Do you poll for list changes, or do you rely on periodic batch runs?'
-        ]
-      },
-      {
-        theme: 'Scope & volume',
-        questions: [
-          'Are you screening at onboarding only, or on an ongoing basis?',
-          'Are you screening individuals, entities or both — and across which watchlists?',
-          'What is your current false positive rate, and how much analyst time does that consume?'
-        ]
-      },
-      {
-        theme: 'Integration & workflow',
-        questions: [
-          'How important is straight-through processing for low-risk entities?',
-          'Do you have data residency or sovereignty requirements?',
-          'How do you handle exceptions — is there a defined escalation and approval workflow?'
-        ]
-      }
-    ];
-
-    var objectionHandling = [
-      {
-        objection: 'We already have a screening tool.',
-        response: 'The conversation is about fit and performance — not just coverage. ' +
-                  'Key questions: what attributes are returned per result, what is the false positive rate, ' +
-                  'and how much analyst time is spent per case?'
-      },
-      {
-        objection: 'We only need the data, not the workflow.',
-        response: 'WC1 API delivers exactly that — structured screening results via REST with rich match ' +
-                  'attributes. Workflow and decisioning stay entirely within your own systems.'
-      },
-      {
-        objection: 'We are not ready to change our integration.',
-        response: 'WC1 API is a well-documented REST service. Many customers start with a pilot on a single ' +
-                  'entity type or onboarding workflow before wider rollout.'
-      },
-      {
-        objection: 'We do not need identity verification.',
-        response: 'Verify is optional — but if applicants submit mis-keyed names, every screening result ' +
-                  'is less reliable. Even a light Verify integration upstream reduces downstream false positive volume.'
-      },
-      {
-        objection: 'We need an on-premises deployment.',
-        response: 'WCOD and WC1 offer cloud region selection. Data residency requirements are addressed ' +
-                  'through region configuration and the data processing agreement, not on-premises deployment.'
-      }
-    ];
-
     var salesTalkTrack = AppData.salesTalkTrack || {};
-    questionGroups = salesTalkTrack.questionGroups || [];
-    objectionHandling = salesTalkTrack.objectionHandling || [];
+    var questionGroups = salesTalkTrack.questionGroups || [];
+    var objectionHandling = salesTalkTrack.objectionHandling || [];
 
-    /* Question groups as collapsibles */
     var qGroups = questionGroups.map(function (g, i) {
       var qs = g.questions.map(function (q) {
         return '<li style="padding:6px 0;border-bottom:1px solid #f0f1f8;font-size:0.875rem;' +
                'color:#3a4060;line-height:1.5;">' + esc(q) + '</li>';
       }).join('');
+
       return '<details class="coll"' + (i === 0 ? ' open' : '') + '>' +
         '<summary>' +
           '<span class="coll-title">' + esc(g.theme) + '</span>' +
@@ -492,7 +435,6 @@ var Render = (function () {
 
     var objItems = objectionHandling.map(function (group) {
       var items = group.items || [];
-
       var groupedItems = items.map(function (o) {
         return '<details class="obj-item">' +
           '<summary>' +
@@ -503,10 +445,9 @@ var Render = (function () {
         '</details>';
       }).join('');
 
-      var title = group.theme || 'Objections';
       return '<details class="coll">' +
         '<summary>' +
-          '<span class="coll-title">' + esc(title) + '</span>' +
+          '<span class="coll-title">' + esc(group.theme || 'Objections') + '</span>' +
           '<span class="coll-meta">' + items.length + ' objections</span>' +
           '<span class="coll-chevron">›</span>' +
         '</summary>' +
@@ -521,7 +462,6 @@ var Render = (function () {
           'Discovery questions by theme and objection handling. Click any item to expand.' +
         '</p>' +
       '</div>' +
-
       '<div class="two-col">' +
         '<div>' +
           '<p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;' +
@@ -754,3 +694,4 @@ var Render = (function () {
   };
 
 }());
+
