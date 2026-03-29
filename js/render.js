@@ -75,7 +75,16 @@ var Render = (function () {
 
   /* ── Use Case Explorer view ──────────────────────────────── */
   function viewUseCaseExplorer() {
-    var scenarios = AppData.scenarios;
+    var scenarioOrder = [
+      'tier1-bank-owned-stack',
+      'kyc-onboarding',
+      'ongoing-screening',
+      'global-marketplace',
+      'legal-firm-hybrid'
+    ];
+    var scenarios = AppData.scenarios.slice().sort(function (a, b) {
+      return scenarioOrder.indexOf(a.id) - scenarioOrder.indexOf(b.id);
+    });
 
     var cards = scenarios.map(function (s) {
       var tags = s.tags.map(function (t) {
@@ -152,7 +161,15 @@ var Render = (function () {
 
   /* ── Solution Examples view ──────────────────────────────── */
   function viewSolutionExamples() {
-    var examples = AppData.solutionExamples;
+    var exampleOrder = [
+      'tier1-bank-wcod-kyc-payments',
+      'eu-psp-instant-payments',
+      'social-marketplace-kyc-ogs-transactions',
+      'real-estate-screening'
+    ];
+    var examples = AppData.solutionExamples.slice().sort(function (a, b) {
+      return exampleOrder.indexOf(a.id) - exampleOrder.indexOf(b.id);
+    });
     var first    = examples[0];
 
     var tabs = examples.map(function (ex, i) {
