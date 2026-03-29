@@ -197,8 +197,6 @@ body.presentation-mode .scenario-desc       { display: none; }
 body.presentation-mode .example-header-desc { display: none; }
 body.presentation-mode .sf-desc             { display: none; }
 body.presentation-mode .obj-response        { display: none; }
-body.presentation-mode .lever-desc          { display: none; }
-body.presentation-mode .lever-map           { display: none; }
 
 /* Slightly larger type for big-screen legibility */
 body.presentation-mode .page-title          { font-size: 1.875rem; }
