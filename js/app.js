@@ -4,15 +4,7 @@
 
 /* ── App state ───────────────────────────────────────────────── */
 var AppState = {
-  currentView: 'home',
-  selectedScenario: null,
-  selectedProducts: [],
-  filters: {
-    industry: null,
-    volume: null,
-    integrationPreference: null,
-    reviewModel: null
-  }
+  currentView: 'home'
 };
 
 /* ── Boot ────────────────────────────────────────────────────── */

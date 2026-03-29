@@ -272,14 +272,6 @@ var Interactions = (function () {
       bindPresentationToggle();
       bindFullscreenToggle();
       bindQrToggle();
-    },
-    navigateTo: navigateTo,
-    bindNavCards: bindNavCards,
-
-    /* Called by app.js after any render that may include flow diagrams */
-    bindFlowControls: function () {
-      bindExampleTabs();
-      bindFlowStepControls();
     }
   };
 

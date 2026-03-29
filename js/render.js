@@ -27,6 +27,14 @@ var Render = (function () {
     return 'api';
   }
 
+  function productPills(productIds) {
+    return (productIds || []).map(function (pid) {
+      var prod = AppData.getProduct(pid);
+      if (!prod) return '';
+      return tagPill(prod.shortName, getProductTagType(prod));
+    }).join(' ');
+  }
+
   /* ── Home view ───────────────────────────────────────────── */
   function viewHome() {
     return '<section class="view-section">' +
@@ -100,12 +108,7 @@ var Render = (function () {
         return tagPill(t, type);
       }).join(' ');
 
-      var productTags = s.recommendedProducts.map(function (pid) {
-        var p = AppData.getProduct(pid);
-        if (!p) return '';
-        var type = getProductTagType(p);
-        return tagPill(p.shortName, type);
-      }).join(' ');
+      var productTags = productPills(s.recommendedProducts);
 
       /* Collapsible detail: rationale + key questions */
       var questions = (s.keyQuestions || []).map(function (q) {
@@ -206,12 +209,7 @@ var Render = (function () {
 
   /* ── Build full example panel (header + simple flow) ───────── */
   function buildExamplePanel(ex) {
-    var productTags = ex.lsegProducts.map(function (pid) {
-      var prod = AppData.getProduct(pid);
-      var label = prod ? prod.shortName : pid;
-      var type  = getProductTagType(prod);
-      return tagPill(label, type);
-    }).join(' ');
+    var productTags = productPills(ex.lsegProducts);
 
     var header =
       '<div class="example-header">' +
@@ -231,12 +229,7 @@ var Render = (function () {
     var phases = ex.phases || [];
 
     var phaseItems = phases.map(function (phase, i) {
-      var prodTags = (phase.products || []).map(function (pid) {
-        var prod = AppData.getProduct(pid);
-        var label = prod ? prod.shortName : pid;
-        var type  = getProductTagType(prod);
-        return tagPill(label, type);
-      }).join(' ');
+      var prodTags = productPills(phase.products);
 
       var arrow = (i < phases.length - 1)
         ? '<div class="sf-arrow" aria-hidden="true">&#8594;</div>'
@@ -476,8 +469,8 @@ var Render = (function () {
     ];
 
     var salesTalkTrack = AppData.salesTalkTrack || {};
-    questionGroups = salesTalkTrack.questionGroups || questionGroups;
-    objectionHandling = salesTalkTrack.objectionHandling || objectionHandling;
+    questionGroups = salesTalkTrack.questionGroups || [];
+    objectionHandling = salesTalkTrack.objectionHandling || [];
 
     /* Question groups as collapsibles */
     var qGroups = questionGroups.map(function (g, i) {
@@ -497,13 +490,8 @@ var Render = (function () {
       '</details>';
     }).join('');
 
-    /* Objections grouped by theme, with flat-list fallback */
-    var objItems = objectionHandling.map(function (group, i) {
+    var objItems = objectionHandling.map(function (group) {
       var items = group.items || [];
-
-      if (!items.length && group.objection) {
-        items = [group];
-      }
 
       var groupedItems = items.map(function (o) {
         return '<details class="obj-item">' +
@@ -636,7 +624,7 @@ var Render = (function () {
             '</span>' +
           '</span>' +
           '<span class="coll-meta" style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;">' + chips + '</span>' +
-          '<span class="coll-chevron">&#8250;</span>' +
+          '<span class="coll-chevron">›</span>' +
         '</summary>' +
         '<div class="coll-body">' +
           legacyBanner +

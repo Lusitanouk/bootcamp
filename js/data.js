@@ -1146,9 +1146,6 @@ var AppData = (function () {
     getProduct: function (id) {
       return products.find(function (p) { return p.id === id; }) || null;
     },
-    getScenario: function (id) {
-      return scenarios.find(function (s) { return s.id === id; }) || null;
-    },
     getSolutionExample: function (id) {
       return solutionExamples.find(function (e) { return e.id === id; }) || null;
     },
@@ -1156,16 +1153,6 @@ var AppData = (function () {
       var product = this.getProduct(productId);
       if (!product) return null;
       return product.capabilities[domainId] || null;
-    },
-    getAllLevers: function () {
-      var all = [];
-      var fp = fpReductionLevers;
-      ['beforeScreening', 'duringScreening', 'afterScreening', 'inOperations'].forEach(function (stage) {
-        fp[stage].forEach(function (lever) {
-          all.push(Object.assign({}, lever, { stage: stage }));
-        });
-      });
-      return all;
     }
   };
 
